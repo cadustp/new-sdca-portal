@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Input, Menu, MenuItem, withStyles,
-} from '@material-ui/core';
+  Input, Menu, MenuItem, makeStyles,
+} from '@mui/material';
 import {
   SearchOutlined,
   FilterList,
@@ -9,7 +9,7 @@ import {
   DeleteOutline,
   Delete,
   ImportExportOutlined,
-} from '@material-ui/icons';
+} from '@mui/icons-material';
 import { IMPORT_TYPES, ORDER_TYPES, RESPONSE_STATUS } from '../../../helpers/consts';
 import { light } from '../../../styles/palette';
 import SideFilters from '../SideFilters';
@@ -386,7 +386,7 @@ const SearchBar: React.FC<Props & StateProps & DispatchProps> = ({
   );
 };
 
-const MenuItemStyle = withStyles({
+const MenuItemStyle = makeStyles({
   root: {
     color: '#6A6A6A',
     fontSize: 12,

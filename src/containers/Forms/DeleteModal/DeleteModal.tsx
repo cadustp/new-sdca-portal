@@ -1,6 +1,6 @@
 import React from 'react';
 import { injectIntl } from 'react-intl';
-import { Button, Box } from '@material-ui/core';
+import { Button, Box } from '@mui/material';
 import CustomModal from '../../../components/CustomModal';
 
 import '../styles.css';

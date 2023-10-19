@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { IconButton, MenuItem } from '@material-ui/core';
+import { IconButton, MenuItem } from '@mui/material';
 import { light } from '../../../../../styles/palette';
 
 export const Container = styled.div`

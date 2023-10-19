@@ -18,7 +18,7 @@ import {
         data,
       }));
       return true;
-    } catch (error) {
+    } catch (error: any) {
       yield put(featuresRequestResponse({
         error: error.response.data.message,
       }));
@@ -40,7 +40,7 @@ import {
         data,
       }));
       return true;
-    } catch (error) {
+    } catch (error: any) {
       yield put(featuresRequestResponse({
         error: error.response.data.message,
       }));

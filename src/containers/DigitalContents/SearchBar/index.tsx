@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { injectIntl } from 'react-intl';
-import { Input, Menu } from '@material-ui/core';
-import { SearchOutlined, FormatLineSpacing } from '@material-ui/icons';
-import MenuItem from '@material-ui/core/MenuItem';
-import { withStyles } from '@material-ui/core/styles';
+import { Input, Menu } from '@mui/material';
+import { SearchOutlined, FormatLineSpacing } from '@mui/icons-material';
+import MenuItem from '@mui/material/MenuItem';
+import { makeStyles } from '@mui/material/styles';
 import { light } from '../../../styles/palette';
 import { ORDER_TYPES } from '../../../helpers/consts';
 
@@ -28,7 +28,7 @@ type DispatchProps = {
   setSortType: Function,
 };
 
-const MenuItemStyle = withStyles({
+const MenuItemStyle = makeStyles({
   root: {
     color: '#6A6A6A',
     fontSize: 12,

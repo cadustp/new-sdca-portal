@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import ConditionalEditor from "./ConditionalEditor";
-import { Paper, IconButton }from "@material-ui/core";
+import { Paper, IconButton }from "@mui/material";
 import CustomAlert from "src/components/CustomAlert";
 import { ReactComponent as AlertSVG } from 'src/assets/icons/alert.svg';
 
-import { Edit, Delete, AddCircleOutline } from "@material-ui/icons";
+import { Edit, Delete, AddCircleOutline } from "@mui/icons-material";
 import {
   AddContainer,
   AddBtn,

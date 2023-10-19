@@ -5,9 +5,9 @@ import {
   InputAdornment,
   IconButton,
   makeStyles,
-} from '@material-ui/core';
-import { withRouter } from 'react-router-dom';
-import { Visibility, VisibilityOff } from '@material-ui/icons';
+} from '@mui/material';
+import { withRouter } from '../../helpers/withRouter';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
 import Logo from '../../assets/branding/new_logo.svg';
 import Loading from '../../components/Loading';
 import CustomSnackbar from '../../components/shared/CustomSnackbar/CustomSnackbar';

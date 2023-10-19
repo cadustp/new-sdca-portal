@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { injectIntl } from 'react-intl';
 import { AnimatePresence, motion } from 'framer-motion';
 import { v4 as uuid } from 'uuid';
-import { Fab, Tooltip } from '@material-ui/core';
+import { Fab, Tooltip } from '@mui/material';
 import {
   Add, SubdirectoryArrowRight, DeleteOutline, FileCopy,
-} from '@material-ui/icons';
+} from '@mui/icons-material';
 import { captureEvent } from '../../../analytics';
 import { Step, StepErrors } from '../../../redux/forms/types';
 import RequiredFieldErrorText from '../../../components/shared/RequiredFieldErrorText';

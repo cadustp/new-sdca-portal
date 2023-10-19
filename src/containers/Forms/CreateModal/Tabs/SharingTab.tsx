@@ -4,10 +4,10 @@ import {
   Tooltip,
   Switch,
   FormControlLabel,
-} from '@material-ui/core';
+} from '@mui/material';
 import {
   InfoOutlined,
-} from '@material-ui/icons';
+} from '@mui/icons-material';
 import './styles.css';
 import { v4 as uuid } from 'uuid';
 import { Form } from '../../../../redux/forms/types';

@@ -7,8 +7,8 @@ import {
   Collapse,
   CardContent,
   makeStyles,
-} from '@material-ui/core';
-import { KeyboardArrowDown, KeyboardArrowUp } from '@material-ui/icons';
+} from '@mui/material';
+import { KeyboardArrowDown, KeyboardArrowUp } from '@mui/icons-material';
 import './styles.css';
 import { captureEvent } from '../../analytics';
 

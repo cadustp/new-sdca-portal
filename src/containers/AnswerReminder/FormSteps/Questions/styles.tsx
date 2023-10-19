@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/material/styles'
 export const S_Title = styled.p`
   margin-top: 0.2rem;
   font-family: Open Sans;

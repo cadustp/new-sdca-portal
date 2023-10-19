@@ -5,8 +5,8 @@ import {
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import { connect } from 'react-redux';
 import { injectIntl } from 'react-intl';
-import { RoomOutlined, InfoOutlined } from '@material-ui/icons';
-import Tooltip from '@material-ui/core/Tooltip';
+import { RoomOutlined, InfoOutlined } from '@mui/icons-material';
+import Tooltip from '@mui/material/Tooltip';
 import moment from '../../timezones/moment';
 import { fetchRemindersWithLocation, closeSnackbar } from '../../redux/appUserReminders/actions';
 import NewFilter from '../shared/NewFilter/NewFilter';

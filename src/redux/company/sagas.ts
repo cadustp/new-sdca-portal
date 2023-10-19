@@ -39,7 +39,7 @@ export function* companyDataRequest({
       company: data.company,
       settings,
     }));
-  } catch (error) {
+  } catch (error: any) {
     yield put(companyDataRequestResponse({
       failure: true,
     }));
@@ -84,7 +84,7 @@ export function* saveCompanyRequest({
       settings: payload.settings,
     });
     return true;
-  } catch (error) {
+  } catch (error: any) {
     captureEvent('updateCompanySettings', {
       status: 'error',
       name: payload.company.name,

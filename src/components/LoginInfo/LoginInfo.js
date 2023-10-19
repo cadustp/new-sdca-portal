@@ -1,18 +1,19 @@
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import { withStyles } from '@material-ui/core/styles';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import { makeStyles } from '@mui/material/styles';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { injectIntl } from 'react-intl';
-import { withRouter, Link } from 'react-router-dom';
-import { ExitToApp, FindInPageOutlined } from '@material-ui/icons';
+import { Link } from 'react-router-dom';
+import { withRouter } from '../../helpers/withRouter';
+import { ExitToApp, FindInPageOutlined } from '@mui/icons-material';
 import { light } from '../../styles/palette';
 import UserIcon from '../shared/Icons/UserIcon';
 import { captureNavigation } from '../../analytics';
 import './LoginInfo.css';
 import { ReactComponent as SmallBusinessSVG } from '../../assets/icons/small-business.svg';
 
-const MenuItemStyle = withStyles({
+const MenuItemStyle = makeStyles({
   root: {
     color: '#333333',
     fontSize: 12,

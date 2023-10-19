@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Fab } from '@material-ui/core';
+import { Fab } from '@mui/material';
 
 export const FloatingContainer = styled(Fab)`
   background: ${({ theme }) => theme.light.primary} !important;

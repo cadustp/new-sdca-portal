@@ -1,5 +1,5 @@
-import Modal from '@material-ui/core/Modal';
-import IconButton from '@material-ui/core/Icon';
+import Modal from '@mui/material/Modal';
+import IconButton from '@mui/material/Icon';
 import styled from 'styled-components';
 
 export const StyledModal = styled(Modal)`

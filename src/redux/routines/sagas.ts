@@ -44,7 +44,7 @@ export function* loadAllRoutinesRequestSagas({
       routines,
     }));
     return true;
-  } catch (error) {
+  } catch (error: any) {
     yield put(loadAllRoutinesResponse({
       errorMessage: error.response.data.message,
     }));
@@ -67,7 +67,7 @@ export function* deleteRoutineRequest({
     }
     captureEvent('confirmDeleteRoutine', { status: 'success' });
     return true;
-  } catch (error) {
+  } catch (error: any) {
     yield put(deleteRoutineResponse({
       status: RESPONSE_STATUS.FAILURE,
       error: error.response?.data?.message ?? error.message,
@@ -90,7 +90,7 @@ export function* activatePauseRoutineRequest({
       }
     }
     return true;
-  } catch (error) {
+  } catch (error: any) {
     yield put(activatePauseRoutineResponse({
       error: error.response?.data?.message ?? error.message,
     }));

@@ -1,6 +1,6 @@
 import React from 'react';
-import Grid from '@material-ui/core/Grid';
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+import Grid from '@mui/material/Grid';
+import { createMuiTheme, ThemeProvider } from '@mui/material/styles';
 import NestedList from '../NestedList';
 import WithLoading from '../../hocs/withLoading';
 import WithEmptyData from '../../hocs/withEmptyData';
@@ -53,7 +53,7 @@ function QuestionQuality({
           </div>
         </Grid>
       </Grid>
-      <MuiThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
         {loading ? <Skeleton width={1130} height={160} count={1} /> :
           <NestedListWithLoading
             isLoading={loading}
@@ -64,7 +64,7 @@ function QuestionQuality({
             lower={lower}
           />
         }
-      </MuiThemeProvider>
+      </ThemeProvider>
     </div>
   );
 }

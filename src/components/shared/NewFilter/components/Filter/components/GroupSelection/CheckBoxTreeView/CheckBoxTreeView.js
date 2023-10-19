@@ -1,4 +1,4 @@
-import Checkbox from '@material-ui/core/Checkbox';
+import Checkbox from '@mui/material/Checkbox';
 import PropTypes from 'prop-types';
 import React from 'react';
 import CheckboxTree from 'react-checkbox-tree';

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Box } from '@material-ui/core';
+import { Box } from '@mui/material';
 import AccordionStep from 'src/components/AccordionStep';
 import { TQuestion } from 'src/types/reminder';
 import QuestionsScreen from '../Questions/index';

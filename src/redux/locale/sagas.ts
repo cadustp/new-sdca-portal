@@ -28,7 +28,7 @@ export function* setLanguageRequest({
       language: payload,
     });
     return true;
-  } catch (error) {
+  } catch (error: any) {
     captureEvent('changeLanguage', {
       status: 'error',
       language: payload,

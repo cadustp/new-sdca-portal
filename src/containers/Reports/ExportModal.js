@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
-import { FormControlLabel, Switch } from '@material-ui/core';
+import { FormControlLabel, Switch } from '@mui/material';
 import moment from '../../timezones/moment';
 import { captureEvent } from '../../analytics';
 import Button from '../../components/Button';

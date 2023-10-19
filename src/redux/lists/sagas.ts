@@ -27,7 +27,7 @@ export function* listsDataRequest({
       data,
       failure: false,
     }));
-  } catch (error) {
+  } catch (error: any) {
     yield put(listsDataRequesResponse({
       data: {},
       failure: true,
@@ -43,7 +43,7 @@ export function* planUsersRequest() {
       data,
       failure: false,
     }));
-  } catch (error) {
+  } catch (error: any) {
     yield put(planUsersResponse({
       data: {},
       failure: true,

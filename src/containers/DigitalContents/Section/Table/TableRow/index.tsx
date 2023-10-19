@@ -1,6 +1,6 @@
 import React from 'react';
 import { injectIntl } from 'react-intl';
-import Tooltip from '@material-ui/core/Tooltip';
+import Tooltip from '@mui/material/Tooltip';
 import TableGenericRow from '../../../../../components/TableGenericRow';
 import { CONTENTS_MODAL_TYPES } from '../../../../../helpers/consts';
 import Avatar from '../../../../../components/Avatar';

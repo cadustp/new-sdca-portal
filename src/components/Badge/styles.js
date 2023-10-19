@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 import React from 'react';
 import styled from 'styled-components';
-import Badge from '@material-ui/core/Badge';
+import Badge from '@mui/material/Badge';
 
 export const StyledBadge = styled(({ size, ...otherProps }) => (
   <Badge {...otherProps} classes={{ root: 'root' }} />

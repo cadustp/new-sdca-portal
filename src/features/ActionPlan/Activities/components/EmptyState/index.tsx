@@ -1,7 +1,7 @@
 import React from 'react';
 import { injectIntl } from 'react-intl';
 
-import { Button } from '@material-ui/core';
+import { Button } from '@mui/material';
 
 import { Intl } from '../../../../../helpers/types';
 import { EmptyActionPlanIcon } from '../../../../../components/shared/Icons/EmptyActionPlanIcon';

@@ -7,9 +7,9 @@ import {
 } from 'react-virtualized';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
-import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
-import Checkbox from '@material-ui/core/Checkbox';
-import ListItemText from '@material-ui/core/ListItemText';
+import ThemeProvider from '@mui/material/styles/ThemeProvider';
+import Checkbox from '@mui/material/Checkbox';
+import ListItemText from '@mui/material/ListItemText';
 
 let noResultsFoundLabel = '';
 let noResultsSubtitle = '';
@@ -76,7 +76,7 @@ class FlattenedTreeView extends Component {
     const { selectionMap } = this.props;
     return (
       <div key={item.id} style={{ display: 'flex', alignItems: 'center' }}>
-        <MuiThemeProvider>
+        <ThemeProvider>
           <Checkbox
             style={{ paddingTop: '8px', paddingBottom: '8px' }}
             color="primary"
@@ -87,7 +87,7 @@ class FlattenedTreeView extends Component {
           <span>
             <ListItemText primary={item.name} />
           </span>
-        </MuiThemeProvider>
+        </ThemeProvider>
       </div>
     );
   };

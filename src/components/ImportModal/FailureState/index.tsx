@@ -1,6 +1,6 @@
 import React from 'react';
 import { injectIntl } from 'react-intl';
-import { ErrorOutline } from '@material-ui/icons';
+import { ErrorOutline } from '@mui/icons-material';
 import { ReactComponent as ErrorIcon } from '../../../assets/icons/error-page-icon.svg';
 import Button from '../../Button';
 import '../styles.css';

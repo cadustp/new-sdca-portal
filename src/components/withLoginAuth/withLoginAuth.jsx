@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import {
   setLogoutResponseInterceptor,
 } from '../../services/apiService';
@@ -39,7 +39,7 @@ const withLogInAuth = Component => props => {
         <Component {...props} />
       </Header>
     ) : (
-      <Redirect to="/login" />
+      <Navigate to="/login" />
     )
   );
 };

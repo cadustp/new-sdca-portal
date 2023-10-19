@@ -6,8 +6,8 @@ import {
 import MomentUtils from '@date-io/moment';
 import {
   CalendarTodayOutlined,
-} from '@material-ui/icons';
-import { IconButton, InputAdornment } from '@material-ui/core';
+} from '@mui/icons-material';
+import { IconButton, InputAdornment } from '@mui/material';
 
 import { REMINDER_MINIMAL_DATE } from 'src/helpers/consts';
 

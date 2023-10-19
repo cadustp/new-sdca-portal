@@ -65,7 +65,7 @@ export function* searchGroupsRequest({
     );
 
     return data;
-  } catch (error) {
+  } catch (error: any) {
     yield put(searchGroupsRequestFailure());
   }
 }
@@ -86,7 +86,7 @@ export function* importGroupsRequest({
     }));
     captureEvent('importGroups', { status: 'success', hasErrorRows: rowErrors?.length });
     return true;
-  } catch (error) {
+  } catch (error: any) {
     captureEvent('importGroups', { status: 'error', error: error.response?.data?.message });
     yield put(importGroupsRequestResponse({
       importStatus: RESPONSE_STATUS.FAILURE,
@@ -110,7 +110,7 @@ export function* saveGroupRequest({
     }));
     captureEvent('saveGroup', { status: 'success', type: payload.id ? 'edit' : 'new', hasFather: !!payload.parent_id });
     return true;
-  } catch (error) {
+  } catch (error: any) {
     captureEvent('saveGroup', {
       status: 'error', type: payload.id ? 'edit' : 'new', hasFather: !!payload.parent_id, error: error.response?.data?.message,
     });
@@ -138,7 +138,7 @@ export function* deleteGroupRequest({
 
     captureEvent('confirmDeleteGroups', { status: deleteError?.length ? 'error' : 'success', error: deleteError });
     return true;
-  } catch (error) {
+  } catch (error: any) {
     captureEvent('confirmDeleteGroups', { status: 'error', error: error.response?.data?.message });
     yield put(deleteGroupRequestResponse({
       deleteStatus: RESPONSE_STATUS.FAILURE,
@@ -158,7 +158,7 @@ export function* listAllGroupsRequest() {
       allGroups,
     }));
     return true;
-  } catch (error) {
+  } catch (error: any) {
     yield put(listAllGroupsRequestResponse({
       listStatus: RESPONSE_STATUS.FAILURE,
     }));
@@ -184,7 +184,7 @@ export function* exportGroupsRequest({
       exportStatus: RESPONSE_STATUS.SUCCESS,
     }));
     captureEvent('exportGroups', { status: 'success', ...eventParams });
-  } catch (error) {
+  } catch (error: any) {
     captureEvent('exportGroups', { status: 'error', ...eventParams, error: error.message });
     yield put(exportGroupsResponse({
       exportStatus: RESPONSE_STATUS.FAILURE,

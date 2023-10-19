@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter } from '../../../helpers/withRouter';
 import { injectIntl } from 'react-intl';
 import {
   IconButton, MenuItem, Menu, Tooltip,
-} from '@material-ui/core';
-import { DeleteOutline, MoreVert, Update } from '@material-ui/icons';
+} from '@mui/material';
+import { DeleteOutline, MoreVert, Update } from '@mui/icons-material';
 import moment from '../../../timezones/moment';
 import { captureEvent } from '../../../analytics';
 

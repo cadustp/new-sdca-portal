@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import CheckBoxIcon from '@material-ui/icons/CheckBox';
-import UncheckedBoxIcon from '@material-ui/icons/CheckBoxOutlineBlank';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import UncheckedBoxIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 
 export const StyledContentDiv = styled.div`
   display: flex;

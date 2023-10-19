@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Tabs, Tab } from "@material-ui/core";
-import { Close } from "@material-ui/icons"
+import { Tabs, Tab } from "@mui/material";
+import { Close } from "@mui/icons-material"
 
 import Loading from 'src/components/Loading';
 import CustomSnackbar from 'src/components/shared/CustomSnackbar/CustomSnackbar';

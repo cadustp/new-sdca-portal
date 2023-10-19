@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import RadioIcon from '@material-ui/icons/RadioButtonChecked';
-import UncheckedRadioIcon from '@material-ui/icons/RadioButtonUnchecked';
-import Radio from '@material-ui/core/Radio';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import RadioIcon from '@mui/icons-material/RadioButtonChecked';
+import UncheckedRadioIcon from '@mui/icons-material/RadioButtonUnchecked';
+import Radio from '@mui/material/Radio';
 
 export const StyledContentDiv = styled.div`
   display: flex;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Menu from '@material-ui/core/Menu';
+import Menu from '@mui/material/Menu';
 import { captureNavigation } from '../../../analytics';
 
 import {

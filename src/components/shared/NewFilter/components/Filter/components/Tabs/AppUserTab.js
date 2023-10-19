@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { defineMessages, injectIntl } from 'react-intl';
 import {
   Checkbox, ListItem, ListItemText, IconButton, TextField,
-} from '@material-ui/core';
-import CloseIcon from '@material-ui/icons/Close';
+} from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 import PropTypes from 'prop-types';
 import { Container, HeaderWrapper } from './styles';
 import SelectAll, { actions } from '../SelectAll/SelectAll';

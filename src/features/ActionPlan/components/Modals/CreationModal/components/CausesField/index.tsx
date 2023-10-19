@@ -1,6 +1,6 @@
 import React from 'react';
 import { injectIntl } from 'react-intl';
-import { Button } from '@material-ui/core';
+import { Button } from '@mui/material';
 
 import { StyledTextField } from '../../../../../../../components/shared/Inputs/StyledInput';
 import { FormDescriptionMaxLength } from '../../../../../../../helpers/consts';

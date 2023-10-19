@@ -1,9 +1,9 @@
-import Dialog from '@material-ui/core/Dialog';
-import DialogContent from '@material-ui/core/DialogContent';
-import IconButton from '@material-ui/core/Icon';
-import { withStyles } from '@material-ui/core/styles';
-import Tab from '@material-ui/core/Tab';
-import Tabs from '@material-ui/core/Tabs';
+import Dialog from '@mui/material/Dialog';
+import DialogContent from '@mui/material/DialogContent';
+import IconButton from '@mui/material/Icon';
+import { makeStyles } from '@mui/material/styles';
+import Tab from '@mui/material/Tab';
+import Tabs from '@mui/material/Tabs';
 import React from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
@@ -570,5 +570,5 @@ function translate(formatMessage) {
 }
 
 export default injectIntl(
-  connect(mapStateToProps)(withStyles(styles)(FilterDialog)),
+  connect(mapStateToProps)(makeStyles(styles)(FilterDialog)),
 );

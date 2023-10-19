@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { injectIntl } from 'react-intl';
-import { Menu, Tooltip } from '@material-ui/core';
+import { Menu, Tooltip } from '@mui/material';
 import { Draggable } from 'react-beautiful-dnd';
 import moment from '../../../../../timezones/moment';
 

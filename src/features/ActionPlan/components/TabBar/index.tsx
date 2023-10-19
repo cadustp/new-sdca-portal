@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { injectIntl } from 'react-intl';
 
-import Tab from '@material-ui/core/Tab';
-import Tabs from '@material-ui/core/Tabs';
-import Divider from '@material-ui/core/Divider';
+import Tab from '@mui/material/Tab';
+import Tabs from '@mui/material/Tabs';
+import Divider from '@mui/material/Divider';
 
 import { Intl } from '../../../../helpers/types';
 import PlanBoard from '../../Activities/components/Board';

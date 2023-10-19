@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import Box from '@material-ui/core/Box'
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import Box from '@mui/material/Box'
+import { makeStyles, Theme, createStyles } from '@mui/material/styles';
 
 export const SBoxImage = styled(Box)`
     border: 2px dashed ${props=> props.borderColor  ? 'var(--primary-color)' : 'black'} ;

@@ -1,4 +1,4 @@
-import { Box } from '@material-ui/core';
+import { Box } from '@mui/material';
 import React, { useState } from 'react';
 import { StyledTextField } from '../../../../../components/shared/Inputs/StyledInput';
 import { SMaxLengthView } from './styles';

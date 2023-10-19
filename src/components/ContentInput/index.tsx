@@ -3,12 +3,12 @@ import React, { useRef } from 'react';
 import {
   PictureAsPdf,
   Delete,
-} from '@material-ui/icons';
+} from '@mui/icons-material';
 
 import {
   Button,
   IconButton,
-} from '@material-ui/core/';
+} from '@mui/material/';
 
 import { SFileInput, InputBox } from './styles';
 import { captureEvent } from '../../analytics';

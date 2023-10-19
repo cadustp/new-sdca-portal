@@ -4,10 +4,10 @@ import { motion } from 'framer-motion';
 import {
   Button,
   IconButton,
-} from '@material-ui/core';
+} from '@mui/material';
 import {
   AddCircleOutline, BorderColor,
-} from '@material-ui/icons';
+} from '@mui/icons-material';
 import { captureEvent } from '../../../../analytics';
 import { Answer } from '../../../../redux/forms/types';
 import ErrorTooltip from '../../../../components/shared/ErrorTooltip';

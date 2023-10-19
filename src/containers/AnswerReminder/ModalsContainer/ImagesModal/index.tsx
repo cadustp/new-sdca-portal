@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box } from "@material-ui/core";
+import { Box } from "@mui/material";
 import CustomModal from '../../../../components/CustomModal';
 import { Button } from './styles'
 import InputImage from '../../../../components/InputImage/index'

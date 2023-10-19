@@ -1,8 +1,8 @@
 /* eslint-disable import/prefer-default-export */
 import React, { useMemo } from 'react';
 import { injectIntl } from 'react-intl';
-import { TextField, Tooltip, WithStyles, withStyles } from '@material-ui/core';
-import { TextFieldProps } from '@material-ui/core/TextField';
+import { TextField, Tooltip, makeStyles } from '@mui/material';
+import { TextFieldProps } from '@mui/material/TextField';
 import { IconContainer } from '../../../EmailInput/styles';
 import InfoIcon from '../../Icons/InfoIcon';
 import { ErrorMessage, Label } from './styles';
@@ -38,7 +38,7 @@ function Input({
   noErrorMessage,
   intl,
   ...props
-}: Props & TextFieldProps & WithStyles<typeof styles>) {
+}: Props & TextFieldProps & makeStyles<typeof styles>) {
   // eslint-disable-next-line react/jsx-props-no-spreading
 
   const renderDefaultErrorText = useMemo(
@@ -86,5 +86,5 @@ function Input({
 }
 
 export const StyledTextField = React.memo(
-  injectIntl(withStyles(styles)(Input)),
+  injectIntl(makeStyles(styles)(Input)),
 );

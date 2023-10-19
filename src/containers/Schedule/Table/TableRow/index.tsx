@@ -1,8 +1,8 @@
 import React from 'react';
 import { injectIntl } from 'react-intl';
 
-import Tooltip from '@material-ui/core/Tooltip';
-import { Checkbox } from '@material-ui/core';
+import Tooltip from '@mui/material/Tooltip';
+import { Checkbox } from '@mui/material';
 import ActionMenu from '../ActionMenu';
 import TableGenericRow from '../../../../components/TableGenericRow';
 import Avatar from '../../../../components/Avatar';

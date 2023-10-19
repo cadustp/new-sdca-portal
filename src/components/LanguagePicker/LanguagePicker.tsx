@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Button, Menu, MenuItem } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { Button, Menu, MenuItem } from '@mui/material';
+import { makeStyles } from '@mui/material/styles';
 import { LANGUAGE_OPTIONS } from '../../helpers/consts';
 import CustomSnackbar from '../shared/CustomSnackbar/CustomSnackbar';
 import Loading from '../Loading';
@@ -24,7 +24,7 @@ type DispatchProps = {
   clearLanguageErrors: Function,
 };
 
-const MenuItemStyle = withStyles({
+const MenuItemStyle = makeStyles({
   root: {
     color: '#6A6A6A',
     fontSize: 12,

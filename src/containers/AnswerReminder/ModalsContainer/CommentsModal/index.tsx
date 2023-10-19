@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box } from '@material-ui/core';
+import { Box } from '@mui/material';
 import CustomModal from '../../../../components/CustomModal';
 import { StyledTextField } from '../../../../components/shared/Inputs/StyledInput';
 import { Button } from './styles';

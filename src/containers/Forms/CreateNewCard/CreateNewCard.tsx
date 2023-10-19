@@ -1,6 +1,6 @@
 import React from 'react';
 import { injectIntl } from 'react-intl';
-import { AddCircleOutline } from '@material-ui/icons/';
+import { AddCircleOutline } from '@mui/icons-material/';
 import { light } from '../../../styles/palette';
 import { captureEvent } from '../../../analytics';
 

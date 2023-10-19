@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import styled from 'styled-components';
-import Avatar from '@material-ui/core/Avatar';
+import Avatar from '@mui/material/Avatar';
 
 export const StyledAvatar = styled(Avatar)`
   border-color: ${props => (props.empty ? props.color : null)};

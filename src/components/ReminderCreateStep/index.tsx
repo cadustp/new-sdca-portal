@@ -6,8 +6,8 @@ import {
   Tooltip,
   Switch,
   FormControlLabel,
-} from '@material-ui/core';
-import { InfoOutlined } from '@material-ui/icons';
+} from '@mui/material';
+import { InfoOutlined } from '@mui/icons-material';
 import { DateTimePicker, DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 import MomentUtils from '@date-io/moment';
 import moment from '../../timezones/moment';

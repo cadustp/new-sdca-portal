@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { Button, Tooltip, IconButton } from '@material-ui/core';
+import { Button, Tooltip, IconButton } from '@mui/material';
 
 import CloseIcon from '../../../../../components/shared/Icons/CloseIcon';
 import {

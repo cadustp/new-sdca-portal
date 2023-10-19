@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box } from '@material-ui/core';
+import { Box } from '@mui/material';
 import NavBar from './NavBar/NavBar';
 import ReminderCreateStep from '../../components/ReminderCreateStep';
 import Loading from '../../components/Loading';

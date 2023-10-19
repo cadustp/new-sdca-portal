@@ -1,19 +1,19 @@
 import {
   createGenerateClassName,
   jssPreset,
-  MuiThemeProvider,
-} from '@material-ui/core/styles';
+  ThemeProvider,
+} from 'mui-styles';
 import { create } from 'jss';
 import React from 'react';
 import { JssProvider } from 'react-jss';
 import { Provider } from 'react-redux';
-import { ThemeProvider } from 'styled-components';
+// import { ThemeProvider } from 'styled-components';
 import ConnectedIntlProvider from './components/ConnectedIntlProvider';
 import RouterSwitch from './routes';
 import CustomSnackbar from './components/shared/CustomSnackbar';
 import LoadingUserData from './containers/LoadingUserData';
 import store from './redux/store';
-import theme from './styles';
+// import theme from './styles';
 import GlobalStyle from './styles/GlobalStyle';
 import materialTheme from './styles/material';
 
@@ -27,8 +27,8 @@ function App() {
       <Provider store={store}>
         <JssProvider jss={jss} generateClassName={generateClassName}>
           <>
-            <MuiThemeProvider theme={materialTheme}>
-              <ThemeProvider theme={theme}>
+            <ThemeProvider theme={materialTheme}>
+              {/* <ThemeProvider theme={theme}> */}
                 <GlobalStyle />
                 <CustomSnackbar />
                 <ConnectedIntlProvider>
@@ -37,8 +37,8 @@ function App() {
                     <RouterSwitch />
                   </>
                 </ConnectedIntlProvider>
-              </ThemeProvider>
-            </MuiThemeProvider>
+              {/* </ThemeProvider> */}
+            </ThemeProvider>
           </>
         </JssProvider>
       </Provider>

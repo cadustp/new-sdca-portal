@@ -71,7 +71,7 @@ import {
         exportStatus: RESPONSE_STATUS.SUCCESS,
       }));
       captureEvent('exportReminders', { status: 'success', ...eventParams });
-    } catch (error) {
+    } catch (error: any) {
       captureEvent('exportReminders', { status: 'error', ...eventParams, error: error.message });
       yield put(exportReportResponse({
         exportStatus: RESPONSE_STATUS.FAILURE,
@@ -101,7 +101,7 @@ import {
         exportStatus: RESPONSE_STATUS.SUCCESS,
       }));
       captureEvent('exportReminders', { status: 'success', ...eventParams });
-    } catch (error) {
+    } catch (error: any) {
       captureEvent('exportReminders', { status: 'error', ...eventParams, error: error.message });
       yield put(exportReportResponse({
         exportStatus: RESPONSE_STATUS.FAILURE,

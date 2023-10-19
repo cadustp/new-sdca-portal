@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import Grid from '@material-ui/core/Grid';
+import { withRouter } from '../../helpers/withRouter';
+import Grid from '@mui/material/Grid';
 import { defineMessages, injectIntl } from 'react-intl';
 import moment from '../../../timezones/moment';
 import DateFilter from '../../../components/shared/DateFilter/DateFilter';

@@ -1,7 +1,7 @@
 /* eslint-disable indent */
 import React from 'react';
 import styled from 'styled-components';
-import Drawer from '@material-ui/core/Drawer';
+import Drawer from '@mui/material/Drawer';
 
 const StyledDrawer = styled(({ ...otherProps }) => (
   <Drawer {...otherProps} classes={{ paper: 'paper' }} />

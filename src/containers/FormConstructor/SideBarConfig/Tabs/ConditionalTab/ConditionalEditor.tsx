@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import {ActionListSelector} from "./ActionListSelector";
 import {
   AddCircleOutline ,
-} from '@material-ui/icons';
+} from '@mui/icons-material';
 import ConditionSelector from "./ConditionSelector";
 import {Form} from "src/redux/forms/types";
 import SelectInput from "src/components/v2/SelectInput";

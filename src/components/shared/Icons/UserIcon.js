@@ -1,5 +1,5 @@
 import React from 'react';
-import SvgIcon from '@material-ui/core/SvgIcon';
+import SvgIcon from '@mui/material/SvgIcon';
 
 const UserIcon = ({ color = '#ccc', size = 18 }) => (
   <SvgIcon fontSize={`${size}px`}>

@@ -25,7 +25,7 @@ export function* searchDigitalContentsRequest({
       data,
     }));
     return true;
-  } catch (error) {
+  } catch (error: any) {
     yield put(searchDigitalContentsResponse({
       error: error.response.data.message,
     }));
@@ -49,7 +49,7 @@ export function* deleteContentRequest({
 
     captureEvent('confirmDeleteContents', { status: 'success' });
     return true;
-  } catch (error) {
+  } catch (error: any) {
     captureEvent('confirmDeleteContents', { status: 'error', error: error.response?.data?.message });
     yield put(deleteContentResponse({
       deleteStatus: RESPONSE_STATUS.FAILURE,
@@ -91,7 +91,7 @@ export function* saveContentRequest({
     }));
     captureEvent('saveDigitalContent', { status: 'success', kind: payload.id ? 'edit' : 'new', sharedUsers: payload.users?.length });
     return true;
-  } catch (error) {
+  } catch (error: any) {
     captureEvent('saveDigitalContent', {
       status: 'error', kind: payload.id ? 'edit' : 'new', sharedUsers: payload.users?.length, error: error.response?.data?.message,
     });

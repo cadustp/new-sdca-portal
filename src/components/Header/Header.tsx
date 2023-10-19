@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { injectIntl } from 'react-intl';
-import AppBar from '@material-ui/core/AppBar';
-import ToolBar from '@material-ui/core/Toolbar';
-import Box from '@material-ui/core/Box';
-import { HelpOutline } from '@material-ui/icons';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import Drawer from '@material-ui/core/Drawer';
+import AppBar from '@mui/material/AppBar';
+import ToolBar from '@mui/material/Toolbar';
+import Box from '@mui/material/Box';
+import { HelpOutline } from '@mui/icons-material';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import Drawer from '@mui/material/Drawer';
 import { Link } from 'react-router-dom';
 import DaywayLogo from '../../assets/branding/new_logo.svg';
 

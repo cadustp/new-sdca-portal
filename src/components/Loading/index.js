@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import { makeStyles } from '@mui/material/styles';
+import CircularProgress from '@mui/material/CircularProgress';
 import './styles.css';
 import { light } from '../../styles/palette';
 
@@ -63,4 +63,4 @@ Loading.defaultProps = {
   size: '',
 };
 
-export default withStyles(styles)(Loading);
+export default makeStyles(styles)(Loading);

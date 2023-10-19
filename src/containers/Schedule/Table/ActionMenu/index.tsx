@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { MoreVert } from '@material-ui/icons';
-import { Menu } from '@material-ui/core';
-import MenuItem from '@material-ui/core/MenuItem';
-import { withStyles } from '@material-ui/core/styles';
+import { MoreVert } from '@mui/icons-material';
+import { Menu } from '@mui/material';
+import MenuItem from '@mui/material/MenuItem';
+import { makeStyles } from '@mui/material/styles';
 import { REMINDER_MODAL_TYPES } from '../../../../helpers/consts';
 import { light } from '../../../../styles/palette';
 import { STATUSES } from '../../../../assets/constants';
 import { captureEvent } from '../../../../analytics';
 
-const MenuItemStyle = withStyles({
+const MenuItemStyle = makeStyles({
   root: {
     color: '#6A6A6A',
     fontSize: 12,

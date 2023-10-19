@@ -1,5 +1,5 @@
 import React from 'react';
-import SvgIcon from '@material-ui/core/SvgIcon';
+import SvgIcon from '@mui/material/SvgIcon';
 
 const NoCalendarIcon = () => (
   <SvgIcon viewBox="0 0 17 16" style={{ 'font-size': '16px' }}>

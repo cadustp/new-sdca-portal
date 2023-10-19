@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Box } from '@material-ui/core';
-import BottomNavigation from '@material-ui/core/BottomNavigation';
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
+import { Box } from '@mui/material';
+import BottomNavigation from '@mui/material/BottomNavigation';
+import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import { isEmpty } from 'lodash';
 import { injectIntl } from 'react-intl';
 import CommentsModal from './CommentsModal/index';

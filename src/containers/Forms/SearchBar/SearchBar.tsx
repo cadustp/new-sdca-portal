@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { injectIntl } from 'react-intl';
-import { Input, Menu, MenuItem } from '@material-ui/core';
-import { Search, FormatLineSpacing, Clear } from '@material-ui/icons';
+import { Input, Menu, MenuItem } from '@mui/material';
+import { Search, FormatLineSpacing, Clear } from '@mui/icons-material';
 import Button from '../../../components/Button';
 import { captureEvent } from '../../../analytics';
 import { ORDER_TYPES } from '../../../helpers/consts';

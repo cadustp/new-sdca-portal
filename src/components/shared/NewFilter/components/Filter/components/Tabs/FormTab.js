@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ListItem from '@material-ui/core/ListItem';
-import Checkbox from '@material-ui/core/Checkbox';
-import TextField from '@material-ui/core/TextField';
-import IconButton from '@material-ui/core/IconButton';
-import ListItemText from '@material-ui/core/ListItemText';
-import CloseIcon from '@material-ui/icons/Close';
+import ListItem from '@mui/material/ListItem';
+import Checkbox from '@mui/material/Checkbox';
+import TextField from '@mui/material/TextField';
+import IconButton from '@mui/material/IconButton';
+import ListItemText from '@mui/material/ListItemText';
+import CloseIcon from '@mui/icons-material/Close';
 import { injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
 import SelectAll, { actions } from '../SelectAll/SelectAll';

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { injectIntl } from 'react-intl';
-import Tooltip from '@material-ui/core/Tooltip';
+import Tooltip from '@mui/material/Tooltip';
 import { Link } from 'react-router-dom';
 import moment from '../../../timezones/moment';
 import { STATUSES } from '../../../assets/constants';

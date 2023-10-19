@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware } from 'redux';
-import { routerMiddleware } from 'connected-react-router';
+import { routerMiddleware } from '@lagunovsky/redux-react-router';
 import { createBrowserHistory } from 'history';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';

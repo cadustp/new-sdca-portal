@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { withStyles } from '@material-ui/core/styles';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import green from '@material-ui/core/colors/green';
-import Button from '@material-ui/core/Button';
-import Fab from '@material-ui/core/Fab';
-import CheckIcon from '@material-ui/icons/Check';
-import SaveIcon from '@material-ui/icons/Save';
+import { makeStyles } from '@mui/material/styles';
+import CircularProgress from '@mui/material/CircularProgress';
+import green from '@mui/material/colors/green';
+import Button from '@mui/material/Button';
+import Fab from '@mui/material/Fab';
+import CheckIcon from '@mui/icons-material/Check';
+import SaveIcon from '@mui/icons-material/Save';
 
 const styles = theme => ({
   root: {
@@ -114,4 +114,4 @@ CircularIntegration.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(CircularIntegration);
+export default makeStyles(styles)(CircularIntegration);

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { injectIntl } from 'react-intl';
-import { MoreVert } from '@material-ui/icons';
-import { Checkbox, Menu, MenuItem } from '@material-ui/core/';
+import { MoreVert } from '@mui/icons-material';
+import { Checkbox, Menu, MenuItem } from '@mui/material/';
 
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/material/styles';
 import TableGenericRow from '../../../../components/TableGenericRow';
 import { Evaluated, filterParams } from '../../../../redux/evaluateds/types';
 import { light } from '../../../../styles/palette';
@@ -33,7 +33,7 @@ type DispatchProps = {
   handleEditEvaluated: Function,
 };
 
-const MenuItemStyle = withStyles({
+const MenuItemStyle = makeStyles({
   root: {
     color: '#6A6A6A',
     fontSize: 12,

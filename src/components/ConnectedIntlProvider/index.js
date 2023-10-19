@@ -1,14 +1,9 @@
-import { IntlProvider, addLocaleData } from 'react-intl';
+import { IntlProvider } from 'react-intl';
 import { connect } from 'react-redux';
 
-import en from 'react-intl/locale-data/en';
-import es from 'react-intl/locale-data/es';
-import pt from 'react-intl/locale-data/pt';
 import messagesEn from '../../locales/en.json';
 import messagesEs from '../../locales/es.json';
 import messagesPtBr from '../../locales/pt-BR.json';
-
-addLocaleData([...en, ...es, ...pt]);
 
 const messages = {
   en: messagesEn,

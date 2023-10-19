@@ -2,15 +2,15 @@ import React, { useRef, useState } from 'react';
 
 import {
   Box,
-  GridList,
-  GridListTile,
-  GridListTileBar,
-} from '@material-ui/core/';
+  ImageList,
+  ImageListItem,
+  ImageListItemBar,
+} from '@mui/material/';
 
-import Modal from '@material-ui/core/Modal';
-import IconButton from '@material-ui/core/IconButton';
-import VisibilityIcon from '@material-ui/icons/Visibility';
-import DeleteIcon from '@material-ui/icons/Delete';
+import Modal from '@mui/material/Modal';
+import IconButton from '@mui/material/IconButton';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { TImage } from '../../types/reminder';
 import CameraIcon from '../shared/Icons/CameraIcon';
 import { SInputImages, useStyles } from './styles';
@@ -64,7 +64,7 @@ const InputImage: React.FC<Props> = ({
           overflow="hidden"
           width="100%"
         >
-          <GridList className={classes.gridList} cols={2.5}>
+          <ImageList className={classes.gridList} cols={2.5}>
             {(!reminderIsAccomplished && (isMultiple || (!isMultiple && images.length === 0))) && (
             <Box
               className={classes.containerUploadImage}
@@ -77,9 +77,9 @@ const InputImage: React.FC<Props> = ({
             )}
 
             {images.map(image => (
-              <GridListTile key={image.url}>
+              <ImageListItem key={image.url}>
                 <img src={image.url} alt={image.name} />
-                <GridListTileBar
+                <ImageListItemBar
                   title=""
                   actionIcon={(
                     <>
@@ -105,9 +105,9 @@ const InputImage: React.FC<Props> = ({
                     </>
                     )}
                 />
-              </GridListTile>
+              </ImageListItem>
             ))}
-          </GridList>
+          </ImageList>
         </Box>
       </>
 

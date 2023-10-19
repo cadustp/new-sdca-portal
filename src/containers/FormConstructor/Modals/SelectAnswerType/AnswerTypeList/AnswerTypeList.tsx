@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { injectIntl } from 'react-intl';
-import { Button } from '@material-ui/core';
+import { Button } from '@mui/material';
 import {
   PhotoCameraOutlined, Done, DoneAll, Event, ChatBubbleOutline, Filter9Plus, AddCircleOutline,
-} from '@material-ui/icons';
+} from '@mui/icons-material';
 import { captureEvent } from '../../../../../analytics';
 import { ANSWER_TYPES_LIST, CHOOSE_QUESTION_TYPE_MODAL_OPTION, SELECTION_TYPES } from '../../../../../helpers/consts';
 import { ListContainer, List, OptionContainer } from '../../../QuestionSection/styles';

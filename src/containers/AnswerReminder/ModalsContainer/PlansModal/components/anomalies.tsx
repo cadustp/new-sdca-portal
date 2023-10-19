@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box } from '@material-ui/core';
+import { Box } from '@mui/material';
 import { StyledTextField } from '../../../../../components/shared/Inputs/StyledInput';
 import AddButton from '../../../../../components/shared/AddButton';
 import CausesField from '../../../../../features/ActionPlan/components/Modals/CreationModal/components/CausesField/index';

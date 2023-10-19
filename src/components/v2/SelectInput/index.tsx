@@ -3,7 +3,7 @@ import Select, { components } from 'react-select';
 import { injectIntl } from 'react-intl';
 import { Title, Container, CustomStyles } from './styles';
 import VirtualizedList from './virtualizedList';
-import { Tooltip } from '@material-ui/core';
+import { Tooltip } from '@mui/material';
 import './styles.css'
 
 type Props = {

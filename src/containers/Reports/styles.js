@@ -1,8 +1,8 @@
 /* eslint-disable import/prefer-default-export */
 import React from 'react';
 import styled from 'styled-components';
-import Button from '@material-ui/core/Button';
-import Input from '@material-ui/core/Input';
+import Button from '@mui/material/Button';
+import Input from '@mui/material/Input';
 
 export const OuterContainer = styled.div`
   display: flex;

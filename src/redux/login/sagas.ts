@@ -1,6 +1,6 @@
 import { AnyAction } from 'redux';
 import { takeLatest, put, call } from 'redux-saga/effects';
-import { push } from 'connected-react-router';
+import { push } from '@lagunovsky/redux-react-router';
 import { RESPONSE_STATUS } from '../../helpers/consts';
 import apiService from '../../services/apiService';
 import { loginTypes } from './types';

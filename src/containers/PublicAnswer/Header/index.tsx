@@ -1,6 +1,6 @@
 import React from 'react';
 import { injectIntl } from 'react-intl';
-import { Box, Button } from '@material-ui/core';
+import { Box, Button } from '@mui/material';
 import styled from 'styled-components';
 import { SContainer } from '../../../components/NavFixed/styles';
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import { injectIntl } from 'react-intl';
-import { withRouter } from 'react-router-dom';
-import { ArrowBack, Settings, DeleteOutline } from '@material-ui/icons';
-import { IconButton, Tooltip, Button } from '@material-ui/core';
+import { withRouter } from '../../../helpers/withRouter';
+import { ArrowBack, Settings, DeleteOutline } from '@mui/icons-material';
+import { IconButton, Tooltip, Button } from '@mui/material';
 import moment from '../../../timezones/moment';
 import { RESPONSE_STATUS } from '../../../helpers/consts';
 import { captureEvent } from '../../../analytics';

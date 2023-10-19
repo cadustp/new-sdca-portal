@@ -1,6 +1,6 @@
 
 import styled from 'styled-components';
-import { Box } from '@material-ui/core';
+import { Box } from '@mui/material';
 
 export const Button = styled.button`
 background-color:  var(--primary-color)};

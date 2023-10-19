@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { injectIntl } from 'react-intl';
-import { Input } from '@material-ui/core';
+import { Input } from '@mui/material';
 import SelectInput from '../../../components/SelectInput';
 import CustomModal from '../../../components/CustomModal';
 import ContentInput from '../../../components/ContentInput';

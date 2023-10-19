@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { injectIntl } from 'react-intl';
-import { Input, Menu } from '@material-ui/core';
+import { Input, Menu } from '@mui/material';
 import {
   SearchOutlined, FilterList, FormatLineSpacing, ImportExportOutlined, LockOutlined, Lock, LockOpenOutlined, LockOpen,
-} from '@material-ui/icons';
-import MenuItem from '@material-ui/core/MenuItem';
-import { withStyles } from '@material-ui/core/styles';
+} from '@mui/icons-material';
+import MenuItem from '@mui/material/MenuItem';
+import { makeStyles } from '@mui/material/styles';
 import { light } from '../../../styles/palette';
 import SideFilters from '../SideFilters';
 import { filterParams, User } from '../../../redux/users/types';
@@ -56,7 +56,7 @@ type DispatchProps = {
   triggerSnackBarError: Function,
 };
 
-const MenuItemStyle = withStyles({
+const MenuItemStyle = makeStyles({
   root: {
     color: '#6A6A6A',
     fontSize: 12,

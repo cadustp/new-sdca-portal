@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import Divider from '@material-ui/core/Divider';
+import Divider from '@mui/material/Divider';
 import { injectIntl } from 'react-intl';
 import { Link } from 'react-router-dom';
 import moment from '../../../timezones/moment';

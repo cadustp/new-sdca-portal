@@ -8,7 +8,7 @@ import {
   clearCloneWarning,
 } from '../../redux/forms/actions';
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: any) => ({
   loading: state.forms.loading,
   steps: state.forms.form.steps,
   showSideBar: state.forms.creation.showSideBar,
@@ -17,13 +17,13 @@ const mapStateToProps = state => ({
   isAClone: state.forms.creation.isAClone,
 });
 
-const mapDispatchToProps = dispatch => ({
-  loadForm: formId => dispatch(loadForm({ formId })),
+const mapDispatchToProps = (dispatch: any) => ({
+  loadForm: (formId: any) => dispatch(loadForm({ formId })),
   startNewForm: () => dispatch(startNewForm()),
   clearFormSettings: () => dispatch(clearFormSettings()),
   clearCloneWarning: () => dispatch(clearCloneWarning()),
 });
 
 export default injectIntl(
-  connect(mapStateToProps, mapDispatchToProps)(FormConstructorScreen),
+  connect(mapStateToProps, mapDispatchToProps)(FormConstructorScreen)
 );

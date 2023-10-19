@@ -1,8 +1,8 @@
 import React from 'react';
 import { injectIntl } from 'react-intl';
 
-import { Edit, Delete } from '@material-ui/icons';
-import Tooltip from '@material-ui/core/Tooltip';
+import { Edit, Delete } from '@mui/icons-material';
+import Tooltip from '@mui/material/Tooltip';
 
 import ActionMenu from '../ActionMenu';
 import TableGenericRow from '../../../../components/TableGenericRow';

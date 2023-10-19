@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box } from '@material-ui/core';
+import { Box } from '@mui/material';
 import Loading from '../../components/Loading';
 import ActionHeader from '../../components/ActionHeader';
 import { RESPONSE_STATUS, LANGUAGE_OPTIONS } from '../../helpers/consts';

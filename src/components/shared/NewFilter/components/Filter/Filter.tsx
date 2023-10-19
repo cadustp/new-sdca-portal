@@ -3,8 +3,8 @@ import React, {
 } from 'react';
 import {
   Dialog, Tabs, Tab, DialogContent,
-} from '@material-ui/core';
-import IconButton from '@material-ui/core/Icon';
+} from '@mui/material';
+import IconButton from '@mui/material/Icon';
 import CloseIcon from '../../../Icons/CloseIcon';
 import {
   SelectedItensSpan,

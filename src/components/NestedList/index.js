@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import List from '@material-ui/core/List';
-import Collapse from '@material-ui/core/Collapse';
-import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@mui/material/styles';
+import List from '@mui/material/List';
+import Collapse from '@mui/material/Collapse';
+import Grid from '@mui/material/Grid';
 import { defineMessages, injectIntl } from 'react-intl';
 import './styles.css';
 import { captureEvent } from '../../analytics';
@@ -210,4 +210,4 @@ NestedList.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default injectIntl(withStyles(styles)(NestedList));
+export default injectIntl(makeStyles(styles)(NestedList));

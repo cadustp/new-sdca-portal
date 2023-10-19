@@ -109,7 +109,7 @@ export function* importRemindersRequest({
       hasErrorRows: rowErrors?.length,
       hasEmail: !!payload.email,
     });
-  } catch (error) {
+  } catch (error: any) {
     captureEvent('importReminders', {
       status: 'error',
       hasEmail: !!payload.email,
@@ -149,7 +149,7 @@ export function* loadSelectedReminder({
     const reminder = mapReminder(data);
 
     yield put(setEditReminder({ reminder }));
-  } catch (error) {
+  } catch (error: any) {
     yield put(searchRemindersRequestFailure());
   }
 }
@@ -170,7 +170,7 @@ export function* remindersRequest({
         page,
       }),
     );
-  } catch (error) {
+  } catch (error: any) {
     yield put(searchRemindersRequestFailure());
   }
 }
@@ -332,7 +332,7 @@ export function* saveReminderRequest({
         error: saveError,
       });
     return true;
-  } catch (error) {
+  } catch (error: any) {
     yield put(saveReminderRequestResponse({
       saveStatus: RESPONSE_STATUS.FAILURE,
       saveError: error.response?.data?.message ?? error.message,
@@ -363,7 +363,7 @@ export function* loadListsRequest() {
       allGroups,
     }));
     return true;
-  } catch (error) {
+  } catch (error: any) {
     yield put(loadListsRequestResponse({
       listsStatus: RESPONSE_STATUS.FAILURE,
     }));
@@ -391,7 +391,7 @@ export function* exportRemindersRequest({
       exportStatus: RESPONSE_STATUS.SUCCESS,
     }));
     captureEvent('exportReminders', { status: 'success', ...eventParams });
-  } catch (error) {
+  } catch (error: any) {
     captureEvent('exportReminders', { status: 'error', ...eventParams, error: error.message });
     yield put(exportRemindersResponse({
       exportStatus: RESPONSE_STATUS.FAILURE,

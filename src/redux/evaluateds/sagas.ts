@@ -67,7 +67,7 @@ export function* searchEvaluatedsRequest({
     );
 
     return data;
-  } catch (error) {
+  } catch (error: any) {
     yield put(searchEvaluatedsRequestFailure());
   }
 }
@@ -89,7 +89,7 @@ export function* importEvaluatedsRequest({
     }));
     captureEvent('importEvaluateds', { status: 'success', hasErrorRows: rowErrors?.length });
     return true;
-  } catch (error) {
+  } catch (error: any) {
     captureEvent('importEvaluateds', { status: 'error', error: error.response?.data?.message });
     yield put(importEvaluatedsRequestResponse({
       importStatus: RESPONSE_STATUS.FAILURE,
@@ -115,7 +115,7 @@ export function* activateInactivateEvaluatedsRequest({
       status: 'success',
       action: payload.active ? 'activate' : 'inactivate',
     });
-  } catch (error) {
+  } catch (error: any) {
     captureEvent('activateInactivateEvaluateds', {
       evaluateds: payload.ids?.length,
       status: 'error',
@@ -164,7 +164,7 @@ export function* saveEvaluatedRequest({
       hasErrors: saveError,
     });
     return true;
-  } catch (error) {
+  } catch (error: any) {
     captureEvent('saveEvaluated', {
       status: 'error',
       kind: payload.id ? 'edit' : 'create',
@@ -200,7 +200,7 @@ export function* exportEvaluatedRequest({
       exportStatus: RESPONSE_STATUS.SUCCESS,
     }));
     captureEvent('exportEvaluateds', { status: 'success', ...eventParams });
-  } catch (error) {
+  } catch (error: any) {
     captureEvent('exportEvaluateds', { status: 'error', ...eventParams, error: error.message });
     yield put(exportEvaluatedsResponse({
       exportStatus: RESPONSE_STATUS.FAILURE,

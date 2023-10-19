@@ -52,7 +52,7 @@ export function* searchAppUserRemindersRequest({
 
     if (params.filter) captureEvent('filterReminders', { ...eventParams, status: 'success' });
     return data;
-  } catch (error) {
+  } catch (error: any) {
     yield put(searchAppUserRemindersFailure());
     if (params.filter) captureEvent('filterReminders', { ...eventParams, status: 'error', error: error.message });
   }

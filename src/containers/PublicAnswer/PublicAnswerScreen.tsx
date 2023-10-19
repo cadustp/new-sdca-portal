@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { withRouter } from 'react-router';
-import { Box } from '@material-ui/core';
+import { withRouter } from '../../helpers/withRouter'; 
+import { Box } from '@mui/material';
 import { PublicAnswersProvider } from '../../context/ContextPublicAnswers';
 import Header from './Header';
 import AuthModal from './AuthModal';

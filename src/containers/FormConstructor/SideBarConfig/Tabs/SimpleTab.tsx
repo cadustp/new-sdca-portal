@@ -1,7 +1,7 @@
 import React from 'react';
 import { injectIntl } from 'react-intl';
-import { Input, Tooltip } from '@material-ui/core';
-import { InfoOutlined } from '@material-ui/icons';
+import { Input, Tooltip } from '@mui/material';
+import { InfoOutlined } from '@mui/icons-material';
 
 import { ReactComponent as ClipboardSvg } from '../../../../assets/icons/clipboard.svg';
 import FileInput from '../../../../components/FileInput/index';

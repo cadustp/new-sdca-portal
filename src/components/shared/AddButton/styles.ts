@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Button } from '@material-ui/core';
+import { Button } from '@mui/material';
 
 export const StyledAddButton = styled(Button)`
   margin: 0;

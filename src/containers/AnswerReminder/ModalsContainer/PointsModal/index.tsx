@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Paper, Typography } from '@material-ui/core';
+import { Box, Paper, Typography } from '@mui/material';
 import CustomModal from '../../../../components/CustomModal';
 import * as S from './styles';
 type Props = {

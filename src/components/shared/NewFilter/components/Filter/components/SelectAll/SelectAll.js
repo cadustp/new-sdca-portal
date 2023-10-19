@@ -1,6 +1,6 @@
 import React from 'react';
-import Checkbox from '@material-ui/core/Checkbox';
-import Divider from '@material-ui/core/Divider';
+import Checkbox from '@mui/material/Checkbox';
+import Divider from '@mui/material/Divider';
 import PropTypes from 'prop-types';
 import './SelectAll.css';
 import { defineMessages, injectIntl } from 'react-intl';

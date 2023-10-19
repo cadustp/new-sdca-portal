@@ -4,7 +4,7 @@ import {
   DialogActions,
   DialogTitle,
   Button,
-} from '@material-ui/core';
+} from '@mui/material';
 import {
   Groups,
   filterParams,

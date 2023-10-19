@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { injectIntl } from 'react-intl';
-import Tooltip from '@material-ui/core/Tooltip';
-import { MoreVert } from '@material-ui/icons';
-import { Menu, Checkbox } from '@material-ui/core';
-import MenuItem from '@material-ui/core/MenuItem';
+import Tooltip from '@mui/material/Tooltip';
+import { MoreVert } from '@mui/icons-material';
+import { Menu, Checkbox } from '@mui/material';
+import MenuItem from '@mui/material/MenuItem';
 
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/material/styles';
 import TableGenericRow from '../../../../components/TableGenericRow';
 import Avatar from '../../../../components/Avatar';
 import { light } from '../../../../styles/palette';
@@ -68,7 +68,7 @@ const renderAvatar = (type, translate) => (
   </Tooltip>
 );
 
-const MenuItemStyle = withStyles({
+const MenuItemStyle = makeStyles({
   root: {
     color: '#6A6A6A',
     fontSize: 12,

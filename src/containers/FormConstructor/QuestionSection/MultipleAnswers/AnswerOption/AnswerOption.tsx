@@ -7,8 +7,8 @@ import {
   Fab,
   Switch,
   AccordionDetails,
-  withStyles,
-} from '@material-ui/core';
+  makeStyles,
+} from '@mui/material';
 import {
   ArrowUpward,
   MoreVert,
@@ -17,9 +17,9 @@ import {
   ArrowDownward,
   Settings,
   ExpandMore,
-} from '@material-ui/icons';
-import MuiAccordion from '@material-ui/core/Accordion';
-import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
+} from '@mui/icons-material';
+import MuiAccordion from '@mui/material/Accordion';
+import MuiAccordionSummary from '@mui/material/AccordionSummary';
 import RequiredFieldErrorText from '../../../../../components/shared/RequiredFieldErrorText';
 import ErrorTooltip from '../../../../../components/shared/ErrorTooltip';
 import { captureEvent } from '../../../../../analytics';
@@ -50,7 +50,7 @@ type DispatchProps = {
   moveOption: Function;
 };
 
-const Accordion = withStyles({
+const Accordion = makeStyles({
   root: {
     border: '1px solid rgba(0, 0, 0, .125)',
     boxShadow: 'none',
@@ -67,7 +67,7 @@ const Accordion = withStyles({
   expanded: {},
 })(MuiAccordion);
 
-const AccordionSummary = withStyles({
+const AccordionSummary = makeStyles({
   root: {
     borderBottom: '1px solid rgba(0, 0, 0, .125)',
     marginBottom: -1,

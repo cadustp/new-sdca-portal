@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { injectIntl } from 'react-intl';
-import { Modal } from '@material-ui/core';
+import { Modal } from '@mui/material';
 
 import { Intl } from '../../helpers/types';
 

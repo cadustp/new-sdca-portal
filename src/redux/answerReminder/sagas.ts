@@ -50,7 +50,7 @@ export function* requestReminderForAnswer({ payload }: AnyAction) {
         payload: data,
       }),
     );
-  } catch (error) {
+  } catch (error: any) {
     yield put(searchAppUserRemindersFailure());
   }
 }

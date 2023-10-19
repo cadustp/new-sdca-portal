@@ -1,15 +1,16 @@
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import { withStyles } from '@material-ui/core/styles';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import { makeStyles } from '@mui/material/styles';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import { withRouter, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { withRouter } from '../../helpers/withRouter';
 import { injectIntl } from 'react-intl';
-import { SettingsOutlined } from '@material-ui/icons';
+import { SettingsOutlined } from '@mui/icons-material';
 import { captureNavigation } from '../../analytics';
 import './AdminAccess.css';
 
-const MenuItemStyle = withStyles({
+const MenuItemStyle = makeStyles({
   root: {
     color: '#6A6A6A',
     fontSize: 12,

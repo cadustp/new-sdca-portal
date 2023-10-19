@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Button, IconButton } from '@material-ui/core';
+import { Button, IconButton } from '@mui/material';
 
 import { light } from '../../../../../styles/palette';
 

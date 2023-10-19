@@ -84,7 +84,7 @@ export function* loadFormRequest({
       isAuthenticated: !!data.token ?? false,
       userId: data.user_id ?? 0,
     }));
-  } catch (error) {
+  } catch (error: any) {
     yield put(loadFormResponse({
       form: {},
       isAuthenticated: false,
@@ -111,7 +111,7 @@ export function* publicLinkPlanUsersRequest({
       status: RESPONSE_STATUS.SUCCESS,
       users: data,
     }));
-  } catch (error) {
+  } catch (error: any) {
     yield put(publicLinkPlanUsersResponse({
       status: RESPONSE_STATUS.FAILURE,
       message: error.message,
@@ -167,7 +167,7 @@ export function* sendPublicAnswer({ payload }: AnyAction) {
         }),
       );
     }
-  } catch (error) {
+  } catch (error: any) {
     yield put(
       sendPublicAnswerResponse({
         status: RESPONSE_STATUS.FAILURE,
@@ -193,7 +193,7 @@ export function* loadAuthenticationRequiredRequest({ payload }: AnyAction) {
       isAuthenticated: !data.custom_password_required && !data.authentication_required,
       customPasswordRequired: data.custom_password_required ?? false,
     }));
-  } catch (error) {
+  } catch (error: any) {
     yield put(loadFormResponse({
       form: {},
       isAuthenticated: false,

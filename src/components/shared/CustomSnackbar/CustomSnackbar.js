@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import Snackbar from '@material-ui/core/Snackbar';
-import SnackbarContent from '@material-ui/core/SnackbarContent';
-import { withStyles } from '@material-ui/core/styles';
+import Snackbar from '@mui/material/Snackbar';
+import SnackbarContent from '@mui/material/SnackbarContent';
+import { makeStyles } from '@mui/material/styles';
 import WarningIcon from '../Icons/WarningIcon';
 import InfoIcon from '../Icons/InfoIcon';
 import ErrorIcon from '../Icons/ErrorIcon';
@@ -75,7 +75,7 @@ MySnackbarContent.propTypes = {
   variant: PropTypes.oneOf(['success', 'warning', 'error', 'info']).isRequired,
 };
 
-const MySnackbarContentWrapper = withStyles(styles1)(MySnackbarContent);
+const MySnackbarContentWrapper = makeStyles(styles1)(MySnackbarContent);
 
 const styles2 = theme => ({
   margin: {
@@ -109,4 +109,4 @@ Snackbar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles2)(CustomSnackbar);
+export default makeStyles(styles2)(CustomSnackbar);

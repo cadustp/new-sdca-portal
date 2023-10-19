@@ -1,6 +1,6 @@
 import React from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
-import { ConnectedRouter } from 'connected-react-router';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { ReduxRouter } from '@lagunovsky/redux-react-router';
 import withLoginAuth from '../components/withLoginAuth';
 import HomeDashboard from '../containers/Dashboard/HomeDashboard';
 import QualityDashboard from '../containers/Dashboard/QualityDashboard/QualityDashboard';
@@ -55,106 +55,98 @@ function RouterSwitch(): JSX.Element {
     CreateRoutineScreen: withLoginAuth(CreateRoutineScreen),
   };
 
-  const stagingRoutes = {
-    '/admin/groups': ProtectedRoutes.GroupsScreen,
-    '/admin/users': ProtectedRoutes.UsersScreen,
-    '/admin/users/new': ProtectedRoutes.EditUserScreen,
-    '/admin/users/edit': ProtectedRoutes.EditUserScreen,
-    '/admin/evaluateds': ProtectedRoutes.EvalutedsScreen,
-    '/admin/evaluateds/new': ProtectedRoutes.EditEvaluatedScreen,
-    '/admin/evaluateds/edit': ProtectedRoutes.EditEvaluatedScreen,
-    '/admin/schedule': ProtectedRoutes.ScheduleScreen,
-    '/admin/schedule/new': ProtectedRoutes.CreateReminderScreen,
-    '/admin/schedule/edit': ProtectedRoutes.CreateReminderScreen,
-    '/admin/company/edit': ProtectedRoutes.EditCompanyScreen,
-    '/admin/contents': ProtectedRoutes.DigitalContentsScreen,
-  };
+  const stagingRoutes = [
+    { path: "/admin/groups", element: <ProtectedRoutes.GroupsScreen /> },
+    { path: "/admin/users", element: <ProtectedRoutes.UsersScreen /> },
+    { path: "/admin/users/new", element: <ProtectedRoutes.EditUserScreen /> },
+    { path: "/admin/users/edit", element: <ProtectedRoutes.EditUserScreen /> },
+    { path: "/admin/evaluateds", element: <ProtectedRoutes.EvalutedsScreen /> },
+    { path: "/admin/evaluateds/new", element: <ProtectedRoutes.EditEvaluatedScreen /> },
+    { path: "/admin/evaluateds/edit", element: <ProtectedRoutes.EditEvaluatedScreen /> },
+    { path: "/admin/schedule", element: <ProtectedRoutes.ScheduleScreen /> },
+    { path: "/admin/schedule/new", element: <ProtectedRoutes.CreateReminderScreen /> },
+    { path: "/admin/schedule/edit", element: <ProtectedRoutes.CreateReminderScreen /> },
+    { path: "/admin/company/edit", element: <ProtectedRoutes.EditCompanyScreen /> },
+    { path: "/admin/contents", element: <ProtectedRoutes.DigitalContentsScreen /> }
+  ];
 
-  const masterRoutes = {
-    '/forms': ProtectedRoutes.FormsScreen,
-    '/forms/new': ProtectedRoutes.FormConstructorScreen,
-    '/forms/:id': ProtectedRoutes.FormConstructorScreen,
-    '/routines': ProtectedRoutes.RoutinesScreen,
-    '/routines/new': ProtectedRoutes.CreateRoutineScreen,
-    '/routines/edit': ProtectedRoutes.CreateRoutineScreen,
-  };
+  const masterRoutes = [
+    { path: "/forms", element: <ProtectedRoutes.FormsScreen /> },
+    { path: "/forms/new", element: <ProtectedRoutes.FormConstructorScreen /> },
+    { path: "/forms/:id", element:  <ProtectedRoutes.FormConstructorScreen /> },
+    { path: "/routines", element: <ProtectedRoutes.RoutinesScreen /> },
+    { path: "/routines/new", element: <ProtectedRoutes.CreateRoutineScreen /> },
+    { path: "/routines/edit", element: <ProtectedRoutes.CreateRoutineScreen /> }
+  ];
 
-  const adminRoutes = {
-    '/dashboard/quality': ProtectedRoutes.QualityDashboard,
-  };
+  const adminRoutes = [
+    { path: "/dashboard/quality", element: <ProtectedRoutes.QualityDashboard /> }
+  ];
 
   const renderMasterRoutes = () => (
     userType === 'master'
-      ? Object.keys(masterRoutes).map((path, key) => (
+      ? masterRoutes.map(({ path, element }) => (
         <Route
-          key={key}
-          exact
+          key={path}
           path={path}
-          component={masterRoutes[path]}
+          element={element}
         />
       )) : null
   );
 
   const renderAdminRoutes = () => (
     ['sub_admin', 'master'].includes(userType)
-      ? Object.keys(adminRoutes).map((path, key) => (
+      ? adminRoutes.map(({ path, element }) => (
         <Route
-          key={key}
-          exact
+          key={path}
           path={path}
-          component={adminRoutes[path]}
+          element={element}
         />
       )) : null
   );
 
   const renderStagingRoutes = () => (
-    Object.keys(stagingRoutes).map((path, key) => (
+    stagingRoutes.map(({ path, element }) => (
       <Route
-        key={key}
-        exact
+        key={path}
         path={path}
-        component={stagingRoutes[path]}
+        element={element}
       />
     ))
   );
 
   return (
-    <ConnectedRouter history={history}>
-      <Switch>
-        <Route exact path="/login" component={LoginScreen} />
-        <Route exact path="/reset/:token" component={LoginScreen} />
-        <Route exact path="/forms/public/:id" component={PublicAnswerScreen} />
+    <ReduxRouter history={history}>
+      <Routes>
+        <Route path="/login" element={<LoginScreen />} />
+        <Route path="/reset/:token" element={<LoginScreen />} />
+        <Route path="/forms/public/:id" element={<PublicAnswerScreen />} />
         <Route
-          exact
           path="/dashboard"
-          component={ProtectedRoutes.HomeDashboard}
+          element={<ProtectedRoutes.HomeDashboard />}
         />
         <Route
-          exact
           path="/app_users/:app_user_id/answer/:id"
-          component={ProtectedRoutes.AnswerReminder}
+          element={<ProtectedRoutes.AnswerReminder />}
         />
         <Route
-          exact
           path="/app_user/reminders"
-          component={ProtectedRoutes.AppUserReminders}
+          element={<ProtectedRoutes.AppUserReminders />}
         />
         <Route
-          exact
           path="/reports/reminders"
-          component={ProtectedRoutes.Reports}
+          element={<ProtectedRoutes.Reports />}
         />
         <Route
-          exact
           path="/action-plan"
-          component={ProtectedRoutes.ActionPlanScreen}
+          element={<ProtectedRoutes.ActionPlanScreen />}
         />
         {renderMasterRoutes()}
         {renderAdminRoutes()}
         {renderStagingRoutes()}
-        <Redirect to="/login" />
-      </Switch>
-    </ConnectedRouter>
+        <Navigate to="/login" />
+      </Routes>
+    </ReduxRouter>
   );
 }
 

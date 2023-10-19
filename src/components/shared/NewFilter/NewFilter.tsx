@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import IconButton from '@material-ui/core/Icon';
+import IconButton from '@mui/material/Icon';
 import { connect } from 'react-redux';
 
 import Filter from './components/Filter';

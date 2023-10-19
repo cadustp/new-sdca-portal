@@ -1,7 +1,7 @@
 import React from 'react';
 import { injectIntl } from 'react-intl';
 
-import { Checkbox } from '@material-ui/core/';
+import { Checkbox } from '@mui/material/';
 import TableGenericRow from '../../../../components/TableGenericRow';
 
 import '../styles.css';

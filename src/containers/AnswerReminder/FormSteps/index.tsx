@@ -1,6 +1,6 @@
-import { Box } from '@material-ui/core';
+import { Box } from '@mui/material';
 import React, { useState, useEffect } from 'react';
-import Grow from '@material-ui/core/Grow';
+import Grow from '@mui/material/Grow';
 import { TStep, TQuestion } from '../../../types/reminder';
 import StepItem from './StepItem';
 

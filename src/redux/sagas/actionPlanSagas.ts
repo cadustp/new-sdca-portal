@@ -7,7 +7,7 @@ export function* fetchActionPlans({ payload: { body } }) {
     const { data } = yield call(apiService.post, '/report/action_plan', body);
 
     yield put(setActionPlans({ actionPlans: data.data }));
-  } catch (error) {}
+  } catch (error: any) {}
 }
 
 export default [

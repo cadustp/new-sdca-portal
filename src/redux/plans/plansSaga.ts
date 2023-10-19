@@ -86,7 +86,7 @@ function* fetchPlans() {
     const aggregatedActionPlans = sortLists(aggregateActionPlansByStatus(formattedResponse));
 
     yield put(setPlansList({ plans: aggregatedActionPlans }));
-  } catch (error) {
+  } catch (error: any) {
     yield put(fetchPlansError());
   }
 }
@@ -189,7 +189,7 @@ function* createActionPlan({
     yield put(actionPlanCreationSuccess());
     yield put(filterUsers([]));
     captureEvent('createActionPlan', { ...eventParams, status: 'success' });
-  } catch (error) {
+  } catch (error: any) {
     yield put(
       showNotification({
         message: messages.error,

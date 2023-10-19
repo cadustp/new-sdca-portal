@@ -5,10 +5,10 @@ import { v4 as uuid } from 'uuid';
 import {
   Button, TextField,
   IconButton,
-} from '@material-ui/core';
+} from '@mui/material';
 import {
   SubdirectoryArrowRight, Layers, AddCircleOutline, DeleteOutline, BorderColor, PhotoCameraOutlined, Event, ChatBubbleOutline, Filter9Plus,
-} from '@material-ui/icons';
+} from '@mui/icons-material';
 import htmlToDraft from 'html-to-draftjs';
 import { ContentState, convertToRaw, EditorState } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';

@@ -4,7 +4,7 @@ import SingleDate from "src/components/DatePicker/SingleDate";
 import SelectInput from "src/components/v2/SelectInput";
 import {
   RemoveCircleOutline ,
-} from '@material-ui/icons';
+} from '@mui/icons-material';
 import useSelectQuestions from "../Helpers/useSelectQuestions";
 import {
   InputContainer,

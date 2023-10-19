@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Tooltip from '@material-ui/core/Tooltip';
-import { withStyles } from '@material-ui/core/styles';
+import Tooltip from '@mui/material/Tooltip';
+import { makeStyles } from '@mui/material/styles';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
 
@@ -112,4 +112,4 @@ SectionToolTip.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default injectIntl(withStyles(styles)(SectionToolTip));
+export default injectIntl(makeStyles(styles)(SectionToolTip));

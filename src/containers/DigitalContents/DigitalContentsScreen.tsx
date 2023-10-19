@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import {
   Button,
   Box,
-} from '@material-ui/core';
+} from '@mui/material';
 import Header from './Header';
 import SearchBar from './SearchBar';
 import Section from './Section';

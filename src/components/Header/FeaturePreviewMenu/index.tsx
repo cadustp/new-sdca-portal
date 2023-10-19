@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { Switch, CircularProgress} from "@material-ui/core";
+import { Switch, CircularProgress} from "@mui/material";
 
-import SideMenu from 'src/components/SideBar';
+import SideMenu from '../../SideBar';
 import { 
   Header, 
   Content, 

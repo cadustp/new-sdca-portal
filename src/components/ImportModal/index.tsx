@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { injectIntl } from 'react-intl';
-import { CloudDownload } from '@material-ui/icons';
-import TextField from '@material-ui/core/TextField';
+import { CloudDownload } from '@mui/icons-material';
+import TextField from '@mui/material/TextField';
 import styled from 'styled-components';
 import { ReactComponent as ExcelIcon } from '../../assets/icons/excel-icon.svg';
 import CustomModal from '../CustomModal';

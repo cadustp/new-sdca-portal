@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { injectIntl } from 'react-intl';
-import { Box, TextField } from '@material-ui/core';
+import { Box, TextField } from '@mui/material';
 
 import SelectInput from '../../../../components/SelectInput';
 import { formatDataSet } from '../../../../helpers/utils';

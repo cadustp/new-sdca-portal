@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter } from '../../helpers/withRouter';
 import { AutoSizer, List } from 'react-virtualized';
 import CustomSnackbar from '../../components/shared/CustomSnackbar/CustomSnackbar';
 import Loading from '../../components/Loading';

@@ -235,7 +235,7 @@ export function* loadAllFormsRequestSagas({
       forms: data,
     }));
     return true;
-  } catch (error) {
+  } catch (error: any) {
     yield put(loadAllFormsResponse({
       errorMessage: error.response.data.message,
     }));
@@ -251,7 +251,7 @@ export function* loadForm({
 
     const form = mapForm(data);
     yield put(loadFormResponse({ form, status: RESPONSE_STATUS.SUCCESS }));
-  } catch (error) {
+  } catch (error: any) {
     yield put(loadFormResponse({ status: RESPONSE_STATUS.FAILURE }));
   }
 }
@@ -271,7 +271,7 @@ export function* deleteFormRequest({
     yield put(deleteFormResponse({ status: RESPONSE_STATUS.SUCCESS }));
     captureEvent('confirmDeleteForms', { status: 'success' });
     return true;
-  } catch (error) {
+  } catch (error: any) {
     yield put(deleteFormResponse({
       status: RESPONSE_STATUS.FAILURE,
       error: error.message,
@@ -320,7 +320,7 @@ export function* saveForm({
     } else {
       yield call(saveFormRequest);
     }
-  } catch (error) {
+  } catch (error: any) {
     yield put(loadFormResponse({ status: RESPONSE_STATUS.FAILURE }));
   }
 }
@@ -421,7 +421,7 @@ export function* duplicateForm({
       })),
     });
     yield put(loadFormResponse({ form: duplicatedForm, status: RESPONSE_STATUS.SUCCESS, isAClone: true }));
-  } catch (error) {
+  } catch (error: any) {
     yield put(loadFormResponse({ status: RESPONSE_STATUS.FAILURE, error: error.message }));
   }
 }

@@ -1,7 +1,7 @@
 import React, { useState }  from 'react';
 
-import { Button, IconButton } from '@material-ui/core';
-import Box from '@material-ui/core/Box';
+import { Button, IconButton } from '@mui/material';
+import Box from '@mui/material/Box';
 import { ReactComponent as LeftSVG } from '../../../assets/icons/left.svg';
 import SelectInput from '../../../components/SelectInput';
 import NavFixed from '../../../components/NavFixed';

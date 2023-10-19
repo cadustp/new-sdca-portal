@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { components } from 'react-select';
-import { Avatar } from '@material-ui/core';
+import { Avatar } from '@mui/material';
 import SelectInput from '../SelectInput';
 import { obtainNameInitialLetters } from '../../helpers/utils';
 import withLoading from '../../hocs/withLoading';

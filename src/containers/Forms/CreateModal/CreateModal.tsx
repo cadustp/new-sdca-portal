@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { injectIntl } from 'react-intl';
-import { withRouter } from 'react-router-dom';
-import { Tabs, Tab, Button } from '@material-ui/core';
+import { withRouter } from '../../../helpers/withRouter';
+import { Tabs, Tab, Button } from '@mui/material';
 import CustomModal from '../../../components/CustomModal';
 import CustomSnackbar from '../../../components/shared/CustomSnackbar/CustomSnackbar';
 import Loading from '../../../components/Loading';

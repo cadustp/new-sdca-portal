@@ -1,5 +1,5 @@
-import { Box } from '@material-ui/core';
-import Grid from '@material-ui/core/Grid';
+import { Box } from '@mui/material';
+import Grid from '@mui/material/Grid';
 import PropTypes from 'prop-types';
 import React, { useEffect, useMemo } from 'react';
 import { captureEvent } from '../../../analytics';

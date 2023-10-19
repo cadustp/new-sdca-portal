@@ -1,6 +1,6 @@
 import React from 'react';
 import { injectIntl } from 'react-intl';
-import { Divider } from '@material-ui/core';
+import { Divider } from '@mui/material';
 import CustomModal from '../CustomModal';
 import Avatar from '../Avatar';
 import { GroupMembers } from '../../redux/groups/types';

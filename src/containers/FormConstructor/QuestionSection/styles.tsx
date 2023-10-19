@@ -1,9 +1,8 @@
 /* eslint-disable import/prefer-default-export */
 import styled from 'styled-components';
 import React from 'react';
-import { TextField, WithStyles, Menu } from '@material-ui/core';
-import withStyles from '@material-ui/core/styles/withStyles';
-import { TextFieldProps } from '@material-ui/core/TextField';
+import { TextField, makeStyles, Menu } from '@mui/material';
+import { TextFieldProps } from '@mui/material/TextField';
 
 const styles = {
   underline: {
@@ -21,14 +20,14 @@ const styles = {
     },
   },
 };
-function StyledTextField(props: TextFieldProps & WithStyles<typeof styles>) {
+function StyledTextField(props: TextFieldProps & makeStyles<typeof styles>) {
   const { classes } = props;
   // eslint-disable-next-line react/jsx-props-no-spreading
   return (
     <TextField {...props} InputProps={{ classes, className: 'points-value' }} />
   );
 }
-export const CssTextField = withStyles(styles)(StyledTextField);
+export const CssTextField = makeStyles(styles)(StyledTextField);
 
 export const Container = styled.section`
   input[type='number']::-webkit-inner-spin-button,

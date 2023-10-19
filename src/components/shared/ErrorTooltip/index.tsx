@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { injectIntl } from 'react-intl';
-import { createStyles, Tooltip } from '@material-ui/core';
+import { createStyles, Tooltip } from '@mui/material';
 import { light } from '../../../styles/palette';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/material/styles';
 import { Intl } from '../../../helpers/types';
 
 function arrowGenerator(color) {
@@ -152,4 +152,4 @@ function ErrorTooltip({
   );
 }
 
-export default injectIntl(withStyles(styles)(ErrorTooltip));
+export default injectIntl(makeStyles(styles)(ErrorTooltip));

@@ -4,8 +4,8 @@ import {
   Tooltip,
   Switch,
   FormControlLabel,
-} from '@material-ui/core';
-import { InfoOutlined } from '@material-ui/icons';
+} from '@mui/material';
+import { InfoOutlined } from '@mui/icons-material';
 import SelectInput from '../../../../components/v2/SelectInput';
 import CustomSnackbar from '../../../../components/shared/CustomSnackbar/CustomSnackbar';
 import { SNACKBAR_VARIANTS } from '../../../../helpers/consts';

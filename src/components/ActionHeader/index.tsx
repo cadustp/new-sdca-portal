@@ -1,6 +1,6 @@
 import React from 'react';
 import { injectIntl } from 'react-intl';
-import { Button, Box } from '@material-ui/core';
+import { Button, Box } from '@mui/material';
 import { Link } from 'react-router-dom';
 import NavFixed from '../NavFixed';
 

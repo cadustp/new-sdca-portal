@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { injectIntl } from 'react-intl';
-import { Box, TextField } from '@material-ui/core';
+import { Box, TextField } from '@mui/material';
 import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date';
 
 import SelectInput from '../../../../components/SelectInput';

@@ -1,8 +1,8 @@
 import React from 'react';
 import { injectIntl } from 'react-intl';
 import { components } from 'react-select';
-import { IconButton, Avatar } from '@material-ui/core';
-import { Close } from '@material-ui/icons';
+import { IconButton, Avatar } from '@mui/material';
+import { Close } from '@mui/icons-material';
 import '../styles.css';
 import SelectInput from '../../../../../components/v2/SelectInput';
 import { obtainNameInitialLetters } from '../../../../../helpers/utils';

@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { connectRouter } from 'connected-react-router';
+import { createRouterReducer } from '@lagunovsky/redux-react-router';
 import companyReducer from './company-reducer';
 import qualityReducer from './quality-reducer';
 import statusReducer from './status-reducer';
@@ -37,7 +37,7 @@ import routines from '../routines/index';
 import features from '../features/index';
 
 const rootReducer = history => combineReducers({
-  router: connectRouter(history),
+  router: createRouterReducer(history),
   app,
   companyReducer,
   qualityReducer,

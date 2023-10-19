@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import {Paper, Container} from "@material-ui/core";
+import {Paper, Container} from "@mui/material";
 
 const PaperContainer = styled(Paper)`
   flex-shrink: 0;

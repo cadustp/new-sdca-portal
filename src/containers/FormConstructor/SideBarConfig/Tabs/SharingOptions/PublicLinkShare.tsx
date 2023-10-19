@@ -10,10 +10,10 @@ import {
   IconButton,
   Modal,
   Button,
-} from '@material-ui/core';
+} from '@mui/material';
 import {
   InfoOutlined, Visibility, VisibilityOff, FileCopyOutlined,
-} from '@material-ui/icons';
+} from '@mui/icons-material';
 import '../styles.css';
 import QRCode from 'react-qr-code';
 import CustomSnackbar from '../../../../../components/shared/CustomSnackbar/CustomSnackbar';

@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
-import { AttachFile } from '@material-ui/icons/';
-import { Chip, Box, Button } from '@material-ui/core/';
+import { AttachFile } from '@mui/icons-material/';
+import { Chip, Box, Button } from '@mui/material/';
 import { light } from '../../styles/palette';
 import { TAttachment } from '../../redux/forms/types';
 import { SFileInput } from './styles';

@@ -1,10 +1,10 @@
 import React from 'react';
 import { injectIntl } from 'react-intl';
-import Accordion from '@material-ui/core/Accordion';
-import Box from '@material-ui/core/Box';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Accordion from '@mui/material/Accordion';
+import Box from '@mui/material/Box';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { light } from '../../styles/palette';
 import {
   SCardTitle,

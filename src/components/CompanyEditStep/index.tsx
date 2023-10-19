@@ -7,10 +7,10 @@ import {
   Modal,
   Switch,
   FormControlLabel,
-} from '@material-ui/core';
+} from '@mui/material';
 import {
   InfoOutlined,
-} from '@material-ui/icons';
+} from '@mui/icons-material';
 import SelectInput from '../SelectInput';
 import StepperCard from '../StepperCard';
 import LogoInput from '../LogoInput';

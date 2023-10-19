@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { injectIntl } from 'react-intl';
-import { Box, Button, Input } from '@material-ui/core';
+import { Box, Button, Input } from '@mui/material';
 import Logo from '../../../assets/branding/new_logo.svg';
 
 type Props = {

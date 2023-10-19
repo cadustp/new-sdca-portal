@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '@material-ui/core';
+import { Button } from '@mui/material';
 import { injectIntl } from 'react-intl';
 import { Container, MessageBody } from './style';
 import { Intl } from '../../helpers/types';

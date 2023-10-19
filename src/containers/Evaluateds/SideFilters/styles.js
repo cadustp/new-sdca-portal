@@ -4,7 +4,7 @@ import SelectInput from '../../../components/SelectInput';
 import DatePicker from '../../../components/DatePicker';
 import CheckList from '../../../components/CheckList';
 import RadioList from '../../../components/RadioList';
-import { Switch } from '@material-ui/core';
+import { Switch } from '@mui/material';
 
 export const Content = styled.div`
   display: flex;

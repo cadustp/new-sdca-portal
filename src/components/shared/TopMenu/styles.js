@@ -1,11 +1,11 @@
 /* eslint-disable import/prefer-default-export */
 import React from 'react';
 import styled from 'styled-components';
-import Button from '@material-ui/core/Button';
-import MenuItem from '@material-ui/core/MenuItem';
-import Paper from '@material-ui/core/Paper';
+import Button from '@mui/material/Button';
+import MenuItem from '@mui/material/MenuItem';
+import Paper from '@mui/material/Paper';
 import { NavLink } from 'react-router-dom';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/material/styles';
 
 
 
@@ -50,7 +50,7 @@ export const MenuLink = styled(NavLink)`
 
 
 
-export const StyledMenuItem = withStyles({
+export const StyledMenuItem = makeStyles({
   root: {
     color: 'var(--dark-grey-color)', 
     opacity: '0.5',

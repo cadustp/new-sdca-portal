@@ -1,6 +1,6 @@
 import { connect, MapStateToProps } from 'react-redux';
 import { injectIntl } from 'react-intl';
-import { withRouter } from 'react-router-dom';
+import { withRouter } from '../../../../../helpers/withRouter';
 import ActionPlanCard from './ActionPlanCard';
 import {
   openDeletionModal,

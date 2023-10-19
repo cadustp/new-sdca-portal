@@ -77,7 +77,7 @@ export function* searchUsersRequest({
     );
 
     return data;
-  } catch (error) {
+  } catch (error: any) {
     yield put(searchUsersRequestFailure());
   }
 }
@@ -99,7 +99,7 @@ export function* importUsersRequest({
     }));
     captureEvent('importUsers', { status: 'success', hasErrorRows: rowErrors?.length });
     return true;
-  } catch (error) {
+  } catch (error: any) {
     captureEvent('importUsers', { status: 'error', error: error.response?.data?.message });
     yield put(importUsersRequestResponse({
       importStatus: RESPONSE_STATUS.FAILURE,
@@ -126,7 +126,7 @@ export function* activateInactivateUsersRequest({
       status: 'success',
       action: payload.active ? 'activate' : 'inactivate',
     });
-  } catch (error) {
+  } catch (error: any) {
     captureEvent('activateInactivateUsers', {
       users: payload.ids?.length,
       status: 'error',
@@ -183,7 +183,7 @@ export function* saveUserRequest({
       hasErrors: saveError,
     });
     return true;
-  } catch (error) {
+  } catch (error: any) {
     captureEvent('saveUser', {
       status: 'error',
       kind: payload.id ? 'edit' : 'create',
@@ -211,7 +211,7 @@ export function* listAdminsRequest() {
       allAdmins,
     }));
     return true;
-  } catch (error) {
+  } catch (error: any) {
     yield put(listAdminsRequestResponse({
       allAdmins: RESPONSE_STATUS.FAILURE,
     }));
@@ -239,7 +239,7 @@ export function* exportUsersRequest({
       exportStatus: RESPONSE_STATUS.SUCCESS,
     }));
     captureEvent('exportUsers', { status: 'success', ...eventParams });
-  } catch (error) {
+  } catch (error: any) {
     captureEvent('exportUsers', { status: 'error', ...eventParams, error: error.message });
     yield put(exportUsersResponse({
       exportStatus: RESPONSE_STATUS.FAILURE,

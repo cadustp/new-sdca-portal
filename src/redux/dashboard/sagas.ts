@@ -26,7 +26,7 @@ export function* dashboardDataRequest({
       failure: false,
     }));
     yield call(loadAppUsers);
-  } catch (error) {
+  } catch (error: any) {
     yield put(dashboardDataRequesResponse({
       failure: true,
     }));

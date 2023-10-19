@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { withRouter, Prompt } from 'react-router-dom';
+import { unstable_usePrompt as usePrompt } from 'react-router-dom';
+import { withRouter } from '../../helpers/withRouter';
 import { AnimatePresence } from 'framer-motion';
 import Loading from '../../components/Loading';
 import FailureState from '../FailureState';
@@ -9,10 +10,10 @@ import Menu from './Menu';
 import StepSection from './StepSection';
 import './styles.css';
 import CustomSnackbar from '../../components/shared/CustomSnackbar/CustomSnackbar';
-import { Box, Paper, Container } from '@material-ui/core';
+import { Box, Paper, Container } from '@mui/material';
 import SideBarConfig from "./SideBarConfig"
 
-const FlexContainer = ({children}) => (
+const FlexContainer = ({children}: any) => (
   <div style={{display: "flex", justifyContent: "space-between"}}>
     {children}
   </div>
@@ -110,16 +111,16 @@ const FormConstructorScreen: React.FC<Props & DispatchProps & StateProps> = ({
     return <AnimatePresence>{renderSteps()}</AnimatePresence>;
   };
 
-  const ExitPrompt = () => (
-    <Prompt
-      when={notReady}
-      message={`${intl.messages['forms.edit.leaving.warning1']} ${intl.messages['forms.edit.leaving.warning2']} ${intl.messages['utils.confirm_proceed']}`}
-    />
-  );
+  // const ExitPrompt = () => (
+  //   <Prompt
+  //     when={notReady}
+  //     message={`${intl.messages['forms.edit.leaving.warning1']} ${intl.messages['forms.edit.leaving.warning2']} ${intl.messages['utils.confirm_proceed']}`}
+  //   />
+  // );
 
   return (
     <>
-      {!loading && <ExitPrompt />}
+      {(!loading && notReady) && usePrompt(`${intl.messages['forms.edit.leaving.warning1']} ${intl.messages['forms.edit.leaving.warning2']} ${intl.messages['utils.confirm_proceed']}`)}
       <article style={{ width: '100%' }}>
         <Menu />
         <FlexContainer>

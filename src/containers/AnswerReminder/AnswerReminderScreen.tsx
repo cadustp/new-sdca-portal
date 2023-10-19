@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import Box from '@material-ui/core/Box';
-import { withRouter } from 'react-router';
-import { Prompt } from 'react-router-dom';
+import Box from '@mui/material/Box';
+import { withRouter } from '../../helpers/withRouter';
+import { unstable_usePrompt as usePrompt } from 'react-router-dom';
 import NavBar from './NavBar';
 import FormSteps from './FormSteps';
 import { answerReminderState } from '../../redux/answerReminder/types';
@@ -124,9 +124,7 @@ const AnswerReminder: React.FC<Props & DispatchProps & StateProps> = ({
           <>
             { answerReminder.reminder.status !== 'accomplished'
               && (
-              <Prompt
-                message={() => intl.messages['reminders.answer.alert']}
-              />
+                usePrompt(intl.messages['reminders.answer.alert'])
               )}
             <NavBar
               history={history}

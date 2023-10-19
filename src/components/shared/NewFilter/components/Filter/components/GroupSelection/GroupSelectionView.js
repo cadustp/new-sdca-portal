@@ -4,9 +4,9 @@ import {
   keyBy, chain, flow, flatMap,
 } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
-import TextField from '@material-ui/core/TextField';
-import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
+import TextField from '@mui/material/TextField';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
 import CheckBoxTreeView from './CheckBoxTreeView/CheckBoxTreeView';
 import FlattenedTreeView from './FlattenedTree/FlattenedTreeView';
 import SelectAll, { actions } from '../SelectAll/SelectAll';

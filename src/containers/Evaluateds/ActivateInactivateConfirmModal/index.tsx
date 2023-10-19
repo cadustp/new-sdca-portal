@@ -1,6 +1,6 @@
 import React from 'react';
 import { injectIntl } from 'react-intl';
-import { Box } from '@material-ui/core';
+import { Box } from '@mui/material';
 import CustomModal from '../../../components/CustomModal';
 import Button from '../../../components/Button';
 import { captureEvent } from '../../../analytics';
