@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="222px" height="70px" viewBox="0 0 222 70" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>Graph_line</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Dashboard_Qualidade_0" transform="translate(-310.000000, -362.000000)">
+            <g id="Graph_line" transform="translate(311.000000, 363.000000)">
+                <g id="Line_2" transform="translate(0.000000, 4.965486)">
+                    <polyline id="Path" stroke="#ECC15F" stroke-width="0.839807929" points="1.12101911 62.2006092 26.8891322 44.9620001 54.3300159 40.5600882 81.687699 53.7378066 109.474749 16.3317932 135.635649 1.00753673 163.41043 17.8748869 191.268037 3.24399527 218.997213 29.1059581"></polyline>
+                    <ellipse id="Oval" fill="#ECC15F" cx="1.12101911" cy="62.0685729" rx="1.12101911" ry="1.1034413"></ellipse>
+                    <ellipse id="Oval" fill="#ECC15F" cx="26.9044586" cy="44.9652328" rx="1.12101911" ry="1.1034413"></ellipse>
+                    <ellipse id="Oval" fill="#ECC15F" cx="54.089172" cy="40.5514676" rx="1.12101911" ry="1.1034413"></ellipse>
+                    <ellipse id="Oval" fill="#ECC15F" cx="81.8343949" cy="53.5169028" rx="1.12101911" ry="1.1034413"></ellipse>
+                    <ellipse id="Oval" fill="#ECC15F" cx="109.579618" cy="16.5516194" rx="1.12101911" ry="1.1034413"></ellipse>
+                    <ellipse id="Oval" fill="#ECC15F" cx="135.643312" cy="1.1034413" rx="1.12101911" ry="1.1034413"></ellipse>
+                    <ellipse id="Oval" fill="#ECC15F" cx="163.388535" cy="17.6550607" rx="1.12101911" ry="1.1034413"></ellipse>
+                    <ellipse id="Oval" fill="#ECC15F" cx="191.133758" cy="3.31032389" rx="1.12101911" ry="1.1034413"></ellipse>
+                    <ellipse id="Oval" fill="#ECC15F" cx="218.878981" cy="28.965334" rx="1.12101911" ry="1.1034413"></ellipse>
+                </g>
+                <g id="Line_1" stroke="#59A1D0" stroke-width="0.839807929">
+                    <polyline id="Path" points="0.767963774 38.5423208 27.0215963 23.6049153 54.131867 35.6791924 81.9893014 20.9890914 109.579618 1.20096223 135.650371 40.715478 163.398217 57.8935481 191.190422 43.2652587 218.776075 2.30720483"></polyline>
+                    <ellipse id="Oval" fill="#59A1D0" cx="1.12101911" cy="38.6204453" rx="1.12101911" ry="1.1034413"></ellipse>
+                    <ellipse id="Oval" fill="#59A1D0" cx="26.9044586" cy="23.7239879" rx="1.12101911" ry="1.1034413"></ellipse>
+                    <ellipse id="Oval" fill="#59A1D0" cx="54.3177404" cy="35.1553893" rx="1.12101911" ry="1.1034413"></ellipse>
+                    <ellipse id="Oval" fill="#59A1D0" cx="135.643312" cy="40.5514676" rx="1.12101911" ry="1.1034413"></ellipse>
+                    <ellipse id="Oval" fill="#59A1D0" cx="81.8343949" cy="20.9653846" rx="1.12101911" ry="1.1034413"></ellipse>
+                    <ellipse id="Oval" fill="#59A1D0" cx="109.579618" cy="1.1034413" rx="1.12101911" ry="1.1034413"></ellipse>
+                    <ellipse id="Oval" fill="#59A1D0" cx="163.388535" cy="57.6548077" rx="1.12101911" ry="1.1034413"></ellipse>
+                    <ellipse id="Oval" fill="#59A1D0" cx="191.133758" cy="43.0342105" rx="1.12101911" ry="1.1034413"></ellipse>
+                    <ellipse id="Oval" fill="#59A1D0" cx="218.878981" cy="2.20688259" rx="1.12101911" ry="1.1034413"></ellipse>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

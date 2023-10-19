@@ -1,0 +1,26 @@
+.default-custom-option {
+  transition: background 60ms !important;
+  align-items: center !important;
+  display: flex !important;
+  padding-left: 10px !important;
+}
+
+.option-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.default-custom-option:hover {
+  transition-delay: 60ms !important;
+  background: #deebff !important;
+}
+
+.default-custom-option.custom-select__option--is-focused {
+  background: none !important;
+}
+
+.default-custom-option.custom-select__option--is-selected {
+  background: #2684FF !important;
+}

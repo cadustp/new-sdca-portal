@@ -1,0 +1,95 @@
+.chart-card {
+
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    box-shadow: 0 1px 4px var(--grey-color);
+
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    padding: 32px 32px;
+    min-height: 400px;
+}
+
+.chart-card > .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    color: #33383B;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.6px;
+    margin-bottom: 8px;
+}
+
+.chart-card > .title > .options {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.chart-card > .sub-title {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.sub-title > .details {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 12px;
+    color: var(--super-dark-gray-color);
+    letter-spacing: -0.3px;
+    line-height: 15px;
+}
+
+.groups > * {
+    margin-right: 8px;
+}
+
+.form > * {
+    margin-right: 8px;
+}
+
+.sub-title > .details > * {
+    margin-right: 12px;
+}
+
+.groups {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+.forms > .count-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    height: 24px;
+    width: 24px;
+    background-color: var(--primary-color);
+}
+
+.groups > .count-group > span {
+    font-size: 11px;
+    color: white;
+}
+
+.form {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.chart-card > .chart{
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

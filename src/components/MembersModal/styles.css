@@ -1,0 +1,44 @@
+.avatar-list-container {
+    padding: 20px 0 0 5px;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.member-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 15px 0;
+}
+
+.member-container:first-child {
+    padding: 5px 0 5px 0;
+}
+
+.avatar {
+    margin: 5px 10px 5px 0;
+}
+
+.avatar-text {
+    color: "#FFF";
+    font-weight: 600;
+    line-height: 17px;
+    font-size: 10px;
+}
+
+.info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.info-container > p {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+
+

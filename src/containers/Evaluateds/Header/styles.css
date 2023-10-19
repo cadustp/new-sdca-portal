@@ -1,0 +1,22 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 5px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: transparent;
+}
+
+.page-title {
+    color: #333;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.buttons > button,
+.buttons > a {
+    margin: 3px;
+    padding: 0px 45px;
+}

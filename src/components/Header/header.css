@@ -1,0 +1,93 @@
+.app-header {
+  background: #FAFAFA !important;
+  color: black !important;
+  box-shadow: none !important;
+  border-bottom: 3px solid #e8e8e8;
+}
+
+.app-header-logo {
+   padding: 0 8px 0 8px;
+}
+
+.app-header-toolbar{
+  justify-content: space-between;
+  padding: 0 !important;
+}
+
+.app-header-user-options {
+  display: flex;
+  align-items: center;
+}
+
+.app-header-menu-button {
+  display: none !important;
+}
+
+.dashboardWrapper {
+  height: 100%;
+  display: flex;
+  padding-inline: 40px;
+}
+
+.dashboard-content > .header-title {
+  margin: 24px 0;
+}
+
+.date-filter {
+  display: flex;
+  align-items: center;
+  margin: 24px 12px 0 0;
+  float: right;
+}
+
+.dash-title {
+  color: var(--super-dark-gray-color);
+  margin: 36px 0 8px 0;
+  font-size: 36px;
+  font-weight: 600;
+}
+
+.dash-subtitle {
+  color: #333333;
+  padding-bottom: 24px;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.card-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-list > .card {
+  margin: 12px 0;
+}
+
+.card-list > *:first-child {
+  margin: 0 0 12px;
+}
+
+.card-list > *:last-child {
+  margin: 12px 0 0;
+}
+
+@media screen and (max-width: 1200px) {
+  .app-header-logo {
+    content:url("../../assets/branding/w_logo.svg");
+    padding: 0;
+  }
+
+  .app-header-links {
+    display: none;
+  }
+
+  .app-header-menu-button {
+    display: initial !important;
+  }
+  
+  .app-header-drawer-links > div {
+    flex-direction: column;
+    padding: 24px;
+  }
+}

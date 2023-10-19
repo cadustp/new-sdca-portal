@@ -1,0 +1,31 @@
+.rank-count {
+  color: #33383B;
+  font-size: 17px;
+  font-weight: 600;
+  min-width: 1vw
+}
+  
+.rank-group {
+  height: 20px;
+  color: #33383B;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: left;
+}
+  
+.avaliations {
+  color: rgb(141, 143, 145);
+  font-size: 11px;
+  font-weight: 500;
+  min-width: 15vw;
+  max-width: 50px;
+}
+  
+.score{
+  color: #33383B;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 25px;
+  text-align: right;
+  width: 10px;
+}

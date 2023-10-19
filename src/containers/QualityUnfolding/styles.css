@@ -1,0 +1,51 @@
+.section-header {
+    display: flex;
+    flex-direction: row;
+    padding: 80px 0px 24px 12px;
+    width: 100%;
+  }
+
+  .section-titles-column {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+  }
+
+  .section-subtitle-div {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .section-title{
+    display: flex;
+    flex-direction: row;
+    color: #33383B;
+    font-size: 18px;
+    font-weight: 600;
+    padding-bottom: 25px;
+  }
+
+  .filter-section-div {
+    width: 10%;
+    text-align: right;
+    padding: 0px 20px 0px 0px;
+    margin: 15px 0px 0px 0px;
+  }
+
+  .section-divider-div {
+    padding: 0px 32px 24px 10px;
+    width: 100%;
+  }
+
+  .section-divider {
+    width: 100%;
+    padding-left: 20px;
+  }
+
+  .alert-circle-icon {
+    padding: 2px 10px 0px 0px;
+  }
+
+  .loading-skeleton {
+    margin-right: 16px;
+  }

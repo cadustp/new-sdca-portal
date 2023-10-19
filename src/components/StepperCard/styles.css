@@ -1,0 +1,15 @@
+.stepper-card {
+    border-left: 3px solid #7700FF;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 70%;
+    margin-bottom: 40px;
+}
+
+.step-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    margin: 20px;
+}

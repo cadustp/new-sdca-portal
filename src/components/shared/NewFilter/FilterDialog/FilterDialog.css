@@ -1,0 +1,54 @@
+.filterIconButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+  color: #4A4A4A;
+  font-size: 16px;
+  cursor: pointer;
+  float: right;
+}
+
+.selected-itens {
+    position: relative;
+    padding: 24px 0px 8px 24px;
+    font-size: 14px;
+}
+
+.filter > .title {
+  min-width: 180px;
+  border-bottom: 1px solid var(--light-grey-color);
+  height: 16px;
+  padding: 16px 20px 16px;
+  color: #33383B;
+  font-size: 19.6px;
+  font-weight: 600;
+}
+
+.filter > .icons {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: block;
+  align-self: center;
+}
+
+.MuiSvgIcon-root-1 {
+  font-size: 16px;
+}
+
+.inputIcon{
+  font-size: 16px;
+}
+
+.filterDivButton {
+  text-align: right;
+  margin-right: 24px;
+}
+
+.filterTitle {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 0 24px 24px 24px;
+}

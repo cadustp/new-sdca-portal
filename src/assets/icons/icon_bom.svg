@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>icon_bom</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon_bom" fill="#52AD8C" fill-rule="nonzero">
+            <path d="M11,22 C4.92487,22 0,17.07513 0,11 C0,4.92487 4.92487,0 11,0 C17.07513,0 22,4.92487 22,11 C22,17.07513 17.07513,22 11,22 Z M11,20 C15.97056,20 20,15.97056 20,11 C20,6.02944 15.97056,2 11,2 C6.02944,2 2,6.02944 2,11 C2,15.97056 6.02944,20 11,20 Z M14.3342938,13 L16,14.2431304 C14.8636632,15.9575627 13.0135687,17 11,17 C8.98643128,17 7.13633679,15.9575627 6,14.2431304 L7.66570615,13 C8.42463181,14.1450258 9.65646688,14.8391052 11,14.8391052 C12.3435331,14.8391052 13.5753682,14.1450258 14.3342938,13 Z M13,10 L13,8 L15,8 L15,10 L13,10 Z M7,10 L7,8 L9,8 L9,10 L7,10 Z" id="icon"></path>
+        </g>
+    </g>
+</svg>

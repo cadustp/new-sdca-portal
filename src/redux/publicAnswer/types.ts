@@ -1,0 +1,88 @@
+import { TAnswer, TForm } from '../../types/reminder';
+
+export enum publicAnswerTypes {
+  LOAD_FORM_REQUEST = 'LOAD_FORM_REQUEST',
+  LOAD_FORM_RESPONSE = 'LOAD_FORM_RESPONSE',
+  LOAD_AUTHENTICATION_REQUIRED_REQUEST = 'LOAD_AUTHENTICATION_REQUIRED_REQUEST',
+  UPDATE_FORM_ANSWERS = 'UPDATE_FORM_ANSWERS',
+  PUBLIC_KNOCKOUT_STEP = 'PUBLIC_KNOCKOUT_STEP',
+  PUBLIC_LINK_PLAN_USERS_REQUEST = 'PUBLIC_LINK_PLAN_USERS_REQUEST',
+  PUBLIC_LINK_PLAN_USERS_RESPONSE = 'PUBLIC_LINK_PLAN_USERS_RESPONSE',
+  REMOVE_PUBLIC_KNOCKOUT_STEP = 'REMOVE_PUBLIC_KNOCKOUT_STEP',
+  PUBLIC_KNOCKOUT_FORM = 'PUBLIC_KNOCKOUT_FORM',
+  SEND_PUBLIC_ANSWER = 'SEND_PUBLIC_ANSWER',
+  SEND_PUBLIC_ANSWER_RESPONSE = 'SEND_PUBLIC_ANSWER_RESPONSE',
+  CLEAR_STATUS = 'CLEAR_STATUS',
+  CLEAR_LOADING_ERRORS = 'CLEAR_LOADING_ERRORS',
+  SET_PLAN = 'SET_PLAN',
+  SET_QUESTION_OBSERVATION = 'SET_QUESTION_OBSERVATION',
+}
+
+export const FormObject: TForm = {
+  id: 0,
+  version: '',
+  name: '',
+  hasKnockedOutQuestions: false,
+  geolocation_required: false,
+  type: 0,
+  pop: '',
+  fluxogram: '',
+  external_link: '',
+  steps: [
+    {
+      step_id: 0,
+      name: '',
+      hasKnockedOutQuestions: false,
+      questions: [
+        {
+          id: 0,
+          order: 0,
+          step_number: 0,
+          question: '',
+          selection_type: '',
+          weight: '',
+          is_comment_required: false,
+          description: null,
+          missing_answer: false,
+          missing_association: false,
+          answer_options: [{
+            id: 0,
+            option_text: '',
+            should_dismiss: false,
+            is_knock_out_form: false,
+            is_knock_out_step: false,
+            is_comment_required: false,
+            is_plan_required: false,
+            is_image_required: false,
+          }],
+          answer: {} as TAnswer,
+          answer_extra_options: {
+            is_comment_required: false,
+            is_plan_required: false,
+            is_image_required: false,
+          },
+        },
+      ],
+    },
+  ],
+  selected_company_employee: {},
+  description: '',
+};
+
+export interface PublicAnswerState {
+  form: TForm,
+  isLoading: boolean,
+  status: string,
+  message: string,
+  formActive: boolean,
+  afterMessage: string,
+  planUsers: Array<any>,
+  afterImageLink: string | null,
+  afterImageRedirect: string | null,
+  isAccomplished: boolean,
+  isAuthenticated: boolean,
+  customPasswordRequired: boolean,
+  requireAuth: boolean,
+  userId: number,
+  loadingError: string,
+}

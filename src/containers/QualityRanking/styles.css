@@ -1,0 +1,50 @@
+.rank-card {
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    box-shadow: 0 1px 4px var(--grey-color);
+    display: flex;
+    flex-direction: column;
+    padding: 32px 32px;
+    min-height: 100%;
+}
+
+
+.rank-card > .title {
+    display: flex;
+    color: #33383B;
+    flex-direction: row;
+    padding: 0px 0px 10px;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.6px;
+}
+
+.rank-card > .title > .options {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.rank-card > .sub-title {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.rank-card > .sub-title > .details {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 12px;
+    color: var(--super-dark-gray-color);
+    letter-spacing: -0.3px;
+    line-height: 15px;
+}
+
+
+.rank-card > .rank-card-content {
+    flex:1;
+    position: relative;
+    overflow: auto;
+    max-height: 300px;
+}

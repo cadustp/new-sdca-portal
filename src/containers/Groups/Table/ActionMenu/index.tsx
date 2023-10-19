@@ -1,0 +1,97 @@
+import React, { useState } from 'react';
+import { MoreVert } from '@material-ui/icons';
+import { Menu } from '@material-ui/core';
+import MenuItem from '@material-ui/core/MenuItem';
+import { withStyles } from '@material-ui/core/styles';
+import { GROUP_MODAL_TYPES } from '../../../../helpers/consts';
+import { light } from '../../../../styles/palette';
+import { captureEvent } from '../../../../analytics';
+
+const MenuItemStyle = withStyles({
+  root: {
+    color: '#6A6A6A',
+    fontSize: 12,
+  },
+})(MenuItem);
+
+type Props = {
+  intl: {
+    messages: [],
+    locale: string,
+  }
+};
+
+const ActionMenu = ({
+  intl,
+  triggerAction,
+  rowData,
+}) => {
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleOpenMenu = event => {
+    captureEvent('openGroupMenu');
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleCloseMenu = e => {
+    setAnchorEl(null);
+  };
+
+  const actionsList = [
+    {
+      action: () => {
+        triggerAction(GROUP_MODAL_TYPES.EDIT.key);
+        captureEvent('openEditGroups');
+      },
+      key: 'edit',
+      label: 'utils.edit',
+    },
+    {
+      action: () => {
+        triggerAction(GROUP_MODAL_TYPES.DELETE.key);
+        captureEvent('openDeleteGroups');
+      },
+      key: 'delete',
+      label: 'utils.delete',
+    },
+  ];
+
+  const renderGroupMenu = items => (
+    <Menu
+      anchorEl={anchorEl}
+      open={Boolean(anchorEl)}
+      onClose={handleCloseMenu}
+      PaperProps={{
+        style: {
+          padding: 0,
+          transform: 'translateY(+20%)',
+        },
+      }}
+    >
+      {items.map(item => (
+        <MenuItemStyle
+          key={item.label}
+          onClick={
+              item.action
+            }
+          style={{ color: light.gray.dark }}
+        >
+          {intl.messages[item.label] || item.label}
+        </MenuItemStyle>
+      ))}
+    </Menu>
+  );
+
+  return (
+    <>
+      <MoreVert
+        cursor="pointer"
+        onClick={handleOpenMenu}
+      />
+      {renderGroupMenu(actionsList)}
+    </>
+
+  );
+};
+
+export default ActionMenu;

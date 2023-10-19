@@ -1,0 +1,135 @@
+.question-name-div {
+    color: #333333;
+    font-size: 14px;
+    letter-spacing: 0.59px;
+    padding-left: 20px;
+}
+
+.smiley {
+    position: relative;
+    left: 0px;
+    top: 20px;
+}
+
+.question-score-div {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.93px;
+    text-align: right;
+    padding-right: 15px
+}
+
+.outside-score-div {
+    padding-top: 2px;
+    padding-left: 0px;
+    text-align: right;
+}
+
+.score-div {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.93px;
+    text-align: right;
+    padding-right: 15px;
+    display: inline-block;
+    min-width: 90px;
+}
+
+.left-div {
+    display: flex;
+    flex-direction: row;
+}
+
+.media-div {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+}
+
+.media-text {
+    color: #52AD8C;
+    font-size: 12px;
+    letter-spacing: 0.51px;
+    line-height: 16px;
+    text-align: right;
+    padding-bottom: 8px;
+}
+
+.media-value {
+    color: #52AD8C;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.93px;
+    line-height: 16px;
+    text-align: right;
+    padding-right: 0px
+}
+
+
+.question-box {
+    display: flex;
+    align-items: center;
+    max-width: 99%;
+    background-color: #FBFCFE;
+    box-shadow: 0 0 5px 0 #E5E9F2;
+    margin-left: 0px;
+    padding-top: 25px;
+    padding-right: 0px;
+    padding-left: 3px;
+    padding-bottom: 25px;
+}
+
+.step-card {
+    border-radius: 0px;
+    background-color: #FFFFFF;
+    box-shadow: 0 0 5px 0 #E5E9F2;
+    height: 72px;
+    max-width: 99%;
+    margin-top: 12px;
+    margin-bottom: 2px;
+    margin-left: 3px;
+}
+
+.step-div {
+    color: #333333;
+    font-size: 12px;
+    letter-spacing: 0.51px;
+    line-height: 16px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.seta {
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 10px;
+}
+
+.step {
+    color: #333333;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.67px;
+    line-height: 16px;
+}
+
+.step-quality-card-filter {
+    padding-left: 65px;
+}
+
+.step-quality-card > .sub-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    margin-bottom: 15px;
+}
+
+.texto {
+    height: 27px;
+    color: #33383B;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: -0.28px;
+    line-height: 14px;
+    padding-right: 20px;
+}

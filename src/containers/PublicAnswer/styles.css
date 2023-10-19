@@ -1,0 +1,69 @@
+.public-steps {
+    padding-top: 90px;
+    margin-inline: 10px;
+}
+
+.public-auth {
+    background-color: #F7F7F7;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    text-align: center;
+}
+
+.public-auth-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    box-shadow: 0 1px 9px 0 rgba(0,0,0,0.05);
+    padding: 3%;
+    width: 50%;
+}
+
+@media screen and (max-width: 900px) {
+    .public-auth-container {
+      width: 70%;
+    }
+}
+@media screen and (min-width: 1200px) {
+    .public-auth-container {
+      width: 40%;
+    }
+}
+
+.public-auth-logo {
+    margin-top: 10px;
+}
+
+.public-auth-form {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    margin-top: 10%;
+}
+
+.public-auth-field {
+    position: relative;
+    padding: 16px;
+    width: 100%;
+}
+
+.public-auth-btn {
+    text-align: right;
+    margin-top: 50px;
+}
+
+.public-success-btn, .public-success-text {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.public-description-title {
+    font-size: 16px;
+    font-weight: 700;
+}

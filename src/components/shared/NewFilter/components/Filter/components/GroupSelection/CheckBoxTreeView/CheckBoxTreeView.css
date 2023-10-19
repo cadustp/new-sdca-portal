@@ -1,0 +1,232 @@
+.react-checkbox-tree {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  font-size: 14px;
+}
+
+.react-checkbox-tree > ol {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+          padding-left: 16px;
+}
+
+.react-checkbox-tree .rct-node-expanded > ol {
+  padding-left: 28px;
+}
+
+.react-checkbox-tree ol {
+  margin: 0;
+  list-style-type: none;
+}
+
+.react-checkbox-tree ol ol {
+  padding-left: 40px;
+}
+
+.react-checkbox-tree button {
+  line-height: normal;
+  color: inherit;
+}
+
+.react-checkbox-tree button:focus {
+  outline: none;
+}
+
+.react-checkbox-tree button:disabled {
+  cursor: not-allowed;
+}
+
+.react-checkbox-tree .rct-bare-label {
+  cursor: default;
+}
+
+.rct-node-leaf .rct-collapse{
+  padding-left: 0;
+}
+
+.react-checkbox-tree label {
+  margin-bottom: 0;
+  user-select: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  display: flex;
+  align-items: center
+}
+
+.react-checkbox-tree:not(.rct-native-display) input {
+  display: none;
+}
+
+.react-checkbox-tree.rct-native-display input {
+  margin: 0 5px;
+}
+
+.react-checkbox-tree .rct-icon {
+  font-style: normal;
+}
+
+.rct-disabled > .rct-text > label {
+  opacity: .75;
+  cursor: not-allowed;
+  height: 20px;
+}
+
+.rct-disabled > .rct-text > label:hover {
+  background: transparent;
+}
+
+.rct-disabled > .rct-text > label:active {
+  background: transparent;
+}
+
+.rct-text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: fit-content;
+  margin-bottom: 8px;
+}
+
+.rct-options {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  margin-left: .5rem;
+  text-align: right;
+}
+
+.rct-option {
+  opacity: .75;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  padding: 0 4px;
+  font-size: 18px;
+}
+
+.rct-option:hover {
+  opacity: 1;
+}
+
+.rct-option + .rct-option {
+  margin-left: 2px;
+}
+
+.rct-collapse,
+.rct-node-icon {
+  padding-top: 4px;
+  padding-right: 0;
+  padding-left: 12px;
+}
+
+.rct-collapse *,
+.rct-checkbox *,
+.rct-node-icon * {
+  display: inline-block;
+  margin: 0;
+}
+
+.rct-collapse {
+  border: 0;
+  background: none;
+  line-height: normal;
+  color: inherit;
+  font-size: 12px;
+}
+
+.rct-collapse.rct-collapse-btn {
+  position: relative;
+  left: -4px;
+  z-index: 1;
+  cursor: pointer;
+  padding-right: 4px;
+  padding-left: 0;
+}
+
+.rct-collapse > .rct-icon-expand-close {
+  opacity: .5;
+}
+
+.rct-collapse > .rct-icon-expand-close:hover {
+  opacity: 1;
+}
+
+.rct-native-display .rct-checkbox {
+  display: none;
+}
+
+.rct-node-clickable {
+  cursor: pointer;
+}
+
+.rct-node-clickable:hover {
+  background: rgba(51, 51, 204, 0.1);
+}
+
+.rct-node-clickable:focus {
+  outline: 0;
+  background: rgba(51, 51, 204, 0.2);
+}
+
+.rct-node-icon {
+  color: #33c;
+}
+
+.rct-title {
+  color: rgba(0, 0, 0, 0.87);
+  padding-left: 12px;
+  position: relative;
+  right: 24px;
+  line-height: 18px;
+  flex: 1;
+}
+
+.rct-icon-expand-close::before {
+  content: "\f054";
+}
+
+.rct-icon-expand-open::before {
+  content: "\f078";
+}
+
+.rct-icon-uncheck::before {
+  content: "\f096";
+}
+
+.rct-icon-check::before {
+  content: "\f046";
+}
+
+.rct-icon-half-check::before {
+  opacity: .5;
+  content: "\f046";
+}
+
+.rct-icon-leaf::before {
+  content: "\f016";
+}
+
+.rct-icon-parent-open::before {
+  content: "\f115";
+}
+
+.rct-icon-parent-close::before {
+  content: "\f114";
+}
+
+.rct-icon-expand-all::before {
+  content: "\f0fe";
+}
+
+.rct-icon-collapse-all::before {
+  content: "\f146";
+}

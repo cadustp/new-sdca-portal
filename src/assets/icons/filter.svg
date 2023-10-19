@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="14px" viewBox="0 0 16 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>Icons / Feather / filter</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M6.00128151,7.55076439 L0.825568212,1.43048341 C0.459128674,0.997168658 0.767129506,0.333333333 1.33461485,0.333333333 L14.6679482,0.333333333 C15.2354335,0.333333333 15.5434344,0.997168658 15.1769948,1.43048341 L10.0012815,7.55076439 L10.0012815,13 C10.0012815,13.495588 9.47973985,13.8179185 9.03647245,13.5962848 L6.36980578,12.2629515 C6.14394976,12.1500235 6.00128151,11.9191814 6.00128151,11.6666667 L6.00128151,7.55076439 Z M13.2310791,1.66666667 L2.77148396,1.66666667 L7.17699481,6.87618325 C7.27877097,6.99653356 7.33461485,7.14905137 7.33461485,7.30666667 L7.33461485,11.254644 L8.66794818,11.9213107 L8.66794818,7.30666667 C8.66794818,7.14905137 8.72379205,6.99653356 8.82556821,6.87618325 L13.2310791,1.66666667 Z" id="path-1"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Dashboard_0" transform="translate(-1272.000000, -258.000000)">
+            <g id="Icons-/-Feather-/-filter" transform="translate(1272.000000, 258.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="Shape" fill="#000000" fill-rule="nonzero" xlink:href="#path-1"></use>
+                <g id="COLOR/-black" mask="url(#mask-2)" fill="#4A4A4A">
+                    <g transform="translate(0.000000, -1.000000)" id="Rectangle">
+                        <rect x="0" y="0" width="16" height="16"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

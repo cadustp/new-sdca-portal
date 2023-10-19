@@ -1,0 +1,33 @@
+.edit-user-nav {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.edit-user-buttons > button {
+    width: 100px;
+    margin: 5px;
+    padding: 0px 30px;
+}
+
+.edit-user-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.edit-user-subtitle {
+    font-size: 14px;
+    font-weight: 400;
+    color: #838383;
+}
+
+.user-edit-container {
+    padding-top: 150px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}

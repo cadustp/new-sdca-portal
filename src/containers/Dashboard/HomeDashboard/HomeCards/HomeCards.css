@@ -1,0 +1,84 @@
+.card{
+    border-radius: 3.6px;
+    width: 236px;
+    box-shadow: 0 0 3px 0 #E5E9F2;
+    background-color: #FFFFFF;
+    color: #FBFCFE;
+    font-size: 23px;
+    padding-bottom: 0.875rem;
+    font-weight: 500;
+    margin-right: 30px;
+    margin-bottom: 46px;
+}
+
+.card-accomplished{
+    background: linear-gradient(90deg, #79BAA2 0%, #52AD8C 100%);
+}
+
+.card-pending{
+    background: linear-gradient(90deg, #81C0EA 0%, #5294C2 100%);
+}
+
+.card-late{
+    background: linear-gradient(90deg, #D9857A 0%, #C86D61 100%);
+}
+
+.card-number{
+    font-weight: 600;
+}
+
+.card-name-top{
+    font-size: 9.6px;
+    padding-top: 20px;
+}
+
+.card-name-bottom{
+    font-size: 10px;
+    color: #333333;
+    opacity: 0.5;
+    font-weight: 500;
+    padding-top: 3px;
+}
+
+.card-icon{
+    padding-top: 25px;
+    padding-left: 25px;
+}
+
+.card-accumulated{
+    margin-right: 0px;
+    width: 460px;
+    background-color: white;
+    color: #333333;
+    font-size: 18px;
+}
+
+.layers-icon-left{
+    padding-left: 35px;
+}
+
+.layers-icon{
+    padding-top: 35px;
+    height: 20px;
+    width: 20px;
+}
+
+.accumulated-number-left{
+    padding-left: 36px;
+    padding-top: 32px;
+}
+
+.accumulated-number-right{
+    padding-top: 32px;
+    padding-left: 8px;
+}
+
+.group-top{
+    font-size: 9.6px;
+    font-weight: 300;
+    padding-bottom: 3px;
+}
+
+.group-bottom{
+    padding-top: 3px;
+}

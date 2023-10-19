@@ -1,0 +1,20 @@
+export enum loginTypes {
+  DO_LOGIN_REQUEST = 'DO_LOGIN_REQUEST',
+  DO_LOGIN_RESPONSE = 'DO_LOGIN_RESPONSE',
+  RESET_INSTRUCTIONS_REQUEST = 'RESET_INSTRUCTIONS_REQUEST',
+  RESET_INSTRUCTIONS_RESPONSE = 'RESET_INSTRUCTIONS_RESPONSE',
+  UPDATE_PASSWORD_REQUEST = 'UPDATE_PASSWORD_REQUEST',
+  UPDATE_PASSWORD_RESPONSE = 'UPDATE_PASSWORD_RESPONSE',
+  DO_LOGOUT = 'DO_LOGOUT',
+  SAVE_LOGGED_USER = 'SAVE_LOGGED_USER',
+  CLEAR_STATUS = 'CLEAR_STATUS',
+}
+
+export interface LoginState {
+  loginLoading: boolean,
+  isLoading: boolean,
+  information: {},
+  isLogged: boolean,
+  status: string,
+  authError: boolean,
+}

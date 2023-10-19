@@ -1,0 +1,25 @@
+.action-header-nav {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.action-header-buttons > button {
+    width: 100px;
+    margin: 5px;
+    padding: 0px 30px;
+}
+
+.action-header-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.action-header-subtitle {
+    font-size: 14px;
+    font-weight: 400;
+    color: #838383;
+}

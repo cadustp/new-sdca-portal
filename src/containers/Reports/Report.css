@@ -1,0 +1,51 @@
+.date-filter { 
+  box-sizing: content-box;
+  display: flex; 
+  flex-direction: row;
+} 
+
+.group-filter { 
+  box-sizing: content-box;
+  padding: 4px 0px 0px 20px;
+} 
+
+.divider-div{ 
+  box-sizing: content-box;
+  padding: 0px 0px 20px 0px;
+} 
+
+.report-content { 
+  box-sizing: content-box;
+  background-color: rgba(255,255,255,0);
+} 
+
+.action-plan-report-header { 
+  box-sizing: content-box;
+  height: 16px; 
+  background-color: rgba(255,255,255,0); 
+  color: #3580B2;  
+  font-size: 13px; 
+  font-weight: 500; 
+  padding: 40px 0px 20px 15px;
+} 
+
+.action-plan-report-row { 
+  box-sizing: content-box;
+  margin-bottom: 15px; 
+  padding: 20px 0px 20px 15px; 
+  height: 60px;    
+  background-color: #FFFFFF; 
+  box-shadow: 0 0 5px 0 #E5E9F2; 
+  color: #333333;  
+  font-size: 12px; 
+  line-height: 15px;
+} 
+
+.action-plan-report-column {
+  box-sizing: content-box;
+  background-color: #FFFFFF; 
+}
+
+.loading-container {
+  margin-bottom: 16px;
+}

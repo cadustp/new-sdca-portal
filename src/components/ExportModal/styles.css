@@ -1,0 +1,23 @@
+.export-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.export-container > p {
+    padding-top: 10px;
+    text-align: center;
+}
+
+.export-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 25px;
+}
+
+.export-buttons > button {
+    margin: 3px;
+    padding: 0px 40px;
+    align-self: center;
+}

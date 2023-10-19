@@ -1,0 +1,66 @@
+.company-step-container {
+    display: flex;
+    align-items: center; 
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+}
+
+.company-field-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.company-field-container > p {
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.company-switch-container {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.company-switch-container > p {
+    font-weight: 600;
+}
+
+.company-field-input {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 5px;
+    padding: 0px 10px;
+}
+
+.row-fields {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.row-fields > * {
+    width: 45%;
+}
+
+.row-fields-switch > * {
+    width: 60%;
+}
+
+.logo-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1;
+    size: 400px;
+}
+
+.logo-paper {
+    size: 400px;
+    width: 400;
+    background-color: #FFF;
+    border: 2px solid #000;
+    box-shadow: 1px 0.5px 0.5px black;
+}

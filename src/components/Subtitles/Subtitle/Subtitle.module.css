@@ -1,0 +1,28 @@
+.Subtitle {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    margin-right: 16px;
+}
+
+.Subtitle:last-child {
+    margin-right: 0
+}
+
+.Subtitle label {
+    font-weight: 400;	
+    padding-right: 8px;
+}
+
+.Subtitle span {
+    font-weight: 600;	
+}
+
+.Avatar {
+    margin-left: 8px;
+}
+
+.Avatar p {
+    font-size: 9px;	
+    font-weight: 600;
+}

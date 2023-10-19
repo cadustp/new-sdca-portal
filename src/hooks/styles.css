@@ -1,0 +1,12 @@
+#hubspot-messages-iframe-container {
+    margin-right: -50px;
+    margin-bottom: 0px;
+    transition-delay: 200ms;
+    transition-duration: 500ms;
+    transition-property: all;
+}
+
+#hubspot-messages-iframe-container:hover {
+    margin-right: 0px;
+    margin-bottom: 0px;
+}

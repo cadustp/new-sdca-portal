@@ -1,0 +1,98 @@
+#radar {
+    margin: auto
+}
+
+.dashboard-form-card {
+
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    box-shadow: 0 1px 4px var(--grey-color);
+
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    padding: 32px 32px;
+    min-height: 400px;
+}
+
+.dashboard-form-card > .content {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+
+.dashboard-form-card > .content > .forms {
+    flex: 1;
+    width: 30%;
+    border-right: 2px solid #3333;
+    max-height: 398px;
+    overflow:auto;
+}
+
+.dashboard-form-card > .content > .chart-radar {
+    position: relative;
+    flex: 2;
+}
+
+.dashboard-form-card > .content > .card {
+    padding-left: 10px
+}
+
+.dashboard-form-card > .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    color: #33383B;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.6px;
+    margin-bottom: 24px;
+}
+
+.dashboard-form-card > .title > .options {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.sub-title > .details {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 12px;
+    color: var(--super-dark-gray-color);
+    letter-spacing: -0.3px;
+    line-height: 15px;
+}
+
+.sub-title > .details > * {
+    margin-right: 12px;
+}
+
+.groups {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.groups > * {
+    margin-right: 8px;
+}
+
+
+.groups > .count-group > span {
+    font-size: 11px;
+    color: white;
+}
+
+.dashboard-forms {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.dashboard-forms > * {
+    margin-right: 8px;
+}

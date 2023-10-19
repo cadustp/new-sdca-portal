@@ -1,0 +1,69 @@
+.reminders-map-card {
+  border-radius: 5px;
+  background-color: #FFFFFF;
+  box-shadow: 0 1px 4px var(--grey-color);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 32px 32px;
+  min-height: 400px;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.reminders-map-card > .circular-progress {
+  height: 100%;
+}
+
+.reminders-map-card > .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  color: #33383B;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.6px;
+  margin-bottom: 8px;
+}
+.reminders-map-card .title .section {
+  display: flex;
+  align-items: center;
+}
+
+.reminders-map-card .inner-card {
+  position: absolute;
+  z-index: 1000;
+  top: 10px;
+  left: 10px;
+  background-color: white;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.35);
+  border-radius: 3px;
+  padding: 18px;
+  text-align: left;
+  display: flex;
+  align-items: start;
+}
+
+.reminders-map-card .inner-card .title{
+  font-size: 20px;
+  font-weight: 600;
+  color: black;
+  line-height: 100%;
+}
+
+.reminders-map-card .inner-card .subtitle{
+  font-weight: 400;
+  font-size: 14px;
+  margin-top: 5px;
+  color: #999999;
+}
+
+.leaflet-container {
+  width: 100%;
+  height: 400px;
+}
+
+.map-popup span {
+  font-weight: 700;
+}

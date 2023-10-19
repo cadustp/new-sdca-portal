@@ -1,0 +1,145 @@
+.cf-tab-container {
+    padding: 20px 20px 0 20px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.cf-simple-fields {
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+    justify-content: space-between;
+}
+
+.cf-advanced-fields {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.cf-advanced-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.cf-advanced-row > div {
+    width: 45%;
+    margin-right: 15px;
+    margin-block: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cf-share-field {
+    display: flex;
+    flex-direction: column;
+    width: 80% !important;
+    margin-right: 15px;
+    margin-block: 10px;
+    padding-block: 5px;
+    justify-content: center;
+}
+
+.cf-custom-link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.cf-field {
+    margin-right: 15px;
+    margin-block: 10px;
+}
+
+.cf-field-attachments {
+	margin-right: 0;
+	margin-block: 10px;
+	width: 100%;
+}
+
+.cf-field > p, .cf-share-field > p {
+    font-weight: bold;
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.cf-field-input {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 5px;
+    padding: 0px 10px;
+}
+
+.cf-field-input.invalid {
+    border-color: #CD6566;
+}
+
+.cf-field-switch {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.cf-simple-img {
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.cf-simple-img > svg{
+    max-width: 360px;
+    min-width: 180px;
+}
+
+.cf-qrcode {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    margin: 0 auto;
+    max-width: 160px;
+    width: 100%;
+}
+
+.cf-qrcode > button {
+    margin-top: 10px;
+}
+
+@media screen and (width < 1024px) {
+  .cf-simple-img {
+    display: none;
+  }
+}
+
+.cf-user-list-item-container {
+    display: flex;
+    justify-content: space-between;
+    height: 65px;
+    padding: 10px;
+}
+
+.cf-user-list-item-info {
+    display: flex;
+}
+
+.cf-user-list-item-label {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 12px;
+}
+
+.cf-user-list-item-title {
+    font-size: 16px !important;
+}
+
+.cf-user-list-item-subtitle {
+    font-size: 14px !important;
+    color: gray;
+}

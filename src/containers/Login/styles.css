@@ -1,0 +1,79 @@
+.login-screen {
+    background-color: #F7F7F7;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    text-align: center;
+}
+
+.login-container {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    border-radius: 8px;
+    background-color: #FFF;
+    box-shadow: 0 1px 9px 0 rgba(0,0,0,0.05);
+    padding: 3%;
+    width: 65vh;
+    height: 60vh;
+}
+
+
+@media screen and (max-width: 900px) {
+    .login-container {
+      width: 70%;
+    }
+}
+
+.login-header {
+    margin-top: 10px;
+}
+
+.login-form {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    margin-top: 10%;
+}
+
+.recover-form {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    margin-top: 5%;
+}
+
+.login-field {
+    position: relative;
+    padding-top: 15px;
+    padding-inline: 20px;
+    width: 100%;
+}
+
+.login-email-error {
+    padding-bottom: 5px;
+}
+
+.login-footer {
+    padding: 20px;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+}
+
+.login-footer > button {
+    margin-bottom: 20px;
+}
+
+.login-forgot-title {
+    margin-top: 30px;
+    font-weight: 400;
+}
+
+.login-recover-title {
+    margin-top: 10px;
+    font-weight: 400;
+}
