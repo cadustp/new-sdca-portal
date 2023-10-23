@@ -1,6 +1,7 @@
 import { takeLatest, put, call } from 'redux-saga/effects';
 import { AnyAction } from 'redux';
-import parse from 'parse-link-header';
+// import parse from 'parse-link-header';
+import { parseLinkHeader as parse } from '@web3-storage/parse-link-header';
 import apiService, { fileFetcher } from '../../services/apiService';
 import { groupsTypes } from './types';
 import {
@@ -16,7 +17,7 @@ import {
 import { RESPONSE_STATUS } from '../../helpers/consts';
 import { captureEvent } from '../../analytics';
 
-const stringfySearchParams = paramsObject => {
+const stringfySearchParams = (paramsObject: any) => {
   const {
     selectedEndDate,
     selectedStartDate,
@@ -29,10 +30,10 @@ const stringfySearchParams = paramsObject => {
   const url = [
     `&start_date=${selectedStartDate || ''}`,
     `&end_date=${selectedEndDate || ''}`,
-    `&groups=${selectedGroups ? selectedGroups.map(group => group.value) : ''}`,
-    `&parent_groups=${selectedParentGroups ? selectedParentGroups.map(parent => parent.value) : ''}`,
+    `&groups=${selectedGroups ? selectedGroups.map((group: any) => group.value) : ''}`,
+    `&parent_groups=${selectedParentGroups ? selectedParentGroups.map((parent: any) => parent.value) : ''}`,
     `&name=${inputText || ''}`,
-    `&members=${selectedGroupMembers ? selectedGroupMembers.map(member => member.value) : ''}`,
+    `&members=${selectedGroupMembers ? selectedGroupMembers.map((member: any) => member.value) : ''}`,
     `&sort_type=${selectedSortType || 'ALPHABETICAL_ASCENDING'}`,
   ].join('');
 

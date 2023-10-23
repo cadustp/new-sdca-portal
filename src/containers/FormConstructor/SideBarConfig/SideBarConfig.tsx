@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Tabs, Tab } from "@mui/material";
 import { Close } from "@mui/icons-material"
 
-import Loading from 'src/components/Loading';
-import CustomSnackbar from 'src/components/shared/CustomSnackbar/CustomSnackbar';
+import Loading from '../../../components/Loading';
+import CustomSnackbar from '../../../components/shared/CustomSnackbar/CustomSnackbar';
 import AdvancedTab from "./Tabs/AdvancedTab"
 import SimpleTab from './Tabs/SimpleTab';
 import SharingTab from './Tabs/SharingTab';
 import ConditionalTab from './Tabs/ConditionalTab/ConditionalTab';
-import { SNACKBAR_VARIANTS } from 'src/helpers/consts';
+import { SNACKBAR_VARIANTS } from '../../../helpers/consts';
 import { StateProps , Props, DispatchProps } from "./types";
 import {
   CloseBarContainer,

@@ -1,4 +1,4 @@
-import SelectInput from "src/components/v2/SelectInput";
+import SelectInput from "../../../../../../components/v2/SelectInput";
 import React from "react";
 import {QuestionSelectOption} from "../Helpers/useSelectQuestions";
 
@@ -14,12 +14,12 @@ const QuestionOptions: React.FC<Props> = ({
   value
 }) => {
 
-  function formatQuestionObjectByType(question){
+  function formatQuestionObjectByType(question: any){
     return JSON.stringify({
       value: question.locationInHash,
       stepIndex: question.stepIndex,
       questionIndex: question.questionIndex,
-      answerOptions: question?.answerOptions.map((_,index) => index),
+      answerOptions: question?.answerOptions.map((_: any,index: any) => index),
       selectionType: question.selectionType,
     })
   }

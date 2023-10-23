@@ -17,6 +17,7 @@ import {
 } from '../../helpers/utils';
 
 import './styles.css';
+import { useNavigate } from 'react-router';
 
 const cardHeight = 185;
 
@@ -24,9 +25,6 @@ type Props = {
   intl: {
     messages: [];
     formatMessage: Function,
-  };
-  history: {
-    push: Function;
   };
 };
 
@@ -52,7 +50,6 @@ type StateProps = {
 
 const RoutinesScreen: React.FC<Props & DispatchProps & StateProps> = ({
   intl,
-  history,
   loadAllRoutinesRequest,
   routines,
   error,
@@ -68,6 +65,8 @@ const RoutinesScreen: React.FC<Props & DispatchProps & StateProps> = ({
   clearErrorStatus,
   setSelectedRoutineId,
 }) => {
+  const navigate = useNavigate();
+
   const [filteredRoutines, setFilteredRoutines] = useState([{
     id: null,
     name: '',
@@ -122,7 +121,7 @@ const RoutinesScreen: React.FC<Props & DispatchProps & StateProps> = ({
 
   const handleEdit = id => {
     setSelectedRoutineId({ id });
-    history.push('/routines/edit');
+    navigate('/routines/edit');
   };
 
   const renderList = () => {
@@ -131,7 +130,7 @@ const RoutinesScreen: React.FC<Props & DispatchProps & StateProps> = ({
   };
 
   const openCreateNewRoutine = () => {
-    history.push('/routines/new');
+    navigate('/routines/new');
   };
 
   const renderCard = ({ index }) => {

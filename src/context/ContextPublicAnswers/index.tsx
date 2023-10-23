@@ -38,7 +38,6 @@ const initial = {
 };
 
 const ContextPublicAnswers = React.createContext<PropsProvider>(initial);
-const usePublicAnswers = () => React.useContext(ContextPublicAnswers);
 
 const PublicAnswersProvider = ({ value, children }) => (
   <ContextPublicAnswers.Provider
@@ -50,4 +49,4 @@ const PublicAnswersProvider = ({ value, children }) => (
   </ContextPublicAnswers.Provider>
 );
 
-export { PublicAnswersProvider, usePublicAnswers };
+export { PublicAnswersProvider, ContextPublicAnswers };

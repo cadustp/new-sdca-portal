@@ -10,10 +10,7 @@ import CustomSnackbar from '../../components/shared/CustomSnackbar/CustomSnackba
 import './styles.css';
 import { Evaluated } from '../../redux/evaluateds/types';
 import { captureEvent } from '../../analytics';
-
-type Props = {
-  history: { push: (route: string) => void };
-};
+import { useNavigate } from 'react-router';
 
 type DispatchProps = {
   saveEvaluatedRequest: Function,
@@ -30,8 +27,7 @@ type StateProps = {
   evaluated: Evaluated,
 };
 
-const EditEvaluatedScreen: React.FC<Props & DispatchProps & StateProps> = ({
-  history,
+const EditEvaluatedScreen: React.FC<DispatchProps & StateProps> = ({
   isLoading,
   saveEvaluatedRequest,
   saveStatus,
@@ -52,6 +48,8 @@ const EditEvaluatedScreen: React.FC<Props & DispatchProps & StateProps> = ({
     enableSendEmail: true,
   };
 
+  const navigate = useNavigate();
+
   const [evaluatedData, setEvaluatedData] = useState(evaluatedClearState);
 
   useEffect(() => {
@@ -67,7 +65,7 @@ const EditEvaluatedScreen: React.FC<Props & DispatchProps & StateProps> = ({
 
   useEffect(() => {
     if (saveStatus === RESPONSE_STATUS.SUCCESS) {
-      history.push('/admin/evaluateds');
+      navigate('/admin/evaluateds');
       handleClear();
     }
   }, [saveStatus]);

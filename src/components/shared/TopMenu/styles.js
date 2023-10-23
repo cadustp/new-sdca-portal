@@ -5,9 +5,7 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import Paper from '@mui/material/Paper';
 import { NavLink } from 'react-router-dom';
-import { makeStyles } from '@mui/material/styles';
-
-
+import { makeStyles } from 'mui-styles';
 
 export const TopMenuItem = styled.div`
   display: flex;
@@ -48,23 +46,25 @@ export const MenuLink = styled(NavLink)`
   }
 `;
 
+export const StyledMenuItem = (props) => {
+  const classes = makeStyles(() => ({
+    root: {
+      color: 'var(--dark-grey-color)', 
+      opacity: '0.5',
+      fontWeight: '500',
+      fontSize: '13px',
+      textTransform: 'uppercase',
+      lineHeight: '16px',
+      letterSpacing: '1px',
+      paddingTop: '11px',
+      paddingBottom: '11px'
+    }
+  }));
 
-
-export const StyledMenuItem = makeStyles({
-  root: {
-    color: 'var(--dark-grey-color)', 
-    opacity: '0.5',
-    fontWeight: '500',
-    fontSize: '13px',
-    textTransform: 'uppercase',
-    lineHeight: '16px',
-    letterSpacing: '1px',
-    paddingTop: '11px',
-    paddingBottom: '11px'
-  },
-
-})(MenuItem);
-
+  return (
+    <MenuItem classes={{ root: classes.root }} {...props} />
+  )
+}
 
 export const StyledButton = styled(Button)`
   color: ${({ theme }) => theme.light.gray.dark};

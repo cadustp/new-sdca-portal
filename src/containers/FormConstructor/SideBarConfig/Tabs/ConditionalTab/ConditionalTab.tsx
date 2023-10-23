@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import ConditionalEditor from "./ConditionalEditor";
 import { Paper, IconButton }from "@mui/material";
-import CustomAlert from "src/components/CustomAlert";
-import { ReactComponent as AlertSVG } from 'src/assets/icons/alert.svg';
+import CustomAlert from "../../../../../components/CustomAlert";
+import { ReactComponent as AlertSVG } from '../../../../../assets/icons/alert.svg';
 
 import { Edit, Delete, AddCircleOutline } from "@mui/icons-material";
 import {
@@ -50,7 +50,7 @@ const ConditionalItemComponent = ({
   alertTitle,
   alertMessage,
   onDelete
-}) => {
+}: any) => {
   const [showAlert, setShowAlert] = useState(false);
 
   return (
@@ -85,7 +85,7 @@ const ConditionalItemComponent = ({
 const EmptyComponent = ({
   addNewCondition,
   emptyConditionText
-}) => {
+}: any) => {
   return (
     <FlexColumn>
       <CenterText>
@@ -105,7 +105,7 @@ function ConditionalTab({
   form,
   setFormSettings,
   intl
-}){
+}: any){
 
   const conditionInitialObject = {
     conditionsArray: {
@@ -134,7 +134,7 @@ function ConditionalTab({
   const [editCondition, seEditCondition] = useState(false);
   const [currentCondition,setCurrentCondition] = useState(conditionInitialObject)
 
-  const onEditConditional = ({stepIndex,questionIndex}) => {
+  const onEditConditional = ({stepIndex,questionIndex}: any) => {
     seEditCondition(true);
     if(stepIndex) {
       setCurrentCondition(
@@ -151,7 +151,7 @@ function ConditionalTab({
     setCurrentCondition(conditionInitialObject)
   }
 
-  const onDeleteConditional = ({stepIndex, questionIndex}) => {
+  const onDeleteConditional = ({stepIndex, questionIndex}: any) => {
     let currentFormItem = form.conditionTriggersObject;
 
     if(questionIndex){
@@ -167,7 +167,7 @@ function ConditionalTab({
     seEditCondition(false);
   }
 
-  const renderQuestionsTriggers = (stepIndex, questions) => {
+  const renderQuestionsTriggers = (stepIndex: any, questions: any) => {
     return Object.keys(questions).map(question => {
       return (
         <ConditionalItemComponent
@@ -181,7 +181,7 @@ function ConditionalTab({
     })
   }
 
-  const renderStepTrigger = (step,stepIndex) => {
+  const renderStepTrigger = (step: any,stepIndex: any) => {
     return (
       <ConditionalItemComponent
         alertTitle={alertTitle}
@@ -193,7 +193,7 @@ function ConditionalTab({
     )
   }
 
-const renderConditionalTriggers = (currentStep, stepIndex) => {
+const renderConditionalTriggers = (currentStep: any, stepIndex: any) => {
   return (
     <>
       {currentStep.inStep && renderStepTrigger(currentStep, stepIndex)}
@@ -237,7 +237,7 @@ const renderConditionalTriggers = (currentStep, stepIndex) => {
     )
   }
 
-  const cleanConditionTriggers = (totalTriggers) => {
+  const cleanConditionTriggers = (totalTriggers: any) => {
     if(totalTriggers < 1) {
       setFormSettings({...form, conditionTriggersObject: null})
     }

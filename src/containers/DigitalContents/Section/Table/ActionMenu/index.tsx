@@ -2,17 +2,21 @@ import React, { useState } from 'react';
 import { MoreVert } from '@mui/icons-material';
 import { Menu } from '@mui/material';
 import MenuItem from '@mui/material/MenuItem';
-import { makeStyles } from '@mui/material/styles';
+import { makeStyles } from 'mui-styles';
 import { CONTENTS_MODAL_TYPES } from '../../../../../helpers/consts';
 import { light } from '../../../../../styles/palette';
 import { captureEvent } from '../../../../../analytics';
 
-const MenuItemStyle = makeStyles({
-  root: {
-    color: '#6A6A6A',
-    fontSize: 12,
-  },
-})(MenuItem);
+const MenuItemStyle = (props: any) => {
+  const classes = makeStyles((theme) => ({
+    root: {
+      color: '#6A6A6A',
+      fontSize: 12,
+    }
+  }));
+
+  return <MenuItem classes={{ ...classes }} {...props} />
+}
 
 type Props = {
   intl: {

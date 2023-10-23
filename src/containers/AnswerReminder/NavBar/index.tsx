@@ -1,4 +1,4 @@
-import React, { useState }  from 'react';
+import React, { useContext, useState }  from 'react';
 
 import { Button, IconButton } from '@mui/material';
 import Box from '@mui/material/Box';
@@ -7,18 +7,16 @@ import SelectInput from '../../../components/SelectInput';
 import NavFixed from '../../../components/NavFixed';
 import { TCompanyEmployee } from '../../../types/reminder';
 import {
-  useReminderAnswers,
+  ContextReminderAnswers
 } from '../../../context/ContextReminderAnswers';
 import Loading from '../../../components/Loading';
 import { captureEvent } from '../../../analytics';
+import { useNavigate } from 'react-router';
 
 type Props = {
   intl: {
     messages: [];
     formatMessage: Function;
-  };
-  history: {
-    push: Function;
   };
   disableSaveButton: boolean;
   status: boolean;
@@ -27,7 +25,6 @@ type Props = {
 
 const NavBar: React.FC<Props> = ({
   intl,
-  history,
   disableSaveButton,
   status,
   appUserId,
@@ -41,7 +38,9 @@ const NavBar: React.FC<Props> = ({
     sendReminder,
     generatePdf,
     handleSetLocation,
-  } = useReminderAnswers();
+  } = useContext(ContextReminderAnswers);
+
+  const navigate = useNavigate();
 
   const formatDataSet = ({ items }) => {
     if (items) {
@@ -134,7 +133,7 @@ const NavBar: React.FC<Props> = ({
         <IconButton
           className="back-button"
           onClick={() => {
-            history.push('/app_user/reminders');
+            navigate('/app_user/reminders');
             captureEvent('backToReminders');
           }}
         >

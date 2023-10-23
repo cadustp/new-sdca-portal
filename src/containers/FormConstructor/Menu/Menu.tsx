@@ -16,14 +16,12 @@ import MoveQuestion from '../Modals/MoveQuestion';
 import { Container } from './styles';
 import '../styles.css';
 import SelectAnswerType from '../Modals/SelectAnswerType';
+import { useNavigate } from 'react-router';
 
 type Props = {
   intl: {
     messages: [];
     locale: string,
-  };
-  history: {
-    push: Function;
   };
 };
 
@@ -55,7 +53,6 @@ type DispatchProps = {
 
 const Menu: React.FC<Props & DispatchProps & StateProps> = ({
   intl,
-  history,
   title,
   version,
   lastModified,
@@ -75,6 +72,8 @@ const Menu: React.FC<Props & DispatchProps & StateProps> = ({
   saveError,
   clearSaveFormStatus,
 }) => {
+  const navigate = useNavigate();
+
   const getLastModified = lastModified => moment(lastModified).locale(intl.locale).format('L');
 
   const formValidate = () => {
@@ -146,7 +145,7 @@ const Menu: React.FC<Props & DispatchProps & StateProps> = ({
           <IconButton
             className="back-button"
             onClick={() => {
-              history.push('/forms');
+              navigate('/forms');
             }}
           >
             <ArrowBack />

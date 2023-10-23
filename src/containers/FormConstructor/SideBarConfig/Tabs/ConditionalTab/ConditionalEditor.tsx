@@ -5,11 +5,11 @@ import {
   AddCircleOutline ,
 } from '@mui/icons-material';
 import ConditionSelector from "./ConditionSelector";
-import {Form} from "src/redux/forms/types";
-import SelectInput from "src/components/v2/SelectInput";
-import { SNACKBAR_VARIANTS } from 'src/helpers/consts';
-import CustomSnackbar from 'src/components/shared/CustomSnackbar/CustomSnackbar';
-import Button from "src/components/Button";
+import {Form} from "../../../../../redux/forms/types";
+import SelectInput from "../../../../../components/v2/SelectInput";
+import { SNACKBAR_VARIANTS } from '../../../../../helpers/consts';
+import CustomSnackbar from '../../../../../components/shared/CustomSnackbar/CustomSnackbar';
+import Button from "../../../../../components/Button";
 import {
   InputContainer,
   AddContainer,
@@ -51,7 +51,7 @@ const ActionComponent = ({
   updateAction,
   form,
   action
-}) => {
+}: any) => {
 
 
   return (
@@ -73,7 +73,7 @@ const PlusOperator = ({
   updatePlusOperator,
   intl,
   value,
-}) => {
+}: any) => {
   const intlPrefix = "forms.edit.conditional.operator_type"
   const operatorTypes = {
     "or": "or",
@@ -126,15 +126,15 @@ const ConditionalEditor: React.FC<Props  & StateProps> = ({
   });
   const [operators,setOperators] = useState(initialConditional.operators);
 
-  const updateConditionalObject = ({componentId, newCondition}) => {
+  const updateConditionalObject = ({componentId, newCondition}: any) => {
     setConditionsArray({...conditionsArray, [componentId]: newCondition})
   }
 
-  const handleUpdateAction = (item) => {   
+  const handleUpdateAction = (item: any) => {   
     setAction(item)
   }
   
-  const handleConditionChange = (value, index) => {
+  const handleConditionChange = (value: any, index: any) => {
     updateConditionalObject({componentId: index, newCondition: value})
   }
 
@@ -166,7 +166,7 @@ const ConditionalEditor: React.FC<Props  & StateProps> = ({
     closeEditMode()
   }
 
-  const handleOpenSbackBar = ({status, message}) => {
+  const handleOpenSbackBar = ({status, message}: any) => {
     setSnackBarState({
       status,
       message,
@@ -193,7 +193,7 @@ const ConditionalEditor: React.FC<Props  & StateProps> = ({
     setConditionsArray(itemToadd);
   }
 
-  const removeItem = (itemIndex) => {
+  const removeItem = (itemIndex: any) => {
     let filteredList = {...conditionsArray};
     delete filteredList[`${itemIndex}`]
     setConditionsArray(filteredList);

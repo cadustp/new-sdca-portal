@@ -5,9 +5,9 @@ import {
   IconButton,
   CardHeader,
   Collapse,
-  CardContent,
-  makeStyles,
+  CardContent
 } from '@mui/material';
+import { makeStyles } from 'mui-styles';
 import { KeyboardArrowDown, KeyboardArrowUp } from '@mui/icons-material';
 import './styles.css';
 import { captureEvent } from '../../analytics';

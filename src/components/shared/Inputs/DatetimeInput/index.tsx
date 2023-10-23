@@ -1,20 +1,17 @@
 import React from 'react';
-import {
-  DateTimePicker,
-  MuiPickersUtilsProvider,
-} from '@material-ui/pickers';
-import MomentUtils from '@date-io/moment';
+import { LocalizationProvider, DateTimePicker } from '@mui/x-date-pickers'; 
+import MomentUtils from '@date-io/moment';
 import {
   CalendarTodayOutlined,
 } from '@mui/icons-material';
 import { IconButton, InputAdornment } from '@mui/material';
 
-import { REMINDER_MINIMAL_DATE } from 'src/helpers/consts';
+import { REMINDER_MINIMAL_DATE } from '../../../../helpers/consts';
 
 const Field = ({
   children,
   title,
-}) => (
+}: any) => (
   <div className="reminder-field-container">
     <p style={{ display: 'flex', alignItems: 'center' }}>
       {title}
@@ -48,7 +45,7 @@ const DatetimeInput: React.FC<Props> = ({
   <Field
     title={title}
   >
-    <MuiPickersUtilsProvider utils={MomentUtils}>
+    <LocalizationProvider utils={MomentUtils}>
       <DateTimePicker
         placeholder={placeholder}
         minDate={minDate ?? REMINDER_MINIMAL_DATE}
@@ -69,7 +66,7 @@ const DatetimeInput: React.FC<Props> = ({
         onChange={setDate}
         fullWidth
       />
-    </MuiPickersUtilsProvider>
+    </LocalizationProvider>
   </Field>
 );
 

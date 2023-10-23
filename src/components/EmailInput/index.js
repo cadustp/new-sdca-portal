@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 import TextField from '@mui/material/TextField';
 import Tooltip from '@mui/material/Tooltip';
-import { makeStyles } from '@mui/material/styles';
+import { makeStyles } from 'mui-styles';
 import classNames from 'classnames';
 import {
   Title,
@@ -104,4 +104,12 @@ EmailInput.defaultProps = {
   onBlur: () => {},
 };
 
-export default injectIntl(makeStyles(InputStyle)(EmailInput));
+const StyledEmailInput = (props) => {
+  const classes = makeStyles(InputStyle);
+
+  return (
+    <EmailInput classes={{ ...classes }} {...props} />
+  )
+}
+
+export default injectIntl(StyledEmailInput);

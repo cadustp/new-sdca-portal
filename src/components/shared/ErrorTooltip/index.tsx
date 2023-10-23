@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { injectIntl } from 'react-intl';
 import { createStyles, Tooltip } from '@mui/material';
 import { light } from '../../../styles/palette';
-import { makeStyles } from '@mui/material/styles';
+import { makeStyles } from 'mui-styles';
 import { Intl } from '../../../helpers/types';
 
 function arrowGenerator(color) {
@@ -152,4 +152,10 @@ function ErrorTooltip({
   );
 }
 
-export default injectIntl(makeStyles(styles)(ErrorTooltip));
+const StyledErrorTooltip = (props: any) => {
+  const classes = makeStyles(styles);
+
+  return <ErrorTooltip classes={{ ...classes }} {...props} />
+}
+
+export default injectIntl(StyledErrorTooltip);

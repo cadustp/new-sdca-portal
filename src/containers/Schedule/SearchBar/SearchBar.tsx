@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Input, Menu, MenuItem, makeStyles,
+  Input,
+  Menu,
+  MenuItem
 } from '@mui/material';
+import { makeStyles } from 'mui-styles';
 import {
   SearchOutlined,
   FilterList,
@@ -386,11 +389,15 @@ const SearchBar: React.FC<Props & StateProps & DispatchProps> = ({
   );
 };
 
-const MenuItemStyle = makeStyles({
-  root: {
-    color: '#6A6A6A',
-    fontSize: 12,
-  },
-})(MenuItem);
+const MenuItemStyle = (props: any) => {
+  const classes = makeStyles((theme) => ({
+    root: {
+      color: '#6A6A6A',
+      fontSize: 12,
+    }
+  }));
+
+  return <MenuItem classes={{ ...classes }} {...props} />
+}
 
 export default SearchBar;

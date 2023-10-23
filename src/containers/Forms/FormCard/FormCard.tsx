@@ -9,6 +9,7 @@ import moment from '../../../timezones/moment';
 import { captureEvent } from '../../../analytics';
 
 import '../styles.css';
+import { useNavigate } from 'react-router';
 
 type Props = {
   intl: {
@@ -16,7 +17,6 @@ type Props = {
     formatMessage: Function,
     locale: string,
   };
-  history: { push: (route: string) => void };
 };
 
 type StateProps = {
@@ -34,7 +34,6 @@ type DispatchProps = {
 
 const FormCard: React.FC<Props & StateProps & DispatchProps> = ({
   intl,
-  history,
   handleDeleteModal,
   title,
   id,
@@ -42,6 +41,8 @@ const FormCard: React.FC<Props & StateProps & DispatchProps> = ({
   version,
   duplicateForm,
 }) => {
+  const navigate = useNavigate();
+
   const [anchorEl, setAnchorEl] = useState(null);
   const handleOpen = event => {
     event.stopPropagation();
@@ -69,7 +70,7 @@ const FormCard: React.FC<Props & StateProps & DispatchProps> = ({
 
   const redirectToForm = () => {
     captureEvent('openEditForm');
-    history.push(`/forms/${id}`);
+    navigate(`/forms/${id}`);
   };
 
   const FormMenu = () => (

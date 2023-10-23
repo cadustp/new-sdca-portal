@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware } from 'redux';
-import { routerMiddleware } from '@lagunovsky/redux-react-router';
+import { createRouterMiddleware } from '@lagunovsky/redux-react-router';
 import { createBrowserHistory } from 'history';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
@@ -31,7 +31,7 @@ const sagaMiddleware = createSagaMiddleware();
 const composeEnhancers = composeWithDevTools({ actionsBlacklist });
 
 const enhancers = composeEnhancers(
-  applyMiddleware(thunk, sagaMiddleware, routerMiddleware(history))
+  applyMiddleware(thunk, sagaMiddleware, createRouterMiddleware(history))
 );
 
 const store = createStore(resetEnhancer(rootReducer(history)), enhancers);

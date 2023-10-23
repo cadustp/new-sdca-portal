@@ -3,7 +3,7 @@ import { injectIntl } from 'react-intl';
 import { MoreVert } from '@mui/icons-material';
 import { Checkbox, Menu, MenuItem } from '@mui/material/';
 
-import { makeStyles } from '@mui/material/styles';
+import { makeStyles } from 'mui-styles';
 import TableGenericRow from '../../../../components/TableGenericRow';
 import { Evaluated, filterParams } from '../../../../redux/evaluateds/types';
 import { light } from '../../../../styles/palette';
@@ -33,12 +33,16 @@ type DispatchProps = {
   handleEditEvaluated: Function,
 };
 
-const MenuItemStyle = makeStyles({
-  root: {
-    color: '#6A6A6A',
-    fontSize: 12,
-  },
-})(MenuItem);
+const MenuItemStyle = (props: any) => {
+  const classes = makeStyles((theme) => ({
+    root: {
+      color: '#6A6A6A',
+      fontSize: 12,
+    }
+  }));
+
+  return <MenuItem classes={{ ...classes }} {...props} />
+}
 
 const TableRow: React.FC<Props & StateProps & DispatchProps> = ({
   intl,

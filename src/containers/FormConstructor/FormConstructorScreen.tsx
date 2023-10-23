@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { unstable_usePrompt as usePrompt } from 'react-router-dom';
+import { useNavigate, useParams, unstable_usePrompt as usePrompt } from 'react-router-dom';
 import { withRouter } from '../../helpers/withRouter';
 import { AnimatePresence } from 'framer-motion';
 import Loading from '../../components/Loading';
@@ -24,15 +24,6 @@ type Props = {
     messages: [];
     formatMessage: Function,
   };
-  history: {
-    push: Function;
-  };
-  match: {
-    params:{
-      id: string
-      url: string
-    }
-  },
 };
 
 type DispatchProps = {
@@ -53,9 +44,7 @@ type StateProps = {
 };
 
 const FormConstructorScreen: React.FC<Props & DispatchProps & StateProps> = ({
-  match,
   intl,
-  history,
   loading,
   showSideBar,
   error,
@@ -68,7 +57,8 @@ const FormConstructorScreen: React.FC<Props & DispatchProps & StateProps> = ({
   isAClone,
   clearCloneWarning,
 }) => {
-  const { params } = match;
+  const params = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!isAClone) {
@@ -98,7 +88,7 @@ const FormConstructorScreen: React.FC<Props & DispatchProps & StateProps> = ({
   useEffect(() => {
     if (notReady) return;
     window.onbeforeunload = null;
-    history.push('/forms');
+    navigate('/forms');
   }, [saveStatus, deleteStatus]);
 
   const renderSteps = () => steps.map((step, index) => (

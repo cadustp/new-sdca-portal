@@ -16,6 +16,7 @@ import './styles.css';
 import { User } from '../../redux/users/types';
 import { IForm } from '../../redux/RemindersSideFilters/types';
 import { captureEvent } from '../../analytics';
+import { useNavigate } from 'react-router';
 
 type Props = {
   features: Array<{
@@ -31,7 +32,6 @@ type Props = {
     created_at: string,
     updated_at: string
   }>,
-  history: { push: (route: string) => void };
   intl: {
     messages: [],
   };
@@ -97,7 +97,6 @@ const ScheduleScreen: React.FC<Props & DispatchProps & StateProps> = ({
   exportReminders,
   exportObject,
   hasError,
-  history,
   importRemindersRequest,
   exportRemindersRequest,
   exportStatus,
@@ -119,6 +118,8 @@ const ScheduleScreen: React.FC<Props & DispatchProps & StateProps> = ({
   listsDataRequest,
   setSelectedReminderId,
 }) => {
+  const navigate = useNavigate();
+
   let date = new Date();
   const startDate = new Date(date.setDate(date.getDate() - MAX_DAYS));
   date = new Date();
@@ -170,7 +171,7 @@ const ScheduleScreen: React.FC<Props & DispatchProps & StateProps> = ({
       triggerSnackBarError(intl.messages['schedule.edit.error']);
     } else {
       setSelectedReminderId({ id: reminder.id });
-      history.push('/admin/schedule/edit');
+      navigate('/admin/schedule/edit');
     }
   };
 
@@ -208,7 +209,7 @@ const ScheduleScreen: React.FC<Props & DispatchProps & StateProps> = ({
     if (currentFeature?.preview) {
       window.open(`${currentFeature?.routes?.preview}#/stepper?token=${token}`, '_blank');
     } else {
-      history.push('/admin/schedule/new');
+      navigate('/admin/schedule/new');
     }
   };
 

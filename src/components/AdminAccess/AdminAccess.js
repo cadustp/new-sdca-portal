@@ -1,6 +1,6 @@
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { makeStyles } from '@mui/material/styles';
+import { makeStyles } from 'mui-styles';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -10,16 +10,22 @@ import { SettingsOutlined } from '@mui/icons-material';
 import { captureNavigation } from '../../analytics';
 import './AdminAccess.css';
 
-const MenuItemStyle = makeStyles({
-  root: {
-    color: '#6A6A6A',
-    fontSize: 12,
-    paddingTop: 8,
-    paddingDown: 8,
-    paddingLeft: 16,
-    paddingRight: 16,
-  },
-})(MenuItem);
+const MenuItemStyle = (props) => {
+  const classes = makeStyles((theme) => ({
+    root: {
+      color: '#6A6A6A',
+      fontSize: 12,
+      paddingTop: 8,
+      paddingDown: 8,
+      paddingLeft: 16,
+      paddingRight: 16,
+    }
+  }));
+
+  return (
+    <MenuItem classes={{ ...classes }} {...props} />
+  )
+}
 
 const menuItems = [
   {

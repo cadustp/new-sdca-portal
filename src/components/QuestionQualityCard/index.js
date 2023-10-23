@@ -1,6 +1,6 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
-import { createMuiTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import NestedList from '../NestedList';
 import WithLoading from '../../hocs/withLoading';
 import WithEmptyData from '../../hocs/withEmptyData';
@@ -9,7 +9,7 @@ import './styles.css';
 
 const NestedListWithLoading = WithLoading(WithEmptyData(NestedList));
 
-const theme = createMuiTheme({
+const theme = createTheme({
   typography: {},
   overrides: {
     MuiList: {

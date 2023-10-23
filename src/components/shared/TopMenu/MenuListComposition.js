@@ -8,7 +8,6 @@ import {
   MenuLink,
   StyledButton,
   StyledMenuItem,
-
 } from './styles';
 
 export default class MenuListComposition extends Component {

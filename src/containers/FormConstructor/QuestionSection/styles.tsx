@@ -1,7 +1,8 @@
 /* eslint-disable import/prefer-default-export */
 import styled from 'styled-components';
 import React from 'react';
-import { TextField, makeStyles, Menu } from '@mui/material';
+import { TextField, Menu } from '@mui/material';
+import { makeStyles } from 'mui-styles';
 import { TextFieldProps } from '@mui/material/TextField';
 
 const styles = {
@@ -27,7 +28,11 @@ function StyledTextField(props: TextFieldProps & makeStyles<typeof styles>) {
     <TextField {...props} InputProps={{ classes, className: 'points-value' }} />
   );
 }
-export const CssTextField = makeStyles(styles)(StyledTextField);
+export const CssTextField = (props: any) => {
+  const classes = makeStyles(styles);
+
+  return <StyledTextField classes={{ ...classes }} {...props} />
+}
 
 export const Container = styled.section`
   input[type='number']::-webkit-inner-spin-button,

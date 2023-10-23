@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Box } from '@mui/material';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
@@ -7,8 +7,8 @@ import { injectIntl } from 'react-intl';
 import CommentsModal from './CommentsModal/index';
 import PointsModal from './PointsModal';
 import { TQuestion } from '../../../types/reminder';
-import { useReminderAnswers } from '../../../context/ContextReminderAnswers';
-import { usePublicAnswers } from '../../../context/ContextPublicAnswers';
+import { ContextReminderAnswers } from '../../../context/ContextReminderAnswers';
+import { ContextPublicAnswers } from '../../../context/ContextPublicAnswers';
 import ObservationIcon from '../../../components/shared/Icons/ObservationIcon';
 import ImageIcon from '../../../components/shared/Icons/ImageIcon';
 import ActionPlanIcon from '../../../components/shared/Icons/ActionPlanIcon';
@@ -50,11 +50,11 @@ const ModalsContainer: React.FC<Props> = ({
   const {
     handleSetObservation,
     answerReminder,
-  } = useReminderAnswers();
+  } = useContext(ContextReminderAnswers);
 
   const {
     setQuestionObservation,
-  } = usePublicAnswers();
+  } = useContext(ContextPublicAnswers);
 
   const toggleModal = modalToOpen => {
     const modals = {

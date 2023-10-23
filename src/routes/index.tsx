@@ -25,6 +25,7 @@ import CreateRoutineScreen from '../containers/CreateRoutine';
 import LoginScreen from '../containers/Login';
 import useChatHubSpot from '../hooks/useHubSpotChat';
 import { history } from '../redux/store';
+import ClerkLoginScreen from '../containers/Login/ClerkLoginScreen';
 
 function RouterSwitch(): JSX.Element {
   const localUser = JSON.parse(localStorage.getItem('user') || '{}');
@@ -120,6 +121,7 @@ function RouterSwitch(): JSX.Element {
       <Routes>
         <Route path="/login" element={<LoginScreen />} />
         <Route path="/reset/:token" element={<LoginScreen />} />
+        <Route path="/login-clerk" element={<ClerkLoginScreen />} />
         <Route path="/forms/public/:id" element={<PublicAnswerScreen />} />
         <Route
           path="/dashboard"
@@ -144,7 +146,7 @@ function RouterSwitch(): JSX.Element {
         {renderMasterRoutes()}
         {renderAdminRoutes()}
         {renderStagingRoutes()}
-        <Navigate to="/login" />
+        <Route path='/*' element={<Navigate to="/login" />} />
       </Routes>
     </ReduxRouter>
   );

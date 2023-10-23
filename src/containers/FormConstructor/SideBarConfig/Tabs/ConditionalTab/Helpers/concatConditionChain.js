@@ -3,7 +3,7 @@ import {
   textFormaterToJsonLogic, 
   numberFormaterToJsonLogic, 
 } from "../Formaters";
-import { SELECTION_TYPES } from "src/helpers/consts";
+import { SELECTION_TYPES } from "../../../../../../helpers/consts";
 
 function concatConditionChain(conditionList, operators){
   let copyCurrentCondition = {};

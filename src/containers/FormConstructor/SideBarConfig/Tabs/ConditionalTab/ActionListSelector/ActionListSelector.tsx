@@ -6,7 +6,7 @@ import useSelectSteps from "../Helpers/useSelectSteps";
 import useSelectQuestions from "../Helpers/useSelectQuestions";
 import QuestionOptions from "./QuestionOptions";
 import { InputContainer } from "../Shared";
-import SelectInput from "src/components/v2/SelectInput";
+import SelectInput from "../../../../../../components/v2/SelectInput";
 
 type Props = {
   form: Form,
@@ -63,7 +63,7 @@ const ActionListSelector: React.FC<Props & StateProps> = ({
 
   const [actionType, setActionType] = useState(initalAction);
 
-  const handleQuestionChange = (e) => {
+  const handleQuestionChange = (e: any) => {
     updateAction({
       ...action,
       stepSelected: "",
@@ -71,7 +71,7 @@ const ActionListSelector: React.FC<Props & StateProps> = ({
     })
   }
 
-  const handleStepChange = (e) => {
+  const handleStepChange = (e: any) => {
     updateAction({
       ...action,
       questionSelected: "",
@@ -79,14 +79,14 @@ const ActionListSelector: React.FC<Props & StateProps> = ({
     })
   }
 
-  const handleActionOptionChange = (e) => {
+  const handleActionOptionChange = (e: any) => {
     updateAction({
       ...action,
       actionOption: e?.value
     })
   }
 
-  const handleActionTypeChange = (e) => {
+  const handleActionTypeChange = (e: any) => {
     e ? setActionType(e) : setActionType({value: ""});
     updateAction({
       ...action,
@@ -100,7 +100,7 @@ const ActionListSelector: React.FC<Props & StateProps> = ({
       <InputContainer>
         <SelectInput 
           items={actionOptionsItems}
-          setSelectedItems={e => handleActionOptionChange(e)}
+          setSelectedItems={(e: any) => handleActionOptionChange(e)}
           selectedItems={actionOptionValue}
           placeholder={intl?.messages[conditionalActions.selectLabel]}
         />
@@ -117,7 +117,7 @@ const ActionListSelector: React.FC<Props & StateProps> = ({
         {
           actionType.value === 'step' && ( 
             <StepOptions
-              onSelectChange={(e) => handleStepChange(e)}
+              onSelectChange={(e: any) => handleStepChange(e)}
               value={action.stepSelected}
               steps={steps} />
             )
@@ -125,7 +125,7 @@ const ActionListSelector: React.FC<Props & StateProps> = ({
         {
           actionType.value === 'question' && ( 
             <QuestionOptions 
-              onSelectChange={(e) => handleQuestionChange(e)}
+              onSelectChange={(e: any) => handleQuestionChange(e)}
               value={action.questionSelected}
               questions={questions} />
             )

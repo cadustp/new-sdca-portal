@@ -3,9 +3,9 @@ import {
   Button,
   Input,
   InputAdornment,
-  IconButton,
-  makeStyles,
+  IconButton
 } from '@mui/material';
+import { makeStyles } from 'mui-styles';
 import { withRouter } from '../../helpers/withRouter';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import Logo from '../../assets/branding/new_logo.svg';
@@ -16,20 +16,12 @@ import useCurrentUser from '../../hooks/useCurrentUser';
 import { LOGIN_STAGE, RESPONSE_STATUS, SNACKBAR_VARIANTS } from '../../helpers/consts';
 import './styles.css';
 import { isValidEmail, isValidPassword } from '../../helpers/utils';
+import { useNavigate, useParams } from 'react-router';
 
 type Props = {
   intl: {
     messages: [];
   };
-  history: {
-    push: Function;
-  };
-  match: {
-    params:{
-      token: string
-      url: string
-    }
-  },
 };
 
 type StateProps = {
@@ -53,11 +45,9 @@ const useStyles = makeStyles({
 });
 
 const LoginScreen: React.FC<Props & StateProps & DispatchProps> = ({
-  match,
   intl,
   isLoading,
   authError,
-  history,
   doLoginRequest,
   status,
   clearStatus,
@@ -65,7 +55,8 @@ const LoginScreen: React.FC<Props & StateProps & DispatchProps> = ({
   updatePasswordRequest,
 }) => {
   const [user] = useCurrentUser();
-  const { params } = match;
+  const params = useParams();
+  const navigate = useNavigate();
 
   const classes = useStyles();
   const [loginStage, setLoginStage] = useState(params.token ? LOGIN_STAGE.RECOVER : LOGIN_STAGE.LOGIN);
@@ -85,7 +76,7 @@ const LoginScreen: React.FC<Props & StateProps & DispatchProps> = ({
 
   useEffect(() => {
     if (user?.id) {
-      history.push('/dashboard');
+      navigate('/dashboard');
     }
   }, []);
 
@@ -116,7 +107,7 @@ const LoginScreen: React.FC<Props & StateProps & DispatchProps> = ({
 
   const loginRedirect = () => {
     handleStage(LOGIN_STAGE.LOGIN);
-    history.push('/login');
+    navigate('/login');
   };
 
   const inputField = ({

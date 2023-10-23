@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@mui/material/styles';
+import { makeStyles } from 'mui-styles';
 import CircularProgress from '@mui/material/CircularProgress';
 import './styles.css';
 import { light } from '../../styles/palette';
@@ -63,4 +63,12 @@ Loading.defaultProps = {
   size: '',
 };
 
-export default makeStyles(styles)(Loading);
+const StyledLoading = (props) => {
+  const classes = makeStyles(styles);
+
+  return (
+    <Loading classes={{ ...classes }} {...props} />
+  )
+}
+
+export default StyledLoading;

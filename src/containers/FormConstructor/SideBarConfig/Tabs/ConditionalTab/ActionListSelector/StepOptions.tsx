@@ -1,5 +1,5 @@
 import React from "react";
-import SelectInput from "src/components/v2/SelectInput";
+import SelectInput from "../../../../../../components/v2/SelectInput";
 import {StepSelectOption} from "../Helpers/useSelectSteps";
 
 type Props = {

@@ -1,6 +1,6 @@
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { makeStyles } from '@mui/material/styles';
+import { makeStyles } from 'mui-styles';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { injectIntl } from 'react-intl';
@@ -13,16 +13,22 @@ import { captureNavigation } from '../../analytics';
 import './LoginInfo.css';
 import { ReactComponent as SmallBusinessSVG } from '../../assets/icons/small-business.svg';
 
-const MenuItemStyle = makeStyles({
-  root: {
-    color: '#333333',
-    fontSize: 12,
-    paddingTop: 8,
-    paddingDown: 8,
-    paddingLeft: 16,
-    paddingRight: 16,
-  },
-})(MenuItem);
+const MenuItemStyle = (props) => {
+  const classes = makeStyles((theme) => ({
+    root: {
+      color: '#333333',
+      fontSize: 12,
+      paddingTop: 8,
+      paddingDown: 8,
+      paddingLeft: 16,
+      paddingRight: 16,
+    }
+  }));
+
+  return (
+    <MenuItem classes={{ ...classes }} {...props} />
+  )
+}
 
 function LoginInfo({
   intl, logout, name, isMasterAdmin, openPreviewMenu,

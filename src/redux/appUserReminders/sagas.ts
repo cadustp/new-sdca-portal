@@ -1,4 +1,5 @@
-import parse from 'parse-link-header';
+// import parse from 'parse-link-header';
+import { parseLinkHeader as parse } from '@web3-storage/parse-link-header';
 import { takeLatest, put, call } from 'redux-saga/effects';
 import { AnyAction } from 'redux';
 import { stringfySearchParams } from '../../helpers/api_service_helper';
@@ -20,7 +21,7 @@ export function* searchAppUserRemindersRequest({
   const eventParams = {
     forms: params.selectedForms?.length || 0,
     dateRange: !!params.selectedStartDate,
-    statuses: params.selectedStatuses?.map(s => s.value).join(', ') || '-',
+    statuses: params.selectedStatuses?.map((s: any) => s.value).join(', ') || '-',
     evaluateds: params.selectedValuatedUsers?.length || 0,
   };
 

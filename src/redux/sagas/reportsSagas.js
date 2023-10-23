@@ -1,5 +1,6 @@
 import { takeLatest, put, call } from 'redux-saga/effects';
-import parse from 'parse-link-header';
+// import parse from 'parse-link-header';
+import { parseLinkHeader as parse } from '@web3-storage/parse-link-header';
 
 import apiService from '../../services/apiService';
 import {

@@ -9,12 +9,12 @@ import CustomSnackbar from '../../components/shared/CustomSnackbar/CustomSnackba
 import { RESPONSE_STATUS } from '../../helpers/consts';
 
 import './styles.css';
+import { useNavigate } from 'react-router';
 
 type Props = {
   intl: {
     messages: [];
   };
-  history: { push: (route: string) => void };
 };
 
 type DispatchProps = {
@@ -72,7 +72,6 @@ const UsersScreen: React.FC<Props & DispatchProps & StateProps> = ({
   clearEditStepper,
   saveStatus,
   setEditUser,
-  history,
   listsDataRequest,
   exportUsersRequest,
   clearExportStatus,
@@ -87,6 +86,8 @@ const UsersScreen: React.FC<Props & DispatchProps & StateProps> = ({
     isOpen: false,
     message: intl.messages['users.errors.unselected_users'],
   });
+
+  const navigate = useNavigate();
 
   const modalEntityTypeTranslate = intl.messages['users.activateInactivateConfirmModal.type'];
   const modalActionTranslate = `${intl.messages[`users.activateInactivateConfirmModal.active.${filterParams.active}`]}`;
@@ -119,7 +120,7 @@ const UsersScreen: React.FC<Props & DispatchProps & StateProps> = ({
 
   const handleEditUser = user => {
     setEditUser(user);
-    history.push('/admin/users/edit');
+    navigate('/admin/users/edit');
   };
 
   const hadleOpenModal = () => {

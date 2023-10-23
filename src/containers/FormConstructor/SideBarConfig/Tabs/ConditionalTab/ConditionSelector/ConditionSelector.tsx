@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { StyledTextField } from "src/components/shared/Inputs/StyledInput";
-import SingleDate from "src/components/DatePicker/SingleDate";
-import SelectInput from "src/components/v2/SelectInput";
+import { StyledTextField } from "../../../../../../components/shared/Inputs/StyledInput";
+import SingleDate from "../../../../../../components/DatePicker/SingleDate";
+import SelectInput from "../../../../../../components/v2/SelectInput";
 import {
   RemoveCircleOutline ,
 } from '@mui/icons-material';
@@ -14,7 +14,7 @@ import {
   ConditionContainer
 } from "../Shared";
 import { formattedConditionalItems } from "./conditionList";
-import { SELECTION_TYPES } from "src/helpers/consts";
+import { SELECTION_TYPES } from "../../../../../../helpers/consts";
 import moment from "moment";
 
 const ComparatorField = ({
@@ -22,9 +22,9 @@ const ComparatorField = ({
   value,
   onChange,
   question
-}) => {
+}: any) => {
   let currentQuestion = question?.step?.questions[question.questionIndex];
-  let answerOptions = currentQuestion?.answerOptions?.map((item,index) => ({
+  let answerOptions = currentQuestion?.answerOptions?.map((item: any,index: any) => ({
     index,
     label: item.answer,
     value: item.answer
@@ -83,7 +83,7 @@ const ComparatorField = ({
   }
 }
 
-const formatBaseQuestionAndFieldToCompare = ({baseQuestion, fieldToCompare}) => {
+const formatBaseQuestionAndFieldToCompare = ({baseQuestion, fieldToCompare}: any) => {
 
   const formatMultSelectLocation = () => {
     const locationInHashWithAnswerIndex = `steps.${baseQuestion.stepIndex}.questions.${baseQuestion.questionIndex}.${fieldToCompare.index}`
@@ -118,11 +118,11 @@ function ConditionSelector({
   conditionalObject,
   onConditionValueChange,
   onRemoveChange
-}){
+}: any){
   const questions = useSelectQuestions(form, intl.messages["forms.edit.conditional.action_types.step"]);
   const conditionalItemsByType = formattedConditionalItems(intl, conditionalObject?.baseQuestion?.selectionType);
 
-  const onConditionChange = (value) => {
+  const onConditionChange = (value: any) => {
     let newConditionObject = {
       ...conditionalObject,
       ...value
@@ -130,18 +130,18 @@ function ConditionSelector({
     onConditionValueChange(newConditionObject)
   };
 
-  const handleBaseQuestionChanged = selectedItem => {
+  const handleBaseQuestionChanged = (selectedItem: any) => {
     onConditionChange({
       fieldToCompare: "",
       baseQuestion: selectedItem
     })
   }
 
-  const handleOperatorFieldChanged = e => {
+  const handleOperatorFieldChanged = (e: any) => {
     onConditionChange({operatorField: e?.value})
   }
 
-  const handleFieldToCompareChanged = e => {
+  const handleFieldToCompareChanged = (e: any) => {
     const { baseQuestion, fieldToCompare } = formatBaseQuestionAndFieldToCompare({
       baseQuestion: conditionalObject?.baseQuestion, 
       fieldToCompare: e

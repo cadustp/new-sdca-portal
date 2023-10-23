@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
-import { OPEN_DOWN } from 'react-dates/constants';
-import { DateRangePicker } from 'react-dates';
+// import { OPEN_DOWN } from 'react-dates/constants';
+// import { DateRangePicker } from 'react-dates';
 import moment from '../../timezones/moment';
-import 'react-dates/initialize';
-import CalendarIcon from '../shared/Icons/CalendarIcon';
+// import 'react-dates/initialize';
+// import CalendarIcon from '../shared/Icons/CalendarIcon';
 
 import { StyledDateRangePickerContainer, StyledTitle } from './styles';
 
@@ -19,21 +19,21 @@ class DatePicker extends Component {
 
   render() {
     const {
-      intl,
+      // intl,
       title,
-      selectedStartDate,
-      selectedEndDate,
-      daySize,
-      startDatePlaceholder,
-      endDatePlaceholder,
-      onChange,
-      openDirection,
-      isOutsideRange,
+      // selectedStartDate,
+      // selectedEndDate,
+      // daySize,
+      // startDatePlaceholder,
+      // endDatePlaceholder,
+      // onChange,
+      // openDirection,
+      // isOutsideRange,
       error,
-      keepOpenOnDateSelect,
-      onClose, isDisabled,
+      // keepOpenOnDateSelect,
+      // onClose, isDisabled,
     } = this.props;
-    const { focusedInput } = this.state;
+    // const { focusedInput } = this.state;
 
     const titleComponent = title ? (
       <StyledTitle error={error}>{title}</StyledTitle>
@@ -41,7 +41,8 @@ class DatePicker extends Component {
     return (
       <StyledDateRangePickerContainer error={error}>
         {titleComponent}
-        <DateRangePicker
+        <h1>Tem um date range aqui</h1>
+        {/* <DateRangePicker
           disabled={isDisabled}
           minimumNights={0}
           startDate={selectedStartDate}
@@ -74,7 +75,7 @@ class DatePicker extends Component {
           daySize={daySize}
           openDirection={openDirection}
           onClose={onClose}
-        />
+        /> */}
       </StyledDateRangePickerContainer>
     );
   }
@@ -105,7 +106,7 @@ DatePicker.defaultProps = {
   daySize: 32,
   startDatePlaceholder: null,
   endDatePlaceholder: null,
-  openDirection: OPEN_DOWN,
+  // openDirection: OPEN_DOWN,
   error: false,
   isOutsideRange: false,
   keepOpenOnDateSelect: true,

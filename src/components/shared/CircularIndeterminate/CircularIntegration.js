@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { makeStyles } from '@mui/material/styles';
+import { makeStyles } from 'mui-styles';
 import CircularProgress from '@mui/material/CircularProgress';
 import green from '@mui/material/colors/green';
 import Button from '@mui/material/Button';
@@ -114,4 +114,10 @@ CircularIntegration.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default makeStyles(styles)(CircularIntegration);
+const StyledCircularIntegration = (props) => {
+  const classes = makeStyles(styles);
+
+  return <CircularIntegration classes={{ ...classes }} {...props} />
+}
+
+export default StyledCircularIntegration;

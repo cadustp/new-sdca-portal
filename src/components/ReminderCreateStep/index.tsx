@@ -8,7 +8,8 @@ import {
   FormControlLabel,
 } from '@mui/material';
 import { InfoOutlined } from '@mui/icons-material';
-import { DateTimePicker, DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
+import { DatePicker } from '@mui/lab';
+import { DateTimePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import MomentUtils from '@date-io/moment';
 import moment from '../../timezones/moment';
 import SelectInput from '../v2/SelectInput';
@@ -81,7 +82,7 @@ const Field = ({
   children,
   title,
   tooltip = '',
-}) => (
+}: any) => (
   <div className="reminder-field-container">
     <p style={{ display: 'flex', alignItems: 'center' }}>
       {title}
@@ -135,26 +136,26 @@ const ReminderCreateStep: React.FC<Props & StateProps & DispatchProps> = ({
       ...reminderData,
       id: reminder.id,
       name: reminder.name,
-      form: formsList ? formatDataSet(formsList).filter(form => form.value === reminder.form.id)?.[0] : [],
+      form: formsList ? formatDataSet(formsList).filter((form: any) => form.value === reminder.form.id)?.[0] : [],
       evaluators: evaluatorsList && reminder.evaluators
         ? formatDataSet(evaluatorsList)
-          .filter(evaluator => reminder.evaluators
+          .filter((evaluator: any) => reminder.evaluators
             .some(e => e.id === evaluator.value)) : [],
       evaluateds: evaluatedsList && reminder.evaluateds
         ? formatDataSet(evaluatedsList)
-          .filter(evaluated => reminder.evaluateds
+          .filter((evaluated: any) => reminder.evaluateds
             .some(e => e.id === evaluated.value)) : [],
       evaluatorsGroups: groupsList && reminder.evaluatorsGroups
         ? formatDataSet(groupsList)
-          .filter(group => reminder.evaluatorsGroups
+          .filter((group: any) => reminder.evaluatorsGroups
             .some(g => g.id === group.value)) : [],
       evaluatedsGroups: groupsList && reminder.evaluatedsGroups
         ? formatDataSet(groupsList)
-          .filter(group => reminder.evaluatedsGroups
+          .filter((group: any) => reminder.evaluatedsGroups
             .some(g => g.id === group.value)) : [],
       recurrence: reminder.recurrence
         ? translateLabels(intl, RECURRENCE_OPTIONS.RECURRENCE)
-          .filter(recurrence => recurrence.value === reminder.recurrence)?.[0] : null,
+          .filter((recurrence: any) => recurrence.value === reminder.recurrence)?.[0] : null,
       startDate: moment(reminder.startDate),
       endDate: moment(reminder.endDate),
       deadline: reminder.deadline ? moment(reminder.deadline) : null,
@@ -263,7 +264,7 @@ const ReminderCreateStep: React.FC<Props & StateProps & DispatchProps> = ({
                 <Field
                   title={intl.messages['reminder.edit.field.startDate']}
                 >
-                  <MuiPickersUtilsProvider libInstance={moment} utils={MomentUtils} locale={intl.locale}>
+                  <LocalizationProvider libInstance={moment} utils={MomentUtils} locale={intl.locale}>
                     <DateTimePicker
                       onChange={date => setReminderData({ ...reminderData, startDate: date })}
                       value={reminderData.startDate}
@@ -276,12 +277,12 @@ const ReminderCreateStep: React.FC<Props & StateProps & DispatchProps> = ({
                         disableUnderline: true,
                       }}
                     />
-                  </MuiPickersUtilsProvider>
+                  </LocalizationProvider>
                 </Field>
                 <Field
                   title={intl.messages['reminder.edit.field.endDate']}
                 >
-                  <MuiPickersUtilsProvider libInstance={moment} utils={MomentUtils} locale={intl.locale}>
+                  <LocalizationProvider libInstance={moment} utils={MomentUtils} locale={intl.locale}>
                     <DateTimePicker
                       onChange={date => setReminderData({ ...reminderData, endDate: date })}
                       value={reminderData.endDate}
@@ -294,7 +295,7 @@ const ReminderCreateStep: React.FC<Props & StateProps & DispatchProps> = ({
                         disableUnderline: true,
                       }}
                     />
-                  </MuiPickersUtilsProvider>
+                  </LocalizationProvider>
                 </Field>
               </div>
               <Field
@@ -318,7 +319,7 @@ const ReminderCreateStep: React.FC<Props & StateProps & DispatchProps> = ({
                         title={intl.messages['reminder.edit.field.deadline']}
                         tooltip={intl.messages['reminder.edit.field.deadline.tooltip']}
                       >
-                        <MuiPickersUtilsProvider utils={MomentUtils} locale={intl.locale}>
+                        <LocalizationProvider utils={MomentUtils} locale={intl.locale}>
                           <DatePicker
                             onChange={date => setReminderData({ ...reminderData, deadline: date })}
                             value={reminderData.deadline}
@@ -329,7 +330,7 @@ const ReminderCreateStep: React.FC<Props & StateProps & DispatchProps> = ({
                               disableUnderline: true,
                             }}
                           />
-                        </MuiPickersUtilsProvider>
+                        </LocalizationProvider>
                       </Field>
                     </div>
                     {reminderData.recurrence.key === 2

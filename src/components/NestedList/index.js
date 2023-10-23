@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@mui/material/styles';
+import { makeStyles } from 'mui-styles';
 import List from '@mui/material/List';
 import Collapse from '@mui/material/Collapse';
 import Grid from '@mui/material/Grid';
@@ -210,4 +210,12 @@ NestedList.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default injectIntl(makeStyles(styles)(NestedList));
+const StyledNestedList = (props) => {
+  const classes = makeStyles(styles);
+
+  return (
+    <NestedList classes={{ ...classes }} {...props} />
+  )
+}
+
+export default injectIntl(StyledNestedList);

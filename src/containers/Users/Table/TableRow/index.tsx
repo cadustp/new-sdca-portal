@@ -5,7 +5,7 @@ import { MoreVert } from '@mui/icons-material';
 import { Menu, Checkbox } from '@mui/material';
 import MenuItem from '@mui/material/MenuItem';
 
-import { makeStyles } from '@mui/material/styles';
+import { makeStyles } from 'mui-styles';
 import TableGenericRow from '../../../../components/TableGenericRow';
 import Avatar from '../../../../components/Avatar';
 import { light } from '../../../../styles/palette';
@@ -68,12 +68,16 @@ const renderAvatar = (type, translate) => (
   </Tooltip>
 );
 
-const MenuItemStyle = makeStyles({
-  root: {
-    color: '#6A6A6A',
-    fontSize: 12,
-  },
-})(MenuItem);
+const MenuItemStyle = (props: any) => {
+  const classes = makeStyles((theme) => ({
+    root: {
+      color: '#6A6A6A',
+      fontSize: 12,
+    }
+  }));
+
+  return <MenuItem classes={{ ...classes }} {...props} />
+}
 
 const TableRow: React.FC<Props & StateProps & DispatchProps> = ({
   intl,

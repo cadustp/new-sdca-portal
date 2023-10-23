@@ -64,7 +64,6 @@ const intial = {
 };
 
 const ContextReminderAnswers = React.createContext<PropsProvider>(intial);
-const useReminderAnswers = () => React.useContext(ContextReminderAnswers);
 
 const ReminderAnswersProvider = ({ value, children }) => (
   <ContextReminderAnswers.Provider
@@ -81,4 +80,4 @@ const ReminderAnswersProvider = ({ value, children }) => (
   </ContextReminderAnswers.Provider>
 );
 
-export { ReminderAnswersProvider, useReminderAnswers };
+export { ReminderAnswersProvider, ContextReminderAnswers };

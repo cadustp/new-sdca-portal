@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Box } from '@mui/material';
-import AccordionStep from 'src/components/AccordionStep';
-import { TQuestion } from 'src/types/reminder';
+import AccordionStep from '../../../../components/AccordionStep';
+import { TQuestion } from '../../../../types/reminder';
 import QuestionsScreen from '../Questions/index';
 
 const countAnswer = (questions: Array<TQuestion>) => questions.filter(q => q.answer && Object.keys(q.answer)?.length)?.length;
@@ -23,7 +23,7 @@ const QuestionItem = ({
   conditionalObject,
   intl,
   step,
-}) => (
+}: any) => (
   <>
     <AccordionStep
       conditionalObject={conditionalObject}

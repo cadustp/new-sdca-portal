@@ -5,7 +5,7 @@ import {
   SearchOutlined, FilterList, FormatLineSpacing, ImportExportOutlined,
 } from '@mui/icons-material';
 import MenuItem from '@mui/material/MenuItem';
-import { makeStyles } from '@mui/material/styles';
+import { makeStyles } from 'mui-styles';
 import { light } from '../../../styles/palette';
 import { IMPORT_TYPES, ORDER_TYPES, RESPONSE_STATUS } from '../../../helpers/consts';
 import SideFilters from '../SideFilters';
@@ -49,12 +49,16 @@ type DispatchProps = {
   clearExportStatus: Function,
 };
 
-const MenuItemStyle = makeStyles({
-  root: {
-    color: '#6A6A6A',
-    fontSize: 12,
-  },
-})(MenuItem);
+const MenuItemStyle = (props: any) => {
+  const classes = makeStyles((theme) => ({
+    root: {
+      color: '#6A6A6A',
+      fontSize: 12,
+    }
+  }));
+
+  return <MenuItem classes={{ ...classes }} {...props} />
+}
 
 const sortItems = [
   {

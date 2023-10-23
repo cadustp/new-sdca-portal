@@ -1,7 +1,7 @@
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import IconButton from '@mui/material/Icon';
-import { makeStyles } from '@mui/material/styles';
+import { makeStyles } from 'mui-styles';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import React from 'react';
@@ -569,6 +569,14 @@ function translate(formatMessage) {
   });
 }
 
+const StyledFilterDialog = (props) => {
+  const classes = makeStyles(styles);
+
+  return (
+    <FilterDialog classes={{ ...classes }} {...props} />
+  )
+}
+
 export default injectIntl(
-  connect(mapStateToProps)(makeStyles(styles)(FilterDialog)),
+  connect(mapStateToProps)(StyledFilterDialog),
 );

@@ -1,7 +1,8 @@
 /* eslint-disable import/prefer-default-export */
 import styled from 'styled-components';
 import React from 'react';
-import { TextField, makeStyles } from '@mui/material';
+import { TextField } from '@mui/material';
+import { makeStyles } from 'mui-styles';
 import { TextFieldProps } from '@mui/material/TextField';
 
 const styles = {
@@ -22,7 +23,11 @@ function StyledTextField(props: TextFieldProps & makeStyles<typeof styles>) {
   // eslint-disable-next-line react/jsx-props-no-spreading
   return <TextField {...props} InputProps={{ classes, className: 'title' }} />;
 }
-export const CssTextField = makeStyles(styles)(StyledTextField);
+export const CssTextField = (props: any) => {
+  const classes = makeStyles(styles);
+
+  return <StyledTextField classes={{ ...classes }} {...props} />
+}
 
 export const Container = styled.section`
   margin-top: 48px;

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Snackbar from '@mui/material/Snackbar';
 import SnackbarContent from '@mui/material/SnackbarContent';
-import { makeStyles } from '@mui/material/styles';
+import { makeStyles } from 'mui-styles';
 import WarningIcon from '../Icons/WarningIcon';
 import InfoIcon from '../Icons/InfoIcon';
 import ErrorIcon from '../Icons/ErrorIcon';
@@ -75,7 +75,13 @@ MySnackbarContent.propTypes = {
   variant: PropTypes.oneOf(['success', 'warning', 'error', 'info']).isRequired,
 };
 
-const MySnackbarContentWrapper = makeStyles(styles1)(MySnackbarContent);
+const MySnackbarContentWrapper = (props) => {
+  const classes = makeStyles(styles1);
+
+  return (
+    <MySnackbarContent classes={{ ...classes }} {...props} />
+  )
+}
 
 const styles2 = theme => ({
   margin: {
@@ -109,4 +115,12 @@ Snackbar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default makeStyles(styles2)(CustomSnackbar);
+const StyledCustomSnackbar = (props) => {
+  const classes = makeStyles(styles2);
+
+  return (
+    <CustomSnackbar classes={{ ...classes }} {...props} />
+  )
+}
+
+export default StyledCustomSnackbar;

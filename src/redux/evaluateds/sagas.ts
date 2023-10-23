@@ -1,6 +1,7 @@
 import { takeLatest, put, call } from 'redux-saga/effects';
 import { AnyAction } from 'redux';
-import parse from 'parse-link-header';
+// import parse from 'parse-link-header';
+import { parseLinkHeader as parse } from '@web3-storage/parse-link-header';
 import apiService, { fileFetcher } from '../../services/apiService';
 import { evaluatedsTypes, filterParams } from './types';
 import { RESPONSE_STATUS, ORDER_TYPES } from '../../helpers/consts';
@@ -17,7 +18,7 @@ import {
 } from './actions';
 import { captureEvent } from '../../analytics';
 
-const stringfySearchParams = paramsObject => {
+const stringfySearchParams = (paramsObject: any) => {
   const {
     text,
     names,
@@ -187,7 +188,7 @@ export function* exportEvaluatedRequest({
     hasName: payload.names?.length,
     hasEmails: payload.emails?.length,
     hasGroups: payload.groups?.length,
-    userTypes: payload.typesOfUsers?.map(t => t.value),
+    userTypes: payload.typesOfUsers?.map((t: any) => t.value),
     hasDates: !!payload.startDate && !!payload.endDate,
   };
   try {

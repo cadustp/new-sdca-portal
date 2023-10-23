@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { injectIntl } from 'react-intl';
-import SwipeableViews from 'react-swipeable-views';
+import SwipeableViews from 'react-swipeable-views-v18';
 
 import '../../styles.css';
 import { CHOOSE_QUESTION_TYPE_MODAL_OPTION, QUESTION_FIELDS, SELECTION_TYPES } from '../../../../helpers/consts';

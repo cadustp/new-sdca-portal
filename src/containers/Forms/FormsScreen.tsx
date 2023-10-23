@@ -21,6 +21,7 @@ import {
 } from '../../helpers/utils';
 
 import './styles.css';
+import { useNavigate } from 'react-router';
 
 export const ModalStyles = {
   display: 'flex',
@@ -34,9 +35,6 @@ type Props = {
   intl: {
     messages: [];
     formatMessage: Function,
-  };
-  history: {
-    push: Function;
   };
 };
 
@@ -64,7 +62,6 @@ type StateProps = {
 
 const FormsScreen: React.FC<Props & DispatchProps & StateProps> = ({
   intl,
-  history,
   handleCreationModal,
   loadAllFormsRequest,
   handleDeleteModal,
@@ -82,6 +79,8 @@ const FormsScreen: React.FC<Props & DispatchProps & StateProps> = ({
   duplicateForm,
   isAClone,
 }) => {
+  const navigate = useNavigate();
+
   const [filteredForms, setFilteredForms] = useState([{
     id: null,
     name: '',
@@ -101,7 +100,7 @@ const FormsScreen: React.FC<Props & DispatchProps & StateProps> = ({
 
   useEffect(() => {
     if (isAClone) {
-      history.push('/forms/new');
+      navigate('/forms/new');
     }
   }, [isAClone]);
 

@@ -9,10 +9,7 @@ import CustomSnackbar from '../../components/shared/CustomSnackbar/CustomSnackba
 
 import './styles.css';
 import { captureEvent } from '../../analytics';
-
-type Props = {
-  history: { push: (route: string) => void };
-};
+import { useNavigate } from 'react-router';
 
 type DispatchProps = {
   saveUserRequest: Function,
@@ -43,7 +40,7 @@ type StateProps = {
   },
 };
 
-const EditUserScreen: React.FC<Props & DispatchProps & StateProps> = ({
+const EditUserScreen: React.FC<DispatchProps & StateProps> = ({
   isLoading,
   saveUserRequest,
   saveStatus,
@@ -54,12 +51,13 @@ const EditUserScreen: React.FC<Props & DispatchProps & StateProps> = ({
   allAdmins,
   clearEditStepper,
   clearEditUser,
-  history,
   user,
 }) => {
   const [currentUser, { isSubAdmin }] = useCurrentUser();
   const subAdminObject = { value: currentUser.id, label: currentUser.email };
   const responsibleInitialValue = isSubAdmin ? subAdminObject : [];
+
+  const navigate = useNavigate();
 
   const [userData, setUserData] = useState({
     id: null,
@@ -122,7 +120,7 @@ const EditUserScreen: React.FC<Props & DispatchProps & StateProps> = ({
 
   useEffect(() => {
     if (saveStatus === RESPONSE_STATUS.SUCCESS) {
-      history.push('/admin/users');
+      navigate('/admin/users');
       handleClear();
     }
   }, [saveStatus]);

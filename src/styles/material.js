@@ -1,8 +1,8 @@
-import { createMuiTheme } from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles';
 
 import { light, text } from './palette';
 
-const materialTheme = createMuiTheme({
+const materialTheme = createTheme({
   palette: {
     primary: {
       main: light.primary,

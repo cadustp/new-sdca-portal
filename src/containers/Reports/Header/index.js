@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Button from '../../../components/Button';
 import ExportIcon from '../../../components/shared/Icons/ExportIcon';
-import useFormatDateHeader from 'src/hooks/useFormatDateHeader';
+import useFormatDateHeader from '../../../hooks/useFormatDateHeader';
 
 function Header({intl,startDate, endDate, buttonLabel, buttonAction}){
   const [title, setTitle] = useState("");

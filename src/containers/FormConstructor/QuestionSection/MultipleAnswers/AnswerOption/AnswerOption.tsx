@@ -6,9 +6,9 @@ import {
   Tooltip,
   Fab,
   Switch,
-  AccordionDetails,
-  makeStyles,
+  AccordionDetails
 } from '@mui/material';
+import { makeStyles } from 'mui-styles';
 import {
   ArrowUpward,
   MoreVert,
@@ -50,39 +50,47 @@ type DispatchProps = {
   moveOption: Function;
 };
 
-const Accordion = makeStyles({
-  root: {
-    border: '1px solid rgba(0, 0, 0, .125)',
-    boxShadow: 'none',
-    '&:not(:last-child)': {
-      borderBottom: 0,
+const Accordion = (props: any) => {
+  const classes = makeStyles((theme) => ({
+    root: {
+      border: '1px solid rgba(0, 0, 0, .125)',
+      boxShadow: 'none',
+      '&:not(:last-child)': {
+        borderBottom: 0,
+      },
+      '&:before': {
+        display: 'none',
+      },
+      '&$expanded': {
+        margin: 'auto',
+      },
     },
-    '&:before': {
-      display: 'none',
-    },
-    '&$expanded': {
-      margin: 'auto',
-    },
-  },
-  expanded: {},
-})(MuiAccordion);
+    expanded: {}
+  }));
 
-const AccordionSummary = makeStyles({
-  root: {
-    borderBottom: '1px solid rgba(0, 0, 0, .125)',
-    marginBottom: -1,
-    minHeight: 56,
-    '&$expanded': {
+  return <MuiAccordion classes={{ ...classes }} {...props} />
+}
+
+const AccordionSummary = (props: any) => {
+  const classes = makeStyles((theme) => ({
+    root: {
+      borderBottom: '1px solid rgba(0, 0, 0, .125)',
+      marginBottom: -1,
       minHeight: 56,
+      '&$expanded': {
+        minHeight: 56,
+      },
     },
-  },
-  content: {
-    '&$expanded': {
-      margin: '12px 0',
+    content: {
+      '&$expanded': {
+        margin: '12px 0',
+      },
     },
-  },
-  expanded: {},
-})(MuiAccordionSummary);
+    expanded: {},
+  }));
+
+  return <MuiAccordionSummary classes={{ ...classes }} {...props} />
+}
 
 const AnswerOption: React.FC<Props & DispatchProps & StateProps> = ({
   intl,

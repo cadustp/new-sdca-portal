@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import useStepRenderVerifier from "src/services/conditional/useStepRenderVerifier";
+import useStepRenderVerifier from "../../../../services/conditional/useStepRenderVerifier";
 import QuestionItem from "./QuestionItem";
 
 const ConditionStepComponent = (props) => {

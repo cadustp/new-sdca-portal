@@ -3,7 +3,7 @@ import {
 } from 'redux-saga/effects';
 import { AnyAction } from 'redux';
 import { isEmpty } from 'lodash';
-import useStepRenderVerifier from 'src/services/conditional/useStepRenderVerifier';
+import useStepRenderVerifier from '../../services/conditional/useStepRenderVerifier';
 import { answerReminderTypes } from './types';
 import apiService from '../../services/apiService';
 
@@ -21,7 +21,7 @@ import { imagesRoute, sendAnswersRoute } from '../../services/routesService';
 import { TQuestion } from '../../types/reminder';
 import { captureEvent } from '../../analytics';
 
-function payloadModelForAnswer(answer) {
+function payloadModelForAnswer(answer: any) {
   return {
     ...answer,
     custom_date: answer.custom_date ? answer.custom_date._d : null,
@@ -59,7 +59,7 @@ export function* sendReminder({ payload }: AnyAction) {
   const { reminder } = payload;
 
   const fillingStartDate = yield select(state => state.answerReminder.fillingStartDate);
-  const questions = reminder.form.steps.map(step => step.questions).flat(1);
+  const questions = reminder.form.steps.map((step: any) => step.questions).flat(1);
 
   if (!setIfSomeAnswerIsEmpty(reminder.form)) {
     const { data } = yield sendAnswers(reminder, questions, fillingStartDate);
@@ -77,11 +77,11 @@ export function* sendReminder({ payload }: AnyAction) {
   }
 };
 
-function checkEmptyDefaultAnswer({ steps }) {
+function checkEmptyDefaultAnswer({ steps }: any) {
   let haveSomeEmptyAnswer = false;
 
-  steps.forEach((step, stepKey) => {
-    step.questions.forEach((question, questionKey) => {
+  steps.forEach((step: any, stepKey: any) => {
+    step.questions.forEach((question: any, questionKey: any) => {
       if (!question.answer || isEmpty(question.answer) || question.missing_association) {
         haveSomeEmptyAnswer = true;
       }
@@ -90,10 +90,10 @@ function checkEmptyDefaultAnswer({ steps }) {
   return haveSomeEmptyAnswer;
 }
 
-function checkEmptyAnswerConditionalForms({ steps, condition_triggers_object }) {
+function checkEmptyAnswerConditionalForms({ steps, condition_triggers_object }: any) {
   let haveSomeEmptyAnswer = false;
 
-  steps.forEach((step, stepKey) => {
+  steps.forEach((step: any, stepKey: any) => {
     const { hideStep, questions } = useStepRenderVerifier({ conditionalObject: condition_triggers_object, stepKey, steps });
 
     if (!hideStep) {
@@ -110,7 +110,7 @@ function checkEmptyAnswerConditionalForms({ steps, condition_triggers_object }) 
   return haveSomeEmptyAnswer;
 }
 
-function setIfSomeAnswerIsEmpty({ steps, condition_triggers_object }): boolean {
+function setIfSomeAnswerIsEmpty({ steps, condition_triggers_object }: any): boolean {
   const hasConditionTriggers = condition_triggers_object && Object.keys(condition_triggers_object).length;
 
   if (hasConditionTriggers) {
@@ -119,7 +119,7 @@ function setIfSomeAnswerIsEmpty({ steps, condition_triggers_object }): boolean {
   return checkEmptyDefaultAnswer({ steps });
 };
 
-function* sendAnswers(reminder, questions, fillingStartDate) {
+function* sendAnswers(reminder: any, questions: any, fillingStartDate: any) {
   const reminderPayload = {
     id: null,
     form: {},
@@ -130,21 +130,21 @@ function* sendAnswers(reminder, questions, fillingStartDate) {
   reminderPayload.form = {
     id: reminder.form.id,
     selected_company_employee: reminder.form?.selected_company_employee ? reminder.form.selected_company_employee : null,
-    questions: questions.map(question => ({ id: question.id, ...payloadModelForAnswer(question.answer) })),
+    questions: questions.map((question: any) => ({ id: question.id, ...payloadModelForAnswer(question.answer) })),
   };
   reminderPayload.location = reminder.location;
   return (yield call(apiService.post, sendAnswersRoute, reminderPayload));
 };
 
-function* sendImages(questions) {
+function* sendImages(questions: any) {
   const formData = new FormData();
   let imagesAmount = 0;
-  questions.forEach(question => {
+  questions.forEach((question: any) => {
     const answer = question?.answer;
     if (answer === undefined || !answer.hasOwnProperty('uuid') || answer.knocked_out === true || answer.images === []) {
       return;
     }
-    answer.images.forEach(image => {
+    answer.images.forEach((image: any) => {
       formData.append(`${answer.uuid}[]`, image.file, 'original');
       imagesAmount++;
     });

@@ -13,13 +13,11 @@ import SharingTab from './Tabs/SharingTab';
 import '../styles.css';
 import { Form } from '../../../redux/forms/types';
 import { SNACKBAR_VARIANTS } from '../../../helpers/consts';
+import { useNavigate } from 'react-router';
 
 type Props = {
   intl: {
     messages: [];
-  };
-  history: {
-    push: Function;
   };
 };
 
@@ -60,7 +58,6 @@ const CreateModal: React.FC<Props & DispatchProps & StateProps> = ({
   setFormSettings,
   isNew,
   clearFormSettings,
-  history,
   handleShareMode,
   shareMode,
   loadAvailableUsers,
@@ -70,6 +67,8 @@ const CreateModal: React.FC<Props & DispatchProps & StateProps> = ({
   clearLoadUsersStatus,
 }) => {
   const [activeTab, setActiveTab] = useState(tabs.SIMPLE);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!open) return;
@@ -98,7 +97,7 @@ const CreateModal: React.FC<Props & DispatchProps & StateProps> = ({
 
   const handleSave = () => {
     onClose();
-    if (isNew) { history.push('/forms/new'); }
+    if (isNew) navigate('/forms/new');
   };
 
   const Separator = () => (<div className="cf-tabs-separator" />);

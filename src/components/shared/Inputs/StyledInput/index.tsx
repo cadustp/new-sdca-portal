@@ -1,7 +1,8 @@
 /* eslint-disable import/prefer-default-export */
 import React, { useMemo } from 'react';
 import { injectIntl } from 'react-intl';
-import { TextField, Tooltip, makeStyles } from '@mui/material';
+import { TextField, Tooltip } from '@mui/material';
+import { makeStyles } from 'mui-styles';
 import { TextFieldProps } from '@mui/material/TextField';
 import { IconContainer } from '../../../EmailInput/styles';
 import InfoIcon from '../../Icons/InfoIcon';
@@ -85,6 +86,12 @@ function Input({
   );
 }
 
+const StyledInput = (props: any) => {
+  const classes = makeStyles(styles);
+
+  return <Input classes={{ ...classes }} {...props} />
+}
+
 export const StyledTextField = React.memo(
-  injectIntl(makeStyles(styles)(Input)),
+  injectIntl(StyledInput),
 );

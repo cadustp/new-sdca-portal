@@ -9,12 +9,12 @@ import CustomSnackbar from '../../components/shared/CustomSnackbar/CustomSnackba
 import { RESPONSE_STATUS } from '../../helpers/consts';
 
 import './styles.css';
+import { useNavigate } from 'react-router';
 
 type Props = {
   intl: {
     messages: [];
   };
-  history: { push: (route: string) => void };
 };
 
 type DispatchProps = {
@@ -61,7 +61,6 @@ const EvaluatedsScreen: React.FC<Props & DispatchProps & StateProps> = ({
   groupsList,
   setEditEvaluated,
   clearEditEvaluatedStepper,
-  history,
   saveStatus,
   importEvaluatedsRequest,
   importStatus,
@@ -80,6 +79,8 @@ const EvaluatedsScreen: React.FC<Props & DispatchProps & StateProps> = ({
     isOpen: false,
     message: intl.messages['users.errors.unselected_users'],
   });
+
+  const navigate = useNavigate();
 
   const modalEntityTypeTranslate = intl.messages['evaluateds.activateInactivateConfirmModal.type'];
   const modalActionTranslate = `${intl.messages[`evaluateds.activateInactivateConfirmModal.active.${filterParams.active}`]}`;
@@ -136,7 +137,7 @@ const EvaluatedsScreen: React.FC<Props & DispatchProps & StateProps> = ({
 
   const handleEditEvaluated = evaluated => {
     setEditEvaluated(evaluated);
-    history.push('/admin/evaluateds/edit');
+    navigate('/admin/evaluateds/edit');
   };
 
   const triggerSnackBarError = () => {

@@ -1,4 +1,4 @@
-import { SELECTION_TYPES } from "src/helpers/consts";
+import { SELECTION_TYPES } from "../../../../../../helpers/consts";
 
 const numberConditionalItems = {
   "<": "less",

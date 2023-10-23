@@ -3,7 +3,7 @@ import { injectIntl } from 'react-intl';
 import SideBarConfig from './SideBarConfig';
 import {
   listsDataRequest,
-} from 'src/redux/lists/actions';
+} from '../../../redux/lists/actions';
 import {
   handleToggleSideBar,
   setFormSettings,
@@ -11,7 +11,7 @@ import {
   handleShareMode,
   loadAvailableUsers,
   clearLoadUsersStatus,
-} from 'src/redux/forms/actions';
+} from '../../../redux/forms/actions';
 
 const mapStateToProps = state => ({
   open: state.forms.creation.show,

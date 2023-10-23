@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { makeStyles } from '@mui/material/styles'
+import { makeStyles } from 'mui-styles';
+
 export const S_Title = styled.p`
   margin-top: 0.2rem;
   font-family: Open Sans;
