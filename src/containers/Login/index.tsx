@@ -6,7 +6,8 @@ import {
   resetInstructionsRequest,
   updatePasswordRequest,
 } from '../../redux/login/actions';
-import LoginScreen from './LoginScreen';
+// import LoginScreen from './LoginScreen';
+import ClerkLoginScreen from './ClerkLoginScreen';
 
 const mapStateToProps = state => ({
   isLoading: state.login.isLoading || state.login.loginloading,
@@ -22,5 +23,5 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default injectIntl(
-  connect(mapStateToProps, mapDispatchToProps)(LoginScreen),
+  connect(mapStateToProps, mapDispatchToProps)(ClerkLoginScreen),
 );
