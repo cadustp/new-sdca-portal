@@ -1,8 +1,10 @@
 import { useSignIn } from "@clerk/clerk-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Logo from "../../assets/branding/new_logo.svg"
 import "./clerk-styles.css"
 import { withRouter } from "../../helpers/withRouter";
+import useCurrentUser from "../../hooks/useCurrentUser";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   intl: {
@@ -41,6 +43,8 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
   const SIGN_UP_LINK = "http://localhost:3000/sign-up";
   const baseUrl = process.env.REACT_APP_BASE_URI_API;
   const endpoint = process.env.REACT_APP_V1_ENDPOINT;
+  const [user] = useCurrentUser();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -92,6 +96,10 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
     }
 
   }
+
+  useEffect(() => {
+    if (user?.id) navigate("/dashboard");
+  }, [user]);
 
   return (
     <div className="rootBox">
