@@ -17,7 +17,7 @@ const resetEnhancer = rootReducer => (state, action) => {
   return rootReducer(state, action);
 };
 
-const actionsBlacklist = [
+const actionsDenyList = [
   loginTypes.SAVE_LOGGED_USER,
   loginTypes.DO_LOGOUT,
   loginTypes.DO_LOGIN_REQUEST,
@@ -28,7 +28,7 @@ export const history = createBrowserHistory();
 
 const sagaMiddleware = createSagaMiddleware();
 
-const composeEnhancers = composeWithDevTools({ actionsBlacklist });
+const composeEnhancers = composeWithDevTools({ actionsDenyList });
 
 const enhancers = composeEnhancers(
   applyMiddleware(thunk, sagaMiddleware, createRouterMiddleware(history))

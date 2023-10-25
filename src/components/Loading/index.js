@@ -53,7 +53,7 @@ Loading.propTypes = {
   title: PropTypes.string,
   message: PropTypes.string,
   secondMessage: PropTypes.string,
-  size: PropTypes.oneOf(circularProgressSize),
+  size: PropTypes.oneOf(Object.values(circularProgressSize)),
 };
 
 Loading.defaultProps = {

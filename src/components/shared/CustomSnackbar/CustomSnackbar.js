@@ -89,10 +89,11 @@ const styles2 = theme => ({
   },
 });
 
-class CustomSnackbar extends Component {
+export default class CustomSnackbar extends Component {
   render() {
     return (
       <Snackbar
+        classes={makeStyles(styles2)}
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'center',
@@ -112,15 +113,5 @@ class CustomSnackbar extends Component {
 }
 
 Snackbar.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.func.isRequired,
 };
-
-const StyledCustomSnackbar = (props) => {
-  const classes = makeStyles(styles2);
-
-  return (
-    <CustomSnackbar classes={{ ...classes }} {...props} />
-  )
-}
-
-export default StyledCustomSnackbar;
