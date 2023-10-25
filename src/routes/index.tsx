@@ -1,6 +1,6 @@
 import React from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
-import { ReduxRouter } from '@lagunovsky/redux-react-router';
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
+import { ClerkProvider } from '@clerk/clerk-react';
 import withLoginAuth from '../components/withLoginAuth';
 import HomeDashboard from '../containers/Dashboard/HomeDashboard';
 import QualityDashboard from '../containers/Dashboard/QualityDashboard/QualityDashboard';
@@ -24,12 +24,13 @@ import RoutinesScreen from '../containers/Routines';
 import CreateRoutineScreen from '../containers/CreateRoutine';
 import LoginScreen from '../containers/Login';
 import useChatHubSpot from '../hooks/useHubSpotChat';
-import { history } from '../redux/store';
 
 function RouterSwitch(): JSX.Element {
   const localUser = JSON.parse(localStorage.getItem('user') || '{}');
   const enableHubspot = localUser?.enable_hubspot_chat;
   const userType = localUser?.majority_type;
+  const navigate = useNavigate();
+  const clerkPubKey = process.env.REACT_APP_CLERK_PUBLISHABLE_KEY || "";
 
   useChatHubSpot(enableHubspot, localUser);
 
@@ -116,7 +117,7 @@ function RouterSwitch(): JSX.Element {
   );
 
   return (
-    <ReduxRouter history={history}>
+    <ClerkProvider publishableKey={clerkPubKey} navigate={(to) => navigate(to)}>
       <Routes>
         <Route path="/login" element={<LoginScreen />} />
         <Route path="/reset/:token" element={<LoginScreen />} />
@@ -146,7 +147,7 @@ function RouterSwitch(): JSX.Element {
         {renderStagingRoutes()}
         <Route path='/*' element={<Navigate to="/login" />} />
       </Routes>
-    </ReduxRouter>
+    </ClerkProvider>
   );
 }
 
