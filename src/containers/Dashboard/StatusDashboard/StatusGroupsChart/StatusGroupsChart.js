@@ -164,19 +164,19 @@ class StatusGroupsChart extends Component {
       intl, graph, loading, isLoading, forms, userGroups,
     } = this.props;
     this.translate(intl);
-    Chart.defaults.bar.scales.xAxes[0].ticks = {
-      beginAtZero: true,
-      maxTicksLimit: 100,
-      callback(value, index, values) {
-        if (value.length > 80) {
-          return `${value.substring(0, 80)}...`;
-        }
-        return value;
-      },
-    };
+    // Chart.defaults.bar.scales.xAxes[0].ticks = {
+    //   beginAtZero: true,
+    //   maxTicksLimit: 100,
+    //   callback(value, index, values) {
+    //     if (value.length > 80) {
+    //       return `${value.substring(0, 80)}...`;
+    //     }
+    //     return value;
+    //   },
+    // };
     return (
       <>
-        <ChartCardBar
+        {/* <ChartCardBar
           filterIcon={<FilterIcon color="primary" />}
           selectedTab={tabs.GROUP}
           onFilter={this.fetchData.bind(this)}
@@ -210,7 +210,7 @@ class StatusGroupsChart extends Component {
           enabledTabs={[FilterTabs.GROUP, FilterTabs.FORM]}
           loading={loading || isLoading}
           shouldApplyLogarithmic={false}
-        />
+        /> */}
       </>
     );
   }
