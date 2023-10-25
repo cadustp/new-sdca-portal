@@ -7,8 +7,9 @@ import { HelpOutline } from '@mui/icons-material';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Drawer from '@mui/material/Drawer';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import DaywayLogo from '../../assets/branding/new_logo.svg';
+import { useUser } from "@clerk/clerk-react";
 
 import { captureEvent } from '../../analytics';
 
@@ -43,6 +44,8 @@ const Header: React.FC<Props> = ({
 }) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [previewMenuOpen, setPreviewMenuOpen] = useState(false);
+  const { isSignedIn } = useUser();
+  const navigate = useNavigate();
 
   const openKnowledgeBase = () => {
     const knowledgeLink = process.env.REACT_APP_KNOWLEDGE_LINK;
@@ -53,6 +56,13 @@ const Header: React.FC<Props> = ({
   const toggleDrawer = () => setDrawerOpen(!drawerOpen);
 
   const togglePreviewMenu = () => setPreviewMenuOpen(!previewMenuOpen);
+
+  useEffect(() => {
+    if (!isSignedIn) {
+      ["user", "token"].forEach((item) => localStorage.removeItem(item));
+      navigate("/login");
+    }
+  }, [isSignedIn]);
 
   return (
     <>
