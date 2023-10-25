@@ -12,6 +12,7 @@ import UserIcon from '../shared/Icons/UserIcon';
 import { captureNavigation } from '../../analytics';
 import './LoginInfo.css';
 import { ReactComponent as SmallBusinessSVG } from '../../assets/icons/small-business.svg';
+import { UserButton } from "@clerk/clerk-react"; 
 
 const MenuItemStyle = (props) => {
   const classes = makeStyles((theme) => ({
@@ -45,8 +46,9 @@ function LoginInfo({
 
   return (
     <div className="login-info">
-      <div className="icon" onClick={handleClick}>
-        <UserIcon size={18} color={light.primary} />
+      <div className="icon">
+        {/* <UserIcon size={18} color={light.primary} /> */}
+        <UserButton afterSignOutUrl="/login" /> 
       </div>
       {name ? (
         <div className="name">
