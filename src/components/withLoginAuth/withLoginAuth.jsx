@@ -29,7 +29,9 @@ const withLogInAuth = Component => props => {
       setLogoutResponseInterceptor(doLogout);
       return true;
     }
-    window.localStorage.clear();
+    // window.localStorage.clear();
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
     return false;
   };
 
