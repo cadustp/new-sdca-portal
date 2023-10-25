@@ -58,7 +58,8 @@ export function* doLoginRequest({
     yield put(doLoginResponse({ status: '' }));
     yield put(push('/dashboard'));
   } catch (e) {
-    window.localStorage.clear();
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
     captureEvent('doLogin', {
       status: 'error',
       error: e.message,
