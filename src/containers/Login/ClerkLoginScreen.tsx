@@ -1,5 +1,5 @@
-import { useSignIn, useUser } from "@clerk/clerk-react";
-import { useEffect, useState } from "react";
+import { useClerk, useSignIn, useUser } from "@clerk/clerk-react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import Logo from "../../assets/branding/new_logo.svg"
 import "./clerk-styles.css"
 import { withRouter } from "../../helpers/withRouter";
@@ -39,13 +39,19 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
     emailLabel: "",
     wrongEmail: false
   });
+
+  const [code, setCode] = useState(["", "", "", "", "", ""]);
   const [submitCalls, setSubmitCalls] = useState(0);
+  const { isSignedIn, user: clerkUser } = useUser();
+  const { signOut } = useClerk();
+  const codeRefs = useRef(new Array(6).fill(null));
+  const [showMFA, setShowMFA] = useState(false);
+  const [user] = useCurrentUser();
+  const navigate = useNavigate();
+ 
   const SIGN_UP_LINK = "http://localhost:3000/sign-up";
   const baseUrl = process.env.REACT_APP_BASE_URI_API;
   const endpoint = process.env.REACT_APP_V1_ENDPOINT;
-  const navigate = useNavigate();
-  const { isSignedIn } = useUser();
-  const [user] = useCurrentUser();
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -53,6 +59,8 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
     setSubmitCalls((prev) => prev + 1);
 
     if (!isLoaded || submitCalls > 5) return;
+
+    if (isSignedIn) signOut();
 
     const { email, password } = login;
 
@@ -63,6 +71,9 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
         await setActive({ session: result.createdSessionId });
         setSubmitCalls(0);
         doLoginRequest({ login });
+      } else if(result.status === "needs_second_factor") {
+        setShowMFA(true);
+        return;
       } else {
         console.log(result);
       }
@@ -81,9 +92,7 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
         } else if (response.status === 404) {
           setStyles((prev) => ({ ...prev, passInput: "pass-error", passLabel: "error", wrongPass: true}));
         } else {
-          console.log('chegou aqui :(');
           console.log(response);
-          console.log(response.body);
         }
       }
 
@@ -98,9 +107,59 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
 
   }
 
-  useEffect(() => {
-    if (!isSignedIn) ["user", "token"].forEach((item) => localStorage.removeItem(item));
-  }, []);
+  const verifyMFA = async (e: any) => {
+    e.preventDefault();
+    
+    if (!isLoaded) return;
+
+    try {
+      const response = await signIn.attemptSecondFactor({ strategy: "totp", code: code.join("") });
+
+      if (response.status === "complete") {
+        await setActive({ session: response.createdSessionId });
+        setSubmitCalls(0);
+        doLoginRequest({ login });
+      } else {
+        console.log(response);
+      }
+    } catch (error: any) {
+      console.error(error);
+    }
+  }
+
+  const handleCodeChange = (index: number, event: ChangeEvent<HTMLInputElement>) => {
+    const { target: { value } } = event;
+
+    setCode((prev) => {
+      prev[index] = value[value.length - 1];
+      return prev;
+    });
+
+    if (!value && index > 0) {
+      codeRefs.current[index - 1].focus();
+    } else {
+      if (index < 5 && value) {
+        codeRefs.current[index + 1].focus();
+      }
+    }
+  }
+
+  const handleOAuthSignIn = () => {
+    console.log("handle oauth signin");
+    
+    if (!isLoaded) return;
+
+    signIn.authenticateWithRedirect({
+      strategy: "oauth_microsoft",
+      redirectUrl: "/oauth-callback",
+      redirectUrlComplete: "/dashboard"
+    });
+  }
+
+  // useEffect(() => {
+  //   console.log("caiu no use effect isSignedIn");
+  //   if (!isSignedIn) ["user", "token"].forEach((item) => localStorage.removeItem(item));
+  // }, []);
 
   useEffect(() => {
     if (user?.id) navigate("/dashboard");
@@ -108,48 +167,107 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
 
   return (
     <div className="rootBox">
-      <form className="form">
+      <form className="form" onSubmit={ showMFA ? (e) => verifyMFA(e) : (e) => handleSubmit(e) }>
         <div className="header">
           <img src={Logo} width={180} alt="Dayway Logo" />
         </div>
-        
-        <div className="input-box">
-          <label htmlFor="email" className={`label ${styles.emailLabel}`}>Email</label>
-        
-          <input
-            onChange={(e) => setLogin((prev) => ({ ...prev, email: e.target.value }))}
-            id="email"
-            name="email"
-            type="email"
-            className={`input ${styles.emailInput}`}
-          />
 
-          {
-            styles.wrongEmail && (
-              <span className="title-text wrong-pass-msg">Incorrect email!</span>
-            )
-          }
-        </div>
-        
-        <div className="input-box">
-          <label htmlFor="password" className={`label ${styles.passLabel}`}>Password</label>
-        
-          <input
-            onChange={(e) => setLogin((prev) => ({ ...prev, password: e.target.value }))}
-            id="password"
-            name="password"
-            type="password"
-            className={`input ${styles.passInput}`}
-          />
+        <button
+          className="social-connection"
+          type="button"
+          onClick={handleOAuthSignIn}
+        >
+          <span className="social-img-container">
+            <img src="https://img.clerk.com/static/microsoft.svg?width=160" alt="Microsoft" />
+          </span>
 
-          {
-            styles.wrongPass && (
-              <span className="title-text wrong-pass-msg">Incorrect password!</span>
-            )
-          }
+          <p>Continue with Microsoft</p>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 20 20"
+            className="social-btn-arrow"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M3.3 10h13.4m-5-5 5 5-5 5"
+            ></path>
+          </svg>
+        </button>
+
+        <div className="divider-box">
+          <div className="divider"></div>
+          <p className="divider-text">or</p>
+          <div className="divider"></div>
         </div>
-        
-        <button className="signin-btn" onClick={handleSubmit}>Continue</button>
+
+        { showMFA ? (
+            <>
+              <h3>Insert Auth code:</h3>
+              <div className="code-box">
+                {
+                  [0, 1, 2, 3, 4, 5].map((index) => (
+                    <input
+                      className="input code-input"
+                      key={index}
+                      type="text"
+                      maxLength={1}
+                      ref={(ref) => (codeRefs.current[index] = ref)}
+                      onChange={(e) => handleCodeChange(index, e)}
+                      inputMode="numeric"
+                    />
+                  ))
+                }
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="input-box">
+                <label htmlFor="email" className={`label ${styles.emailLabel}`}>Email</label>
+              
+                <input
+                  onChange={(e) => setLogin((prev) => ({ ...prev, email: e.target.value }))}
+                  id="email"
+                  name="email"
+                  type="email"
+                  className={`input ${styles.emailInput}`}
+                />
+
+                {
+                  styles.wrongEmail && (
+                    <span className="title-text wrong-pass-msg">Incorrect email!</span>
+                  )
+                }
+              </div>
+              
+              <div className="input-box">
+                <label htmlFor="password" className={`label ${styles.passLabel}`}>Password</label>
+              
+                <input
+                  onChange={(e) => setLogin((prev) => ({ ...prev, password: e.target.value }))}
+                  id="password"
+                  name="password"
+                  type="password"
+                  className={`input ${styles.passInput}`}
+                />
+
+                {
+                  styles.wrongPass && (
+                    <span className="title-text wrong-pass-msg">Incorrect password!</span>
+                  )
+                }
+              </div>
+            </>
+          )
+        }
+
+        <button className="signin-btn" type="submit">
+          { showMFA ? "Verify" : "Continue" }
+        </button>
 
         <div className="footer">
           <span className="footer-text">No account?</span>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
-import { ClerkProvider } from '@clerk/clerk-react';
+import { AuthenticateWithRedirectCallback, ClerkProvider } from '@clerk/clerk-react';
 import withLoginAuth from '../components/withLoginAuth';
 import HomeDashboard from '../containers/Dashboard/HomeDashboard';
 import QualityDashboard from '../containers/Dashboard/QualityDashboard/QualityDashboard';
@@ -122,6 +122,15 @@ function RouterSwitch(): JSX.Element {
         <Route path="/login" element={<LoginScreen />} />
         <Route path="/reset/:token" element={<LoginScreen />} />
         <Route path="/forms/public/:id" element={<PublicAnswerScreen />} />
+        <Route
+          path="/oauth-callback"
+          element={
+            <AuthenticateWithRedirectCallback
+              redirectUrl="/dashboard"
+              secondFactorUrl="/???"
+            />
+          }
+        />
         <Route
           path="/dashboard"
           element={<ProtectedRoutes.HomeDashboard />}
