@@ -63,7 +63,7 @@ function LoginInfo({
         anchorEl={anchor}
         open={Boolean(anchor)}
         onClose={handleClose}
-        getContentAnchorEl={null}
+        // getContentAnchorEl={null}
         MenuListProps={{
           style: {
             padding: 0,
@@ -78,18 +78,16 @@ function LoginInfo({
           horizontal: 'left',
         }}
       >
-        <>
-          <MenuItemStyle onClick={openPreviewMenu}>
-            <FindInPageOutlined
-              fontSize="default"
-              style={{ color: light.primary, marginRight: '15px' }}
-            />
-            {intl.messages['login_info.feature_preview']}
-          </MenuItemStyle>
-          <div style={{ padding: '5px', paddingLeft: '16px', paddingRight: '16px' }}>
-            <div style={{ width: '100%', backgroundColor: '#E8E8E8', height: '2px' }} />
-          </div>
-        </>
+        <MenuItemStyle onClick={openPreviewMenu}>
+          <FindInPageOutlined
+            fontSize="default"
+            style={{ color: light.primary, marginRight: '15px' }}
+          />
+          {intl.messages['login_info.feature_preview']}
+        </MenuItemStyle>
+        <div style={{ padding: '5px', paddingLeft: '16px', paddingRight: '16px' }}>
+          <div style={{ width: '100%', backgroundColor: '#E8E8E8', height: '2px' }} />
+        </div>
         {isMasterAdmin
           ? (
             <MenuItemStyle
@@ -118,7 +116,7 @@ function LoginInfo({
 }
 
 LoginInfo.propTypes = {
-  intl: PropTypes.element.isRequired,
+  intl: PropTypes.shape({ messages: PropTypes.shape() }).isRequired,
   name: PropTypes.string,
   logout: PropTypes.func.isRequired,
 };

@@ -18,7 +18,7 @@ const styles = {
     },
   },
 };
-function StyledTextField(props: TextFieldProps & makeStyles<typeof styles>) {
+function StyledTextField(props: any) {
   const { classes } = props;
   // eslint-disable-next-line react/jsx-props-no-spreading
   return <TextField {...props} InputProps={{ classes, className: 'title' }} />;

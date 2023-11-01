@@ -139,15 +139,15 @@ function HomeDashboard({
   );
 }
 HomeDashboard.propTypes = {
-  startDate: PropTypes.objectOf(PropTypes.object).isRequired,
-  endDate: PropTypes.objectOf(PropTypes.object).isRequired,
+  startDate: PropTypes.shape().isRequired,
+  endDate: PropTypes.shape().isRequired,
   user: PropTypes.shape({
     email: PropTypes.string.isRequired,
     company_group_id: PropTypes.number.isRequired,
   }).isRequired,
   qualityByGroups: PropTypes.func.isRequired,
-  adherenceByGroups: PropTypes.func.isRequired,
-  statusByGroups: PropTypes.func.isRequired,
+  adherenceByGroups: PropTypes.func,
+  statusByGroups: PropTypes.func,
   setDates: PropTypes.func.isRequired,
   dashboardDataRequest: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,

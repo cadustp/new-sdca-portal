@@ -18,8 +18,8 @@ export const EmptyActionPlanIcon = () => (
         y2="65.8067294%"
         id="linearGradient-1"
       >
-        <stop stop-color="#FF9A6B" offset="0%"></stop>
-        <stop stop-color="#FF7E80" offset="100%"></stop>
+        <stop stopColor="#FF9A6B" offset="0%"></stop>
+        <stop stopColor="#FF7E80" offset="100%"></stop>
       </linearGradient>
       <linearGradient
         x1="19.8232627%"
@@ -28,16 +28,16 @@ export const EmptyActionPlanIcon = () => (
         y2="65.8067294%"
         id="linearGradient-2"
       >
-        <stop stop-color="#FF9A6B" offset="0%"></stop>
-        <stop stop-color="#FF7E80" offset="100%"></stop>
+        <stop stopColor="#FF9A6B" offset="0%"></stop>
+        <stop stopColor="#FF7E80" offset="100%"></stop>
       </linearGradient>
     </defs>
     <g
       id="Page-1"
       stroke="none"
-      stroke-width="1"
+      strokeWidth="1"
       fill="none"
-      fill-rule="evenodd"
+      fillRule="evenodd"
     >
       <g
         id="empty-state_Plano-de-ação"

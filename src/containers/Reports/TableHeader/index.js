@@ -66,7 +66,7 @@ TableHeader.propTypes = {
   width: PropTypes.number.isRequired,
 
   intl: PropTypes.shape({
-    messages: PropTypes.objectOf(PropTypes.string),
+    messages: PropTypes.shape(),
   }).isRequired,
   isAppUserReminderScreen: PropTypes.bool,
   isAppUser: PropTypes.bool,

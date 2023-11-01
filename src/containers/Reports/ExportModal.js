@@ -297,7 +297,7 @@ function ExportModal({
 ExportModal.propTypes = {
   open: PropTypes.bool.isRequired,
   handleCloseModal: PropTypes.func.isRequired,
-  intl: PropTypes.element,
+  intl: PropTypes.shape(),
   exportReportBackend: PropTypes.func,
   clearExportStatus: PropTypes.func,
   data: PropTypes.shape({

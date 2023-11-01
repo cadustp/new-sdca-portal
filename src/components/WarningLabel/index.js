@@ -14,7 +14,7 @@ const WarningLabel = (props) => {
 };
 
 WarningLabel.propTypes = {
-  intl: PropTypes.element.isRequired,
+  intl: PropTypes.shape().isRequired,
   errorWarning: PropTypes.bool,
 };
 

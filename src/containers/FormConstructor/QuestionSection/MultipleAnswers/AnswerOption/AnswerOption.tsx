@@ -244,7 +244,7 @@ const AnswerOption: React.FC<Props & DispatchProps & StateProps> = ({
           id={`contextual-menu-forms-${option.key}`}
           disableScrollLock
           anchorEl={anchorEl}
-          getContentAnchorEl={null}
+          // getContentAnchorEl={null}
           anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
           transformOrigin={{ vertical: 'top', horizontal: 'center' }}
           keepMounted

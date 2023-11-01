@@ -17,7 +17,7 @@ import { SNACKBAR_VARIANTS } from '../../helpers/consts';
 class ExportReport extends Component {
   static propTypes = {
     intl: PropTypes.shape({
-      messages: PropTypes.objectOf(PropTypes.object).isRequired,
+      messages: PropTypes.shape().isRequired,
     }).isRequired,
     reportTypes: PropTypes.shape({
       id: PropTypes.number,

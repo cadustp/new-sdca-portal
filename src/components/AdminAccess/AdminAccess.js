@@ -85,7 +85,7 @@ function AdminAccess({ intl }) {
         anchorEl={settingsAnchor}
         open={Boolean(settingsAnchor)}
         onClose={handleClose}
-        getContentAnchorEl={null}
+        // getContentAnchorEl={null}
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'left',
@@ -112,7 +112,7 @@ function AdminAccess({ intl }) {
 }
 
 AdminAccess.propTypes = {
-  intl: PropTypes.element.isRequired,
+  intl: PropTypes.shape({ messages: PropTypes.shape() }).isRequired,
 };
 
 export default injectIntl(withRouter(AdminAccess));
