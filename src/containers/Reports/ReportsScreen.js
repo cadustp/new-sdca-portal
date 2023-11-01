@@ -409,7 +409,7 @@ const dataShape = PropTypes.shape({
 ReportsScreen.propTypes = {
   // automatic props
   intl: PropTypes.shape({
-    messages: PropTypes.objectOf(PropTypes.object),
+    messages: PropTypes.shape(),
   }).isRequired,
 
   // redux related props

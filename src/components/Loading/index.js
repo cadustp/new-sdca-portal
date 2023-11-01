@@ -49,7 +49,7 @@ function Loading(props) {
 }
 
 Loading.propTypes = {
-  classes: PropTypes.element.isRequired,
+  classes: PropTypes.shape({ progress: PropTypes.string }).isRequired,
   title: PropTypes.string,
   message: PropTypes.string,
   secondMessage: PropTypes.string,
@@ -64,10 +64,11 @@ Loading.defaultProps = {
 };
 
 const StyledLoading = (props) => {
-  const classes = makeStyles(styles);
+  const classes = makeStyles(styles)();
+  const newProps = { ...props, classes }
 
   return (
-    <Loading classes={{ ...classes }} {...props} />
+    <Loading { ...newProps } />
   )
 }
 

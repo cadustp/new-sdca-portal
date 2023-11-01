@@ -104,7 +104,7 @@ const TopMenu = ({ intl, user }) => {
 
 TopMenu.propTypes = {
   intl: PropTypes.shape({
-    messages: PropTypes.objectOf(PropTypes.object),
+    messages: PropTypes.shape(),
   }).isRequired,
 };
 

@@ -94,7 +94,7 @@ const FeaturePreviewMenu: React.FC<StateProps & DispatchProps> = ({
               description={intl.messages[`${featureItem.translation_key}.description`]}
               preview={featureItem.preview}
               changePreviewEnabled={e => handleUpdateFeaturesUser(e, featureItem.id)} 
-            /> 
+            />
           ))}
         </Content>
       </div>

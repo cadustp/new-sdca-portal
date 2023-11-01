@@ -71,12 +71,12 @@ class DateFilter extends React.Component {
 DateFilter.propTypes = {
   onChange: PropTypes.func.isRequired,
   daysOffset: PropTypes.number,
-  startDate: PropTypes.objectOf(PropTypes.object),
-  endDate: PropTypes.objectOf(PropTypes.object),
-  notObrigatoryFilter: PropTypes.bool.isRequired,
+  startDate: PropTypes.shape(),
+  endDate: PropTypes.shape(),
+  notObrigatoryFilter: PropTypes.bool,
   intl: PropTypes.shape({
     locale: PropTypes.string.isRequired,
-    messages: PropTypes.objectOf(PropTypes.object).isRequired,
+    messages: PropTypes.shape().isRequired,
   }).isRequired,
 };
 

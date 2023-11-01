@@ -344,7 +344,7 @@ TableRow.propTypes = {
   handleOpenListModal: PropTypes.func.isRequired,
   handleCloseListModal: PropTypes.func.isRequired,
   intl: PropTypes.shape({
-    messages: PropTypes.objectOf(PropTypes.object),
+    messages: PropTypes.shape(),
   }).isRequired,
   modalStatus: PropTypes.bool.isRequired,
   isAppUserReminderScreen: PropTypes.bool,

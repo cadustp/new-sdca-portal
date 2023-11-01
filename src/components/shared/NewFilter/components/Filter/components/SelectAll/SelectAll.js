@@ -22,7 +22,7 @@ class SelectAll extends React.Component {
   static propTypes = {
     onCheckboxClick: PropTypes.func.isRequired,
     showDivider: PropTypes.bool,
-    intl: PropTypes.string.isRequired,
+    intl: PropTypes.shape().isRequired,
     // eslint-disable-next-line react/forbid-prop-types
     selected_items: PropTypes.object.isRequired,
     labelId: PropTypes.string,

@@ -118,8 +118,8 @@ class QualityDashboard extends Component {
 }
 
 QualityDashboard.propTypes = {
-  startDate: PropTypes.objectOf(PropTypes.object).isRequired,
-  endDate: PropTypes.objectOf(PropTypes.object).isRequired,
+  startDate: PropTypes.shape().isRequired,
+  endDate: PropTypes.shape().isRequired,
   dispatch: PropTypes.func.isRequired,
 };
 

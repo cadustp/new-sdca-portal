@@ -5,23 +5,23 @@ export const EmptyDataChartIcon = () => (
     <title>Group</title>
     <defs>
         <linearGradient x1="19.8232627%" y1="65.8067294%" x2="124.189238%" y2="65.8067294%" id="linearGradient-1">
-            <stop stop-color="#FF9A6B" offset="0%"></stop>
-            <stop stop-color="#FF7E80" offset="100%"></stop>
+            <stop stopColor="#FF9A6B" offset="0%"></stop>
+            <stop stopColor="#FF7E80" offset="100%"></stop>
         </linearGradient>
         <linearGradient x1="19.8232627%" y1="65.8067294%" x2="124.189238%" y2="65.8067294%" id="linearGradient-2">
-            <stop stop-color="#FF9A6B" offset="0%"></stop>
-            <stop stop-color="#FF7E80" offset="100%"></stop>
+            <stop stopColor="#FF9A6B" offset="0%"></stop>
+            <stop stopColor="#FF7E80" offset="100%"></stop>
         </linearGradient>
         <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-3">
-            <stop stop-color="#320056" offset="0%"></stop>
-            <stop stop-color="#320056" offset="100%"></stop>
+            <stop stopColor="#320056" offset="0%"></stop>
+            <stop stopColor="#320056" offset="100%"></stop>
         </linearGradient>
         <linearGradient x1="19.8232627%" y1="65.8067294%" x2="124.189238%" y2="65.8067294%" id="linearGradient-4">
-            <stop stop-color="#D3D2F4" offset="0%"></stop>
-            <stop stop-color="#FF7E80" offset="100%"></stop>
+            <stop stopColor="#D3D2F4" offset="0%"></stop>
+            <stop stopColor="#FF7E80" offset="100%"></stop>
         </linearGradient>
     </defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g id="Dashboard_Qualidade" transform="translate(-548.000000, -1878.000000)">
             <g id="Group" transform="translate(548.000000, 1878.000000)">
                 <path d="M199.366888,182.186511 C174.249142,201.145959 188.84965,242.216282 138.997065,238.91186 C108.056736,236.861015 102.648854,206.56702 91.2377379,197.181693 C76.8428743,185.342316 50.3171871,195.714442 41.5948898,166.202193 C34.6799536,142.805225 51.8157916,136.561991 63.0188751,126.243681 C78.7662463,111.739972 69.7096222,88.0545653 81.794055,62.4867815 C93.8784879,36.9189978 161.157165,29.5962007 178.873617,74.1721427 C189.720382,101.463428 226.4838,83.1190116 237.330565,121.736247 C248.177329,160.353483 221.060418,165.81174 199.366888,182.186511 Z" id="Path-5" fill="#EBEAF9" transform="translate(139.899997, 140.549997) rotate(40.000000) translate(-139.899997, -140.549997) "></path>
@@ -34,7 +34,7 @@ export const EmptyDataChartIcon = () => (
                         <g id="Doc-Behind"></g>
                         <g id="Plus-Sign" transform="translate(59.766544, 83.356361)"></g>
                     </g>
-                    <polygon id="Rectangle-9" fill-rule="nonzero" points="60.2660132 43.1546632 60.2660132 16.9418359 59.5254376 16.9418359 59.5254376 43.9418352 85.6254369 43.9418352 85.6254369 43.1546632"></polygon>
+                    <polygon id="Rectangle-9" fillRule="nonzero" points="60.2660132 43.1546632 60.2660132 16.9418359 59.5254376 16.9418359 59.5254376 43.9418352 85.6254369 43.9418352 85.6254369 43.1546632"></polygon>
                     <polygon id="Clip-18" points="117.70068 136.378986 150.589794 136.378986 150.589794 169.624061 117.70068 169.624061"></polygon>
                     <path d="M123.547294,134.020781 C123.4655,133.937675 122.455853,133.906633 122.035344,134.020781 C118.643513,134.941503 115.575783,139.2792 116.918965,135.944266 C118.262148,132.609331 112.036204,137.544794 115.196351,142.192757 C115.375189,142.455793 117.658281,144.800608 117.730014,144.872779 C118.35658,145.506163 118.826504,145.981201 119.139787,146.297893 C123.88207,151.091782 130.995494,158.282615 140.48006,167.870393 C142.792593,170.208733 146.542423,170.208733 148.855394,167.870393 C151.167928,165.532491 151.167928,161.741983 148.855394,159.403643 L123.547294,134.020781 Z" id="Fill-17" fill="url(#linearGradient-3)"></path>
                     <path d="M96.7684971,87.7010206 C81.4791822,87.7010206 69.0845801,100.095185 69.0845801,115.384938 C69.0845801,130.674252 81.4791822,143.068417 96.7684971,143.068417 C112.057812,143.068417 124.452414,130.674252 124.452414,115.384938 C124.452414,100.095185 112.057812,87.7010206 96.7684971,87.7010206" id="Fill-1" fill="url(#linearGradient-4)"></path>

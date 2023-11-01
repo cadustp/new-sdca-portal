@@ -47,9 +47,9 @@ export default class MenuListComposition extends Component {
 
           <Menu
             elevation={1}
-            left
+            // left
             anchorEl={anchorEl}
-            getContentAnchorEl={null}
+            // getContentAnchorEl={null}
             keepMounted
             open={Boolean(anchorEl)}
             onClose={this.handleClose}
@@ -65,7 +65,7 @@ export default class MenuListComposition extends Component {
             {menuItems.map((menuItem, key) => (
               <MenuLink
                 key={key}
-                strict
+                // strict
                 to={menuItem.link}
                 onClick={() => captureNavigation(menuItem.link)}
               >
@@ -79,7 +79,7 @@ export default class MenuListComposition extends Component {
     ) : (
       <Container>
         <MenuLink
-          exact
+          // exact
           to={menuTitle.link}
           onClick={() => captureNavigation(menuTitle.link)}
         >

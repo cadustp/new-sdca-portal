@@ -241,7 +241,7 @@ SideFilter.propTypes = {
   handleUpdateFilterParams: PropTypes.func.isRequired,
   inputText: PropTypes.string.isRequired,
   intl: PropTypes.shape({
-    messages: PropTypes.objectOf(PropTypes.object).isRequired,
+    messages: PropTypes.shape().isRequired,
   }).isRequired,
   sideFilterParams: PropTypes.shape({
     selectedForms: dataArrayShape,

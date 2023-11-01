@@ -18,7 +18,7 @@ class GroupSelectionView extends Component {
   static propTypes = {
     groups: PropTypes.shape({
       ids: PropTypes.arrayOf(PropTypes.number),
-      parent_ids: PropTypes.arrayOf(PropTypes.string),
+      parent_ids: PropTypes.arrayOf(PropTypes.number),
       names: PropTypes.arrayOf(PropTypes.string),
       groups: PropTypes.arrayOf(PropTypes.object),
     }).isRequired,
@@ -52,7 +52,7 @@ class GroupSelectionView extends Component {
       this.filterFlatTree
     );
 
-    this.updateFlattenedTree(groups);
+    this.state.flattenedTree = this.generateFilteredTree(groups);
   }
 
   // eslint-disable-next-line react/destructuring-assignment

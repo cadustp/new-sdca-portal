@@ -13,7 +13,7 @@ class GroupTab extends React.Component {
     groups: PropTypes.shape({
       ids: PropTypes.arrayOf(PropTypes.number),
     }).isRequired,
-    selectedGroups: PropTypes.arrayOf(PropTypes.object).isRequired,
+    selectedGroups: PropTypes.shape().isRequired,
     updateParentState: PropTypes.func.isRequired,
   };
 
