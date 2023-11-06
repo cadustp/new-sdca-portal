@@ -107,6 +107,7 @@
     "@types/parse-link-header": "^2.0.2",
     "@types/react-datepicker": "^4.19.1",
     "@types/react-leaflet-markercluster": "^3.0.3",
+    "@types/react-virtualized": "^9.21.26",
     "@types/styled-components": "^5.1.29"
   }
 }
