@@ -99,7 +99,7 @@ const SearchBar: React.FC<Props & DispatchProps> = ({
           <Input
             className="search-routine-input"
             value={searchTerm}
-            onKeyPress={e => { if (e.key === 'Enter') { handleSearch(e); } }}
+            onKeyDown={e => { if (e.key === 'Enter') { handleSearch(e); } }}
             autoFocus
             onChange={e => setSearchTerm(e.target.value)}
             placeholder={`${intl.messages['routines.searchBar.placeholder']}`}

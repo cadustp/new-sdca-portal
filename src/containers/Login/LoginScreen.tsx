@@ -123,7 +123,7 @@ const LoginScreen: React.FC<Props & StateProps & DispatchProps> = ({
     <>
       <div className="login-field">
         <Input
-          onKeyPress={onKeyPress}
+          onKeyDown={onKeyPress}
           onChange={onChange}
           value={value}
           placeholder={placeholder}

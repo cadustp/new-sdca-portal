@@ -268,7 +268,7 @@ const SearchBar: React.FC<Props & DispatchProps & StateProps> = ({
           <Input
             className="search-input"
             autoFocus
-            onKeyPress={handleKeyPress}
+            onKeyDown={handleKeyPress}
             onChange={e => setInputSearchValue(e.target.value)}
             value={inputSearchValue}
             disableUnderline

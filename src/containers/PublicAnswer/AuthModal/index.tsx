@@ -48,7 +48,7 @@ const AuthModal: React.FC<Props & StateProps & DispatchProps> = ({
             {(!customPasswordRequired &&
               <div className="public-auth-field">
                 <Input
-                  onKeyPress={e => { if (e.key === 'Enter') { handlePublicLogin(); } }}
+                  onKeyDown={e => { if (e.key === 'Enter') { handlePublicLogin(); } }}
                   onChange={event => setLoginInfo({ ...loginInfo, email: event.target.value })}
                   value={loginInfo.email}
                   placeholder={intl.messages['app_login.email']}
@@ -63,7 +63,7 @@ const AuthModal: React.FC<Props & StateProps & DispatchProps> = ({
             }
             <div className="public-auth-field">
               <Input
-                onKeyPress={e => { if (e.key === 'Enter') { handlePublicLogin(); } }}
+                onKeyDown={e => { if (e.key === 'Enter') { handlePublicLogin(); } }}
                 onChange={event => setLoginInfo({ ...loginInfo, password: event.target.value })}
                 value={loginInfo.password}
                 placeholder={intl.messages['app_login.password']}
