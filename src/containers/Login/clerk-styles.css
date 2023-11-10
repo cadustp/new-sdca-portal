@@ -87,6 +87,7 @@
 
 .wrong-pass-msg {
   margin-top: 0.25rem;
+  color: rgb(250, 64, 64);
 }
 
 .signin-btn {
