@@ -146,18 +146,6 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
     }
   }
 
-  // const handleOAuthSignIn = () => {
-  //   console.log("handle oauth signin");
-    
-  //   if (!isLoaded) return;
-
-  //   signIn.authenticateWithRedirect({
-  //     strategy: "oauth_microsoft",
-  //     redirectUrl: "/oauth-callback",
-  //     redirectUrlComplete: "/dashboard"
-  //   });
-  // }
-
   const handleEmailStyles = (message: string) => {
     setStyles((prev) => ({ ...prev, emailInput: 'input-error', emailLabel: 'error', wrongEmail: true, emailMessage: message }));
   }

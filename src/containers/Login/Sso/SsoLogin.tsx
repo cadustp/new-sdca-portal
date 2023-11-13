@@ -1,3 +1,4 @@
+import { useSession } from "@clerk/clerk-react";
 import React, { useEffect } from "react";
 
 type DispatchProps = {
@@ -5,16 +6,18 @@ type DispatchProps = {
 };
 
 const SsoLogin: React.FC<DispatchProps> = ({ doLoginRequest }) => {
+  const { isLoaded, isSignedIn, session } = useSession();
 
-    useEffect(() => {
-        // recuperar a sessão do usuário no clerk
-        // chamar api com email e session_id do usuário
-        // realizar fluxo de login com doLoginRequest
-    }, []);
+  useEffect(() => {
+    if (isLoaded && isSignedIn) {
+      const email = session.user.primaryEmailAddress?.emailAddress || '';
+      doLoginRequest({ login: { email, session: session.id } })
+    }
+  }, [isLoaded]);
 
-    return (
-        <div>Sso Login</div>
-    )
+  return (
+    <div>Sso Login</div>
+  )
 }
 
 export default SsoLogin;
