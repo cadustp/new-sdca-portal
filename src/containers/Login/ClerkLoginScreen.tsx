@@ -26,29 +26,27 @@ type DispatchProps = {
 };
 
 const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLoginRequest }) => {
+  const [login, setLogin] = useState({ email: "", password: "" });
+  const [code, setCode] = useState(["", "", "", "", "", ""]);
   const { isLoaded, signIn, setActive } = useSignIn();
-  const [login, setLogin] = useState({
-    email: "",
-    password: ""
-  });
+  const [submitCalls, setSubmitCalls] = useState(0);
+  const codeRefs = useRef(new Array(6).fill(null));
+  const [showSaml, setShowSaml] = useState(false);
+  const [showMFA, setShowMFA] = useState(false);
+  const { isSignedIn } = useUser();
+  const [user] = useCurrentUser();
+  const { signOut } = useClerk();
+  const navigate = useNavigate();
   const [styles, setStyles] = useState({
     passInput: "",
     passLabel: "",
     wrongPass: false,
     emailInput: "",
     emailLabel: "",
-    wrongEmail: false
+    wrongEmail: false,
+    emailMessage: ""
   });
 
-  const [code, setCode] = useState(["", "", "", "", "", ""]);
-  const [submitCalls, setSubmitCalls] = useState(0);
-  const { isSignedIn, user: clerkUser } = useUser();
-  const { signOut } = useClerk();
-  const codeRefs = useRef(new Array(6).fill(null));
-  const [showMFA, setShowMFA] = useState(false);
-  const [user] = useCurrentUser();
-  const navigate = useNavigate();
- 
   const SIGN_UP_LINK = "http://localhost:3000/sign-up";
   const baseUrl = process.env.REACT_APP_BASE_URI_API;
   const endpoint = process.env.REACT_APP_V1_ENDPOINT;
@@ -56,6 +54,10 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
+    if (showMFA) return verifyMFA(e);
+    
+    if (login.email.endsWith("@falconi.com")) return handleSamlLogin(e);
+    
     setSubmitCalls((prev) => prev + 1);
 
     if (!isLoaded || submitCalls > 5) return;
@@ -90,7 +92,7 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
         if (response.status === 200) {
           handleSubmit(e);
         } else if (response.status === 404) {
-          setStyles((prev) => ({ ...prev, passInput: "pass-error", passLabel: "error", wrongPass: true}));
+          setStyles((prev) => ({ ...prev, passInput: "input-error", passLabel: "error", wrongPass: true}));
         } else {
           console.log(response);
         }
@@ -101,7 +103,7 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
       }
 
       if (error.errors[0].message === "Identifier is invalid.") {
-        setStyles((prev) => ({ ...prev, emailInput: "input-error", emailLabel: "error", wrongEmail: true }));
+        handleEmailStyles("Incorrect email!")
       }
     }
 
@@ -144,22 +146,42 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
     }
   }
 
-  const handleOAuthSignIn = () => {
-    console.log("handle oauth signin");
-    
-    if (!isLoaded) return;
-
-    signIn.authenticateWithRedirect({
-      strategy: "oauth_microsoft",
-      redirectUrl: "/oauth-callback",
-      redirectUrlComplete: "/dashboard"
-    });
+  const handleEmailStyles = (message: string) => {
+    setStyles((prev) => ({ ...prev, emailInput: 'input-error', emailLabel: 'error', wrongEmail: true, emailMessage: message }));
   }
 
-  // useEffect(() => {
-  //   console.log("caiu no use effect isSignedIn");
-  //   if (!isSignedIn) ["user", "token"].forEach((item) => localStorage.removeItem(item));
-  // }, []);
+  const handleSamlLogin = async (e: any) => {
+    e.preventDefault();
+
+    if (!isLoaded) return;
+
+    if (!login.email.endsWith("@falconi.com")){
+      handleEmailStyles("Domain not allowed!");
+      return
+    }
+
+    const emailExists: boolean = await fetch(
+      `${baseUrl}${endpoint}authentication/email_exists`,
+      {
+        method: 'post',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: login.email })
+      }
+    ).then((response) => response.status === 200).catch((error) => {
+      console.log(error);
+      return false;
+    });
+
+    if (!emailExists) handleEmailStyles('Email not found');
+    else {
+      await signIn.authenticateWithRedirect({
+        strategy: 'saml',
+        redirectUrl: '/sso-callback',
+        redirectUrlComplete: '/sso-login',
+        identifier: login.email
+      });
+    }
+  }
 
   useEffect(() => {
     if (user?.id) navigate("/dashboard");
@@ -167,43 +189,49 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
 
   return (
     <div className="rootBox">
-      <form className="form" onSubmit={ showMFA ? (e) => verifyMFA(e) : (e) => handleSubmit(e) }>
+      <form className="form" onSubmit={ showSaml ? (e) => handleSamlLogin(e) : (e) => handleSubmit(e) }>
         <div className="header">
           <img src={Logo} width={180} alt="Dayway Logo" />
         </div>
 
-        <button
-          className="social-connection"
-          type="button"
-          onClick={handleOAuthSignIn}
-        >
-          <span className="social-img-container">
-            <img src="https://img.clerk.com/static/microsoft.svg?width=160" alt="Microsoft" />
-          </span>
+        { (!showSaml && !showMFA) && (
+            <>
+              <button
+                className="social-connection"
+                type="button"
+                onClick={() => setShowSaml(true)}
+              >
+                <span className="social-img-container">
+                  <img src="https://img.clerk.com/static/microsoft.svg?width=160" alt="Microsoft" />
+                </span>
 
-          <p>Continue with Microsoft</p>
+                <p>Continue with Microsoft</p>
 
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 20 20"
-            className="social-btn-arrow"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M3.3 10h13.4m-5-5 5 5-5 5"
-            ></path>
-          </svg>
-        </button>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 20 20"
+                  className="social-btn-arrow"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M3.3 10h13.4m-5-5 5 5-5 5"
+                  ></path>
+                </svg>
+              </button>
 
-        <div className="divider-box">
-          <div className="divider"></div>
-          <p className="divider-text">or</p>
-          <div className="divider"></div>
-        </div>
+              <div className="divider-box">
+                <div className="divider"></div>
+                <p className="divider-text">or</p>
+                <div className="divider"></div>
+              </div>
+            </>
+          ) 
+        }
+
 
         { showMFA ? (
             <>
@@ -227,7 +255,9 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
           ) : (
             <>
               <div className="input-box">
-                <label htmlFor="email" className={`label ${styles.emailLabel}`}>Email</label>
+                <label htmlFor="email" className={`label ${styles.emailLabel}`}>
+                  { showSaml ? "Microsoft Account Email" : "Email" }
+                </label>
               
                 <input
                   onChange={(e) => setLogin((prev) => ({ ...prev, email: e.target.value }))}
@@ -239,28 +269,32 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
 
                 {
                   styles.wrongEmail && (
-                    <span className="title-text wrong-pass-msg">Incorrect email!</span>
+                    <span className="title-text wrong-pass-msg">{ styles.emailMessage }</span>
                   )
                 }
               </div>
-              
-              <div className="input-box">
-                <label htmlFor="password" className={`label ${styles.passLabel}`}>Password</label>
-              
-                <input
-                  onChange={(e) => setLogin((prev) => ({ ...prev, password: e.target.value }))}
-                  id="password"
-                  name="password"
-                  type="password"
-                  className={`input ${styles.passInput}`}
-                />
 
-                {
-                  styles.wrongPass && (
-                    <span className="title-text wrong-pass-msg">Incorrect password!</span>
-                  )
-                }
-              </div>
+              {
+                !showSaml && (
+                  <div className="input-box">
+                    <label htmlFor="password" className={`label ${styles.passLabel}`}>Password</label>
+                  
+                    <input
+                      onChange={(e) => setLogin((prev) => ({ ...prev, password: e.target.value }))}
+                      id="password"
+                      name="password"
+                      type="password"
+                      className={`input ${styles.passInput}`}
+                    />
+
+                    {
+                      styles.wrongPass && (
+                        <span className="title-text wrong-pass-msg">Incorrect password!</span>
+                      )
+                    }
+                  </div>
+                )
+              }
             </>
           )
         }

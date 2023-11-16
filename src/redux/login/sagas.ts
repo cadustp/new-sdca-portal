@@ -31,7 +31,7 @@ export function* doLoginRequest({
   payload,
 }: AnyAction) {
   try {
-    const { email, password } = payload.login;
+    const { email, password, session } = payload.login;
 
     const url = '/authentication';
     const headers = {
@@ -39,7 +39,9 @@ export function* doLoginRequest({
       'Content-Type': 'application/json',
     };
 
-    const { data } = yield call(apiService.post, url, { email, password }, { headers });
+    const body = !!password ? { email, password } : { email, session };
+
+    const { data } = yield call(apiService.post, url, body, { headers });
 
     data.user.timezone = getBrowserTimezone();
     data.user.companyLogo = data.company.image;

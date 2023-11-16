@@ -41,7 +41,7 @@ class DatePicker extends Component {
     return (
       <StyledDateRangePickerContainer error={error}>
         {titleComponent}
-        <h1>Tem um date range aqui</h1>
+        <h1>Date range</h1>
         {/* <DateRangePicker
           disabled={isDisabled}
           minimumNights={0}
