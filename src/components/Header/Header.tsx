@@ -44,7 +44,7 @@ const Header: React.FC<Props> = ({
 }) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [previewMenuOpen, setPreviewMenuOpen] = useState(false);
-  const { isSignedIn } = useUser();
+  const { isSignedIn, isLoaded } = useUser();
   const navigate = useNavigate();
 
   const openKnowledgeBase = () => {
@@ -58,11 +58,11 @@ const Header: React.FC<Props> = ({
   const togglePreviewMenu = () => setPreviewMenuOpen(!previewMenuOpen);
 
   useEffect(() => {
-    if (!isSignedIn) {
+    if (isLoaded && !isSignedIn) {
       ["user", "token"].forEach((item) => localStorage.removeItem(item));
       navigate("/login");
     }
-  }, [isSignedIn]);
+  }, [isSignedIn, isLoaded]);
 
   return (
     <>
