@@ -25,6 +25,7 @@ import CreateRoutineScreen from '../containers/CreateRoutine';
 import LoginScreen from '../containers/Login';
 import useChatHubSpot from '../hooks/useHubSpotChat';
 import SsoLogin from '../containers/Login/Sso';
+import Callback from '../containers/Login/Sso/Callback';
 
 function RouterSwitch(): JSX.Element {
   const localUser = JSON.parse(localStorage.getItem('user') || '{}');
@@ -124,7 +125,7 @@ function RouterSwitch(): JSX.Element {
         <Route path="/reset/:token" element={<LoginScreen />} />
         <Route path="/forms/public/:id" element={<PublicAnswerScreen />} />
         <Route path="/sso-login" element={<SsoLogin />} />
-        <Route path="/sso-callback" element={<AuthenticateWithRedirectCallback />} />
+        <Route path="/sso-callback" element={<Callback />} />
         <Route
           path="/dashboard"
           element={<ProtectedRoutes.HomeDashboard />}

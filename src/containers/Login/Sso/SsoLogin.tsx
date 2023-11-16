@@ -10,14 +10,16 @@ const SsoLogin: React.FC<DispatchProps> = ({ doLoginRequest }) => {
 
   useEffect(() => {
     if (isLoaded && isSignedIn) {
-      const email = session.user.primaryEmailAddress?.emailAddress || '';
-      doLoginRequest({ login: { email, session: session.id } })
+      doLoginRequest({
+        login: {
+          email: session.user.primaryEmailAddress?.emailAddress,
+          session: session.id
+        }
+      })
     }
-  }, [isLoaded]);
+  }, [isLoaded, isSignedIn]);
 
-  return (
-    <div>Sso Login</div>
-  )
+  return <></>
 }
 
 export default SsoLogin;

@@ -194,7 +194,7 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
           <img src={Logo} width={180} alt="Dayway Logo" />
         </div>
 
-        { !showSaml && (
+        { (!showSaml && !showMFA) && (
             <>
               <button
                 className="social-connection"
