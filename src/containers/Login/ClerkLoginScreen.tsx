@@ -189,7 +189,11 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
   useEffect(() => {
     const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
     const minLength = 6;
-    if (emailRegex.test(login.email) && login.password.length >= minLength) setStyles((prev) => ({ ...prev, buttonCollor: "active-btn" }));
+    if (
+      (emailRegex.test(login.email) && (login.password.length >= minLength || showSaml))
+      || showMFA
+    ) setStyles((prev) => ({ ...prev, buttonCollor: "active-btn" }));
+    else { setStyles((prev) => ({ ...prev, buttonCollor: "" })); }
   }, [login])
 
   useEffect(() => {
