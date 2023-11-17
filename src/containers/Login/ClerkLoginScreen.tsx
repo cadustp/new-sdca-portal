@@ -5,6 +5,7 @@ import "./clerk-styles.css"
 import { withRouter } from "../../helpers/withRouter";
 import useCurrentUser from "../../hooks/useCurrentUser";
 import { useNavigate } from "react-router-dom";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 type Props = {
   intl: {
@@ -44,7 +45,9 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
     emailInput: "",
     emailLabel: "",
     wrongEmail: false,
-    emailMessage: ""
+    emailMessage: "",
+    buttonCollor: "",
+    showPass: false
   });
 
   const SIGN_UP_LINK = "http://localhost:3000/sign-up";
@@ -103,7 +106,7 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
       }
 
       if (error.errors[0].message === "Identifier is invalid.") {
-        handleEmailStyles("Incorrect email!")
+        handleEmailStyles("Email incorreto!")
       }
     }
 
@@ -156,7 +159,7 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
     if (!isLoaded) return;
 
     if (!login.email.endsWith("@falconi.com")){
-      handleEmailStyles("Domain not allowed!");
+      handleEmailStyles("Domínio não permitido!");
       return
     }
 
@@ -172,7 +175,7 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
       return false;
     });
 
-    if (!emailExists) handleEmailStyles('Email not found');
+    if (!emailExists) handleEmailStyles('Email não encontrado');
     else {
       await signIn.authenticateWithRedirect({
         strategy: 'saml',
@@ -182,6 +185,12 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
       });
     }
   }
+
+  useEffect(() => {
+    const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+    const minLength = 6;
+    if (emailRegex.test(login.email) && login.password.length >= minLength) setStyles((prev) => ({ ...prev, buttonCollor: "active-btn" }));
+  }, [login])
 
   useEffect(() => {
     if (user?.id) navigate("/dashboard");
@@ -205,7 +214,7 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
                   <img src="https://img.clerk.com/static/microsoft.svg?width=160" alt="Microsoft" />
                 </span>
 
-                <p>Continue with Microsoft</p>
+                <p>Entrar com Microsoft</p>
 
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -225,7 +234,7 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
 
               <div className="divider-box">
                 <div className="divider"></div>
-                <p className="divider-text">or</p>
+                <p className="divider-text">ou</p>
                 <div className="divider"></div>
               </div>
             </>
@@ -235,7 +244,7 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
 
         { showMFA ? (
             <>
-              <h3>Insert Auth code:</h3>
+              <h3>Insira seu código:</h3>
               <div className="code-box">
                 {
                   [0, 1, 2, 3, 4, 5].map((index) => (
@@ -256,7 +265,7 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
             <>
               <div className="input-box">
                 <label htmlFor="email" className={`label ${styles.emailLabel}`}>
-                  { showSaml ? "Microsoft Account Email" : "Email" }
+                  { showSaml ? "Email Microsoft" : "Email" }
                 </label>
               
                 <input
@@ -277,19 +286,23 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
               {
                 !showSaml && (
                   <div className="input-box">
-                    <label htmlFor="password" className={`label ${styles.passLabel}`}>Password</label>
+                    <label htmlFor="password" className={`label ${styles.passLabel}`}>Senha</label>
+
+                    <div className="icon-box" onClick={() => setStyles((prev) => ({ ...prev, showPass: !prev.showPass }))}>
+                      { styles.showPass ? <Visibility /> : <VisibilityOff /> }
+                    </div>
                   
                     <input
                       onChange={(e) => setLogin((prev) => ({ ...prev, password: e.target.value }))}
                       id="password"
                       name="password"
-                      type="password"
+                      type={ styles.showPass ? "text" : "password" }
                       className={`input ${styles.passInput}`}
                     />
 
                     {
                       styles.wrongPass && (
-                        <span className="title-text wrong-pass-msg">Incorrect password!</span>
+                        <span className="title-text wrong-pass-msg">Senha Incorreta!</span>
                       )
                     }
                   </div>
@@ -299,13 +312,13 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
           )
         }
 
-        <button className="signin-btn" type="submit">
-          { showMFA ? "Verify" : "Continue" }
+        <button className={`signin-btn ${styles.buttonCollor}`} type="submit" disabled={!styles.buttonCollor}>
+          { showMFA ? "Verificar" : "Entrar" }
         </button>
 
         <div className="footer">
-          <span className="footer-text">No account?</span>
-          <a href={SIGN_UP_LINK} className="footer-link">Sign up</a>
+          {/* <span className="footer-text">Esqueceu sua senha?</span> */}
+          <a href={SIGN_UP_LINK} className="footer-link">Esqueci minha senha</a>
         </div>
       </form>
     </div>
