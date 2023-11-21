@@ -68,7 +68,7 @@ function MySnackbarContent(props) {
 }
 
 MySnackbarContent.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.func.isRequired,
   className: PropTypes.string,
   message: PropTypes.node,
   onClose: PropTypes.func,
@@ -76,10 +76,10 @@ MySnackbarContent.propTypes = {
 };
 
 const MySnackbarContentWrapper = (props) => {
-  const classes = makeStyles(styles1);
+  const newProps = { ...props, classes: makeStyles(styles1) }
 
   return (
-    <MySnackbarContent classes={{ ...classes }} {...props} />
+    <MySnackbarContent { ...newProps } />
   )
 }
 
@@ -102,11 +102,13 @@ export default class CustomSnackbar extends Component {
         onClose={this.props.handleClose}
         autoHideDuration={this.props.data.duration || defaultAutoHideDuration}
       >
-        <MySnackbarContentWrapper
-          onClose={this.props.handleClose}
-          variant={this.props.data.type}
-          message={this.props.data.message}
-        />
+        <div>
+          <MySnackbarContentWrapper
+            onClose={this.props.handleClose}
+            variant={this.props.data.type}
+            message={this.props.data.message}
+          />
+        </div>
       </Snackbar>
     );
   }
