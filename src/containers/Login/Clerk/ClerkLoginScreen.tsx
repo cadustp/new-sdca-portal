@@ -1,11 +1,14 @@
 import { useClerk, useSignIn, useUser } from "@clerk/clerk-react";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
-import Logo from "../../assets/branding/new_logo.svg"
-import "./clerk-styles.css"
-import { withRouter } from "../../helpers/withRouter";
-import useCurrentUser from "../../hooks/useCurrentUser";
+import Logo from "../../../assets/branding/new_logo.svg"
+import "../styles.css"
+import { withRouter } from "../../../helpers/withRouter";
+import useCurrentUser from "../../../hooks/useCurrentUser";
 import { useNavigate } from "react-router-dom";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import CustomSnackbar from "../../../components/shared/CustomSnackbar/CustomSnackbar";
+import { RESPONSE_STATUS, SNACKBAR_VARIANTS } from '../../../helpers/consts';
+import ClerkBadge from "../../../components/ClerkBadge";
 
 type Props = {
   intl: {
@@ -26,12 +29,19 @@ type DispatchProps = {
   updatePasswordRequest: Function,
 };
 
-const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLoginRequest }) => {
+const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({
+  doLoginRequest,
+  resetInstructionsRequest,
+  status,
+  clearStatus,
+  intl
+}) => {
   const [login, setLogin] = useState({ email: "", password: "" });
   const [code, setCode] = useState(["", "", "", "", "", ""]);
   const { isLoaded, signIn, setActive } = useSignIn();
   const [submitCalls, setSubmitCalls] = useState(0);
   const codeRefs = useRef(new Array(6).fill(null));
+  const [showForgot, setShowForgot] = useState(false);
   const [showSaml, setShowSaml] = useState(false);
   const [showMFA, setShowMFA] = useState(false);
   const { isSignedIn } = useUser();
@@ -47,12 +57,12 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
     wrongEmail: false,
     emailMessage: "",
     buttonCollor: "",
-    showPass: false
+    showPass: false,
   });
 
-  const SIGN_UP_LINK = "http://localhost:3000/sign-up";
   const baseUrl = process.env.REACT_APP_BASE_URI_API;
   const endpoint = process.env.REACT_APP_V1_ENDPOINT;
+  const responseSuccess = status === RESPONSE_STATUS.SUCCESS;
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -163,17 +173,7 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
       return
     }
 
-    const emailExists: boolean = await fetch(
-      `${baseUrl}${endpoint}authentication/email_exists`,
-      {
-        method: 'post',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: login.email })
-      }
-    ).then((response) => response.status === 200).catch((error) => {
-      console.log(error);
-      return false;
-    });
+    const emailExists: boolean = await verifyEmail();
 
     if (!emailExists) handleEmailStyles('Email não encontrado');
     else {
@@ -186,11 +186,84 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
     }
   }
 
+  const verifyEmail = async () => {
+    const exists  = await fetch(
+      `${baseUrl}${endpoint}authentication/email_exists`,
+      {
+        method: 'post',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: login.email })
+      }
+    ).then((response) => response.status === 200)
+    .catch((error) => {
+      console.log(error);
+      return false;
+    });
+
+    return exists;
+  }
+
+  const handleForgot = async (e: any) => {
+    e.preventDefault();
+
+    const emailExists: boolean = await verifyEmail();
+
+    if (!emailExists) handleEmailStyles('Email não encontrado');
+    else {
+      resetInstructionsRequest({ email: login.email })
+    }
+  }
+
+  const handleButtonText = () => {
+    if (showMFA) return "Verificar";
+    if (showForgot) return "Enviar instruções";
+    return "Entrar";
+  }
+
+  const handleButtonAction = (event: any) => {
+    if (showSaml) {
+      handleSamlLogin(event);
+    } else if (showForgot) {
+      handleForgot(event);
+    } else {
+      handleSubmit(event);
+    }
+  }
+
+  const StatusSnackBar = () => (
+    <CustomSnackbar
+      data={{
+        message: handleSnackMessage(),
+        type: responseSuccess ? SNACKBAR_VARIANTS.SUCCESS : SNACKBAR_VARIANTS.ERROR,
+        open: status.length,
+      }}
+      handleClose={handleClose}
+    />
+  );
+
+
+  const handleSnackMessage = () => {
+    if (!responseSuccess && !showForgot) return intl.messages['login.connect.error'];
+    if (responseSuccess && showForgot) return intl.messages['login.forgot.success'];
+    if (!responseSuccess && showForgot) return intl.messages['login.forgot.error'];
+  };
+
+  const handleClose = () => {
+    clearStatus();
+  };
+
   useEffect(() => {
-    const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+    const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,10}$/g;
     const minLength = 6;
     if (
-      (emailRegex.test(login.email) && (login.password.length >= minLength || showSaml))
+      (
+        emailRegex.test(login.email)
+        && (
+          login.password.length >= minLength
+          || showSaml
+          || showForgot
+        )
+      )
       || showMFA
     ) setStyles((prev) => ({ ...prev, buttonCollor: "active-btn" }));
     else { setStyles((prev) => ({ ...prev, buttonCollor: "" })); }
@@ -202,12 +275,14 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
 
   return (
     <div className="rootBox">
-      <form className="form" onSubmit={ showSaml ? (e) => handleSamlLogin(e) : (e) => handleSubmit(e) }>
+      <form className="form" onSubmit={ (e) => handleButtonAction(e) }>
+        <ClerkBadge />
+
         <div className="header">
           <img src={Logo} width={180} alt="Dayway Logo" />
         </div>
 
-        { (!showSaml && !showMFA) && (
+        { (!showSaml && !showMFA && !showForgot) && (
             <>
               <button
                 className="social-connection"
@@ -288,7 +363,7 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
               </div>
 
               {
-                !showSaml && (
+                (!showSaml && !showForgot) && (
                   <div className="input-box">
                     <label htmlFor="password" className={`label ${styles.passLabel}`}>Senha</label>
 
@@ -317,14 +392,21 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
         }
 
         <button className={`signin-btn ${styles.buttonCollor}`} type="submit" disabled={!styles.buttonCollor}>
-          { showMFA ? "Verificar" : "Entrar" }
+          { handleButtonText() }
         </button>
 
-        <div className="footer">
-          {/* <span className="footer-text">Esqueceu sua senha?</span> */}
-          <a href={SIGN_UP_LINK} className="footer-link">Esqueci minha senha</a>
-        </div>
+        {
+          !showMFA && (
+            <div className="footer">
+              <p onClick={() => setShowForgot(!showForgot)} className="footer-link">
+                { showForgot ? "Voltar para login" : "Esqueci minha senha"}
+              </p>
+            </div>
+          )
+        }
       </form>
+
+      <StatusSnackBar />
     </div>
   );
 }

@@ -2,7 +2,7 @@ import { useClerk, useSignIn, useSignUp } from "@clerk/clerk-react";
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Callback: React.FC = () => {
+const SsoCallback: React.FC = () => {
   const { signUp, isLoaded: signUpLoaded } = useSignUp();
   const { signIn, isLoaded, setActive } = useSignIn();
   const { handleRedirectCallback } = useClerk();
@@ -30,4 +30,4 @@ const Callback: React.FC = () => {
   return <></>
 }
 
-export default Callback;
+export default SsoCallback;
