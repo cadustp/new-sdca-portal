@@ -9,6 +9,7 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import CustomSnackbar from "../../../components/shared/CustomSnackbar/CustomSnackbar";
 import { RESPONSE_STATUS, SNACKBAR_VARIANTS } from '../../../helpers/consts';
 import ClerkBadge from "../../../components/ClerkBadge";
+import Loading from '../../../components/Loading';
 
 type Props = {
   intl: {
@@ -34,7 +35,8 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({
   resetInstructionsRequest,
   status,
   clearStatus,
-  intl
+  intl,
+  isLoading
 }) => {
   const [login, setLogin] = useState({ email: "", password: "" });
   const [code, setCode] = useState(["", "", "", "", "", ""]);
@@ -205,7 +207,7 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({
 
   const handleForgot = async (e: any) => {
     e.preventDefault();
-
+    
     const emailExists: boolean = await verifyEmail();
 
     if (!emailExists) handleEmailStyles('Email não encontrado');
@@ -275,6 +277,8 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({
 
   return (
     <div className="rootBox">
+      { isLoading && <Loading size="small" /> }
+
       <form className="form" onSubmit={ (e) => handleButtonAction(e) }>
         <ClerkBadge />
 
@@ -323,12 +327,19 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({
 
         { showMFA ? (
             <>
-              <h3>Insira seu código:</h3>
+              <div className="code-header">
+                <h3 className="code-text">Verificação de Login</h3>
+                <p className="code-info">
+                  Insira o código gerado no seu aplicativo autenticador
+                </p>
+              </div>
+
               <div className="code-box">
                 {
                   [0, 1, 2, 3, 4, 5].map((index) => (
                     <input
                       className="input code-input"
+                      autoFocus={index == 0}
                       key={index}
                       type="text"
                       maxLength={1}

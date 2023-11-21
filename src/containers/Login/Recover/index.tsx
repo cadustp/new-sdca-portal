@@ -6,6 +6,7 @@ import {
   updatePasswordRequest,
 } from '../../../redux/login/actions';
 import RecoverScreen from './RecoverScreen';
+import { injectIntl } from 'react-intl';
 
 const mapStateToProps = (state: any) => ({
   isLoading: state.login.isLoading || state.login.loginloading,
@@ -20,4 +21,4 @@ const mapDispatchToProps = (dispatch: any) => ({
   clearStatus: () => dispatch(clearStatus()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(RecoverScreen);
+export default injectIntl(connect(mapStateToProps, mapDispatchToProps)(RecoverScreen));
