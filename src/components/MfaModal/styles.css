@@ -6,7 +6,9 @@
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: rgba(65, 65, 65, 0.102);
+  background-color: rgba(65, 65, 65, 0.189);
+  position: absolute;
+  z-index: 9999;
 }
 
 .mfa-box {

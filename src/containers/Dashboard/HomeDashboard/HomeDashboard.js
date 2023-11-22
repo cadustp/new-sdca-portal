@@ -1,12 +1,14 @@
 import { Box } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import PropTypes from 'prop-types';
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { captureEvent } from '../../../analytics';
 import DateFilter from '../../../components/shared/DateFilter/DateFilter';
 import AdherenceGroupsChart from '../AdherenceDashboard/AdherenceGroupsChart/AdherenceGroupsChart';
 import StatusGroupsChart from '../StatusDashboard/StatusGroupsChart/StatusGroupsChart';
 import HomeCards from './HomeCards/HomeCards';
+import MfaModal from "../../../components/MfaModal";
+import { useUser } from '@clerk/clerk-react';
 
 function HomeDashboard({
   user,
@@ -32,6 +34,8 @@ function HomeDashboard({
     defaultMessage: 'Dashboard',
   });
   const titleLabel = useMemo(() => translate(intl), []);
+  const { user: clerkUser, isLoaded, isSignedIn } = useUser();
+  const [showModal, setShowModal] = useState(false);
 
   const handleData = () => {
     const body = {
@@ -47,6 +51,10 @@ function HomeDashboard({
     };
     qualityByGroups(body);
   };
+
+  const handleMfaModal = (value) => {
+    setShowModal(value)
+  }
 
   useEffect(() => {
     const isInformationReady = Boolean(
@@ -74,6 +82,16 @@ function HomeDashboard({
     }
   }, [selectedGroups, selectedForms, selectedEmployees]);
 
+  useEffect(() => {
+    const hideModal = JSON.parse(localStorage.getItem("hideMfaModal")) || null;
+    if (
+      isLoaded
+      && isSignedIn
+      && !clerkUser.twoFactorEnabled
+      && !hideModal
+    ) setShowModal(true);
+  }, []);
+
   const handleDateChange = dateState => {
     captureEvent('setDatesAdherence');
     setDates({
@@ -85,6 +103,7 @@ function HomeDashboard({
 
   return (
     <div className="dashboard-content">
+      {showModal && <MfaModal handleMfaModal={handleMfaModal} />}
       <div className="header-title">
         <Grid container spacing={24}>
           <Grid item xs={12} sm={8}>

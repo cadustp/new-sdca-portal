@@ -1,23 +1,42 @@
-import { CloseOutlined, VerifiedOutlined } from "@mui/icons-material";
 import React, { useState } from "react"
+import PropTypes from "prop-types";
+import { CloseOutlined, VerifiedOutlined } from "@mui/icons-material";
 import "./styles.css"
 
-const MfaModal: React.FC = () => {
+type Props = {
+  handleMfaModal: Function;
+};
+
+const MfaModal: React.FC<Props> = ({ handleMfaModal }) => {
   const [checked, setChecked] = useState(false);
 
   const closeModal = (e: any) => {
     e.preventDefault();
+
+    if (checked) localStorage.setItem("hideMfaModal", "true");
+    else {
+      localStorage.setItem("hideMfaModal", "false");
+    }
+
+    handleMfaModal(false);
   }
 
   const configMfa = (e: any) => {
     e.preventDefault();
+
+    const mfaUrl = process.env.REACT_APP_CLERK_MFA_UR || null;
+
+    if (mfaUrl) window.location.href = mfaUrl;
+    else {
+      handleMfaModal(false);
+    }
   }
 
   return (
     <div className="mfa-container">
       <div className="mfa-box">
         <div className="mfa-header">
-          <CloseOutlined className="mfa-close-icon" />
+          <CloseOutlined className="mfa-close-icon" onClick={(e) => closeModal(e)} />
           <VerifiedOutlined fontSize="large" className="mfa-verify-icon" />
           <h2 className="mfa-title">
             { "Aumente a segurança da sua conta com a autenticação de múltiplos fatores (MFA)" }
@@ -57,5 +76,9 @@ const MfaModal: React.FC = () => {
     </div>
   )
 }
+
+MfaModal.propTypes = {
+  handleMfaModal: PropTypes.func.isRequired
+};
 
 export default MfaModal;
