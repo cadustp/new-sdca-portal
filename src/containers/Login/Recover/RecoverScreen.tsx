@@ -77,9 +77,7 @@ const RecoverScreen: React.FC<Props & StateProps & DispatchProps> = ({
 
 
   const handleSnackMessage = () => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
+    setIsLoading(false);
     if (responseSuccess) return intl.messages['login.recover.success'];
     else {
       return intl.messages['login.recover.error'];
@@ -96,10 +94,6 @@ const RecoverScreen: React.FC<Props & StateProps & DispatchProps> = ({
       setStyles((prev) => ({ ...prev, buttonCollor: "" }));
     }
   }, [recover])
-
-  useEffect(() => {
-    console.log("isLoading: ", isLoading);
-  }, [isLoading])
 
   return (
     <div className="rootBox">

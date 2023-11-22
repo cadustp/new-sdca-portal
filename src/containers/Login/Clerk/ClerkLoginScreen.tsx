@@ -97,7 +97,7 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({
     } catch (error: any) {
       if (error.errors[0].message === "Couldn't find your account.") {
         const response = await fetch(
-          `${baseUrl}${endpoint}users/sync_clerk`,
+          `${baseUrl}${endpoint}/users/sync_clerk`,
           {
             method: 'post',
             body: JSON.stringify({ user: { email } })
@@ -190,7 +190,7 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({
 
   const verifyEmail = async () => {
     const exists  = await fetch(
-      `${baseUrl}${endpoint}authentication/email_exists`,
+      `${baseUrl}${endpoint}/authentication/email_exists`,
       {
         method: 'post',
         headers: { 'Content-Type': 'application/json' },
