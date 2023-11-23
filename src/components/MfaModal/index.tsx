@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import PropTypes from "prop-types";
 import { CloseOutlined, VerifiedOutlined } from "@mui/icons-material";
 import "./styles.css"
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   handleMfaModal: Function;
@@ -10,6 +11,7 @@ type Props = {
 
 const MfaModal: React.FC<Props> = ({ handleMfaModal, user }) => {
   const [checked, setChecked] = useState(false);
+  const navigate = useNavigate();
 
   const closeModal = (e: any) => {
     e.preventDefault();
@@ -27,13 +29,8 @@ const MfaModal: React.FC<Props> = ({ handleMfaModal, user }) => {
 
   const configMfa = (e: any) => {
     e.preventDefault();
-
-    const mfaUrl = process.env.REACT_APP_CLERK_MFA_UR || null;
-
-    if (mfaUrl) window.location.href = mfaUrl;
-    else {
-      handleMfaModal(false);
-    }
+    navigate("/user/profile#/multi-factor");
+    handleMfaModal(false);
   }
 
   return (

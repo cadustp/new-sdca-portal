@@ -6,7 +6,7 @@
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: rgba(65, 65, 65, 0.189);
+  background-color: rgba(0, 0, 0, 0.64);;
   position: absolute;
   z-index: 9999;
 }
