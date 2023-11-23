@@ -1,10 +1,15 @@
 import { useClerk, useSignIn, useUser } from "@clerk/clerk-react";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
-import Logo from "../../assets/branding/new_logo.svg"
-import "./clerk-styles.css"
-import { withRouter } from "../../helpers/withRouter";
-import useCurrentUser from "../../hooks/useCurrentUser";
+import Logo from "../../../assets/branding/new_logo.svg"
+import "../styles.css"
+import { withRouter } from "../../../helpers/withRouter";
+import useCurrentUser from "../../../hooks/useCurrentUser";
 import { useNavigate } from "react-router-dom";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import CustomSnackbar from "../../../components/shared/CustomSnackbar/CustomSnackbar";
+import { RESPONSE_STATUS, SNACKBAR_VARIANTS } from '../../../helpers/consts';
+import ClerkBadge from "../../../components/ClerkBadge";
+import Loading from '../../../components/Loading';
 
 type Props = {
   intl: {
@@ -25,12 +30,20 @@ type DispatchProps = {
   updatePasswordRequest: Function,
 };
 
-const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLoginRequest }) => {
+const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({
+  doLoginRequest,
+  resetInstructionsRequest,
+  status,
+  clearStatus,
+  intl,
+  isLoading
+}) => {
   const [login, setLogin] = useState({ email: "", password: "" });
   const [code, setCode] = useState(["", "", "", "", "", ""]);
   const { isLoaded, signIn, setActive } = useSignIn();
   const [submitCalls, setSubmitCalls] = useState(0);
   const codeRefs = useRef(new Array(6).fill(null));
+  const [showForgot, setShowForgot] = useState(false);
   const [showSaml, setShowSaml] = useState(false);
   const [showMFA, setShowMFA] = useState(false);
   const { isSignedIn } = useUser();
@@ -44,12 +57,14 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
     emailInput: "",
     emailLabel: "",
     wrongEmail: false,
-    emailMessage: ""
+    emailMessage: "",
+    buttonCollor: "",
+    showPass: false,
   });
 
-  const SIGN_UP_LINK = "http://localhost:3000/sign-up";
   const baseUrl = process.env.REACT_APP_BASE_URI_API;
   const endpoint = process.env.REACT_APP_V1_ENDPOINT;
+  const responseSuccess = status === RESPONSE_STATUS.SUCCESS;
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -82,7 +97,7 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
     } catch (error: any) {
       if (error.errors[0].message === "Couldn't find your account.") {
         const response = await fetch(
-          `${baseUrl}${endpoint}users/sync_clerk`,
+          `${baseUrl}${endpoint}/users/sync_clerk`,
           {
             method: 'post',
             body: JSON.stringify({ user: { email } })
@@ -103,7 +118,7 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
       }
 
       if (error.errors[0].message === "Identifier is invalid.") {
-        handleEmailStyles("Incorrect email!")
+        handleEmailStyles("Email incorreto!")
       }
     }
 
@@ -156,23 +171,13 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
     if (!isLoaded) return;
 
     if (!login.email.endsWith("@falconi.com")){
-      handleEmailStyles("Domain not allowed!");
+      handleEmailStyles("Domínio não permitido!");
       return
     }
 
-    const emailExists: boolean = await fetch(
-      `${baseUrl}${endpoint}authentication/email_exists`,
-      {
-        method: 'post',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: login.email })
-      }
-    ).then((response) => response.status === 200).catch((error) => {
-      console.log(error);
-      return false;
-    });
+    const emailExists: boolean = await verifyEmail();
 
-    if (!emailExists) handleEmailStyles('Email not found');
+    if (!emailExists) handleEmailStyles('Email não encontrado');
     else {
       await signIn.authenticateWithRedirect({
         strategy: 'saml',
@@ -183,18 +188,105 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
     }
   }
 
+  const verifyEmail = async () => {
+    const exists  = await fetch(
+      `${baseUrl}${endpoint}/authentication/email_exists`,
+      {
+        method: 'post',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: login.email })
+      }
+    ).then((response) => response.status === 200)
+    .catch((error) => {
+      console.log(error);
+      return false;
+    });
+
+    return exists;
+  }
+
+  const handleForgot = async (e: any) => {
+    e.preventDefault();
+    
+    const emailExists: boolean = await verifyEmail();
+
+    if (!emailExists) handleEmailStyles('Email não encontrado');
+    else {
+      resetInstructionsRequest({ email: login.email })
+    }
+  }
+
+  const handleButtonText = () => {
+    if (showMFA) return "Verificar";
+    if (showForgot) return "Enviar instruções";
+    return "Entrar";
+  }
+
+  const handleButtonAction = (event: any) => {
+    if (showSaml) {
+      handleSamlLogin(event);
+    } else if (showForgot) {
+      handleForgot(event);
+    } else {
+      handleSubmit(event);
+    }
+  }
+
+  const StatusSnackBar = () => (
+    <CustomSnackbar
+      data={{
+        message: handleSnackMessage(),
+        type: responseSuccess ? SNACKBAR_VARIANTS.SUCCESS : SNACKBAR_VARIANTS.ERROR,
+        open: status.length,
+      }}
+      handleClose={handleClose}
+    />
+  );
+
+
+  const handleSnackMessage = () => {
+    if (!responseSuccess && !showForgot) return intl.messages['login.connect.error'];
+    if (responseSuccess && showForgot) return intl.messages['login.forgot.success'];
+    if (!responseSuccess && showForgot) return intl.messages['login.forgot.error'];
+  };
+
+  const handleClose = () => {
+    clearStatus();
+  };
+
+  useEffect(() => {
+    const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,10}$/g;
+    const minLength = 6;
+    if (
+      (
+        emailRegex.test(login.email)
+        && (
+          login.password.length >= minLength
+          || showSaml
+          || showForgot
+        )
+      )
+      || showMFA
+    ) setStyles((prev) => ({ ...prev, buttonCollor: "active-btn" }));
+    else { setStyles((prev) => ({ ...prev, buttonCollor: "" })); }
+  }, [login])
+
   useEffect(() => {
     if (user?.id) navigate("/dashboard");
   }, [user]);
 
   return (
     <div className="rootBox">
-      <form className="form" onSubmit={ showSaml ? (e) => handleSamlLogin(e) : (e) => handleSubmit(e) }>
+      { isLoading && <Loading size="small" /> }
+
+      <form className="form" onSubmit={ (e) => handleButtonAction(e) }>
+        <ClerkBadge />
+
         <div className="header">
           <img src={Logo} width={180} alt="Dayway Logo" />
         </div>
 
-        { (!showSaml && !showMFA) && (
+        { (!showSaml && !showMFA && !showForgot) && (
             <>
               <button
                 className="social-connection"
@@ -205,7 +297,7 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
                   <img src="https://img.clerk.com/static/microsoft.svg?width=160" alt="Microsoft" />
                 </span>
 
-                <p>Continue with Microsoft</p>
+                <p>Entrar com Microsoft</p>
 
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -225,7 +317,7 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
 
               <div className="divider-box">
                 <div className="divider"></div>
-                <p className="divider-text">or</p>
+                <p className="divider-text">ou</p>
                 <div className="divider"></div>
               </div>
             </>
@@ -235,12 +327,19 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
 
         { showMFA ? (
             <>
-              <h3>Insert Auth code:</h3>
+              <div className="code-header">
+                <h3 className="code-text">Verificação de Login</h3>
+                <p className="code-info">
+                  Insira o código gerado no seu aplicativo autenticador
+                </p>
+              </div>
+
               <div className="code-box">
                 {
                   [0, 1, 2, 3, 4, 5].map((index) => (
                     <input
                       className="input code-input"
+                      autoFocus={index == 0}
                       key={index}
                       type="text"
                       maxLength={1}
@@ -256,7 +355,7 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
             <>
               <div className="input-box">
                 <label htmlFor="email" className={`label ${styles.emailLabel}`}>
-                  { showSaml ? "Microsoft Account Email" : "Email" }
+                  { showSaml ? "Email Microsoft" : "Email" }
                 </label>
               
                 <input
@@ -275,21 +374,25 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
               </div>
 
               {
-                !showSaml && (
+                (!showSaml && !showForgot) && (
                   <div className="input-box">
-                    <label htmlFor="password" className={`label ${styles.passLabel}`}>Password</label>
+                    <label htmlFor="password" className={`label ${styles.passLabel}`}>Senha</label>
+
+                    <div className="icon-box" onClick={() => setStyles((prev) => ({ ...prev, showPass: !prev.showPass }))}>
+                      { styles.showPass ? <Visibility /> : <VisibilityOff /> }
+                    </div>
                   
                     <input
                       onChange={(e) => setLogin((prev) => ({ ...prev, password: e.target.value }))}
                       id="password"
                       name="password"
-                      type="password"
+                      type={ styles.showPass ? "text" : "password" }
                       className={`input ${styles.passInput}`}
                     />
 
                     {
                       styles.wrongPass && (
-                        <span className="title-text wrong-pass-msg">Incorrect password!</span>
+                        <span className="title-text wrong-pass-msg">Senha Incorreta!</span>
                       )
                     }
                   </div>
@@ -299,15 +402,22 @@ const ClerkLoginScreen: React.FC<Props & StateProps & DispatchProps> = ({ doLogi
           )
         }
 
-        <button className="signin-btn" type="submit">
-          { showMFA ? "Verify" : "Continue" }
+        <button className={`signin-btn ${styles.buttonCollor}`} type="submit" disabled={!styles.buttonCollor}>
+          { handleButtonText() }
         </button>
 
-        <div className="footer">
-          <span className="footer-text">No account?</span>
-          <a href={SIGN_UP_LINK} className="footer-link">Sign up</a>
-        </div>
+        {
+          !showMFA && (
+            <div className="footer">
+              <p onClick={() => setShowForgot(!showForgot)} className="footer-link">
+                { showForgot ? "Voltar para login" : "Esqueci minha senha"}
+              </p>
+            </div>
+          )
+        }
       </form>
+
+      <StatusSnackBar />
     </div>
   );
 }

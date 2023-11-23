@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
-import { AuthenticateWithRedirectCallback, ClerkProvider } from '@clerk/clerk-react';
+import { AuthenticateWithRedirectCallback, ClerkProvider, SignIn } from '@clerk/clerk-react';
 import withLoginAuth from '../components/withLoginAuth';
 import HomeDashboard from '../containers/Dashboard/HomeDashboard';
 import QualityDashboard from '../containers/Dashboard/QualityDashboard/QualityDashboard';
@@ -25,7 +25,9 @@ import CreateRoutineScreen from '../containers/CreateRoutine';
 import LoginScreen from '../containers/Login';
 import useChatHubSpot from '../hooks/useHubSpotChat';
 import SsoLogin from '../containers/Login/Sso';
-import Callback from '../containers/Login/Sso/Callback';
+import Callback from '../containers/Login/Sso/SsoCallback';
+import RecoverScreen from '../containers/Login/Recover';
+import ClerkUserProfile from '../containers/Users/Profile';
 
 function RouterSwitch(): JSX.Element {
   const localUser = JSON.parse(localStorage.getItem('user') || '{}');
@@ -56,6 +58,7 @@ function RouterSwitch(): JSX.Element {
     DigitalContentsScreen: withLoginAuth(DigitalContentsScreen),
     RoutinesScreen: withLoginAuth(RoutinesScreen),
     CreateRoutineScreen: withLoginAuth(CreateRoutineScreen),
+    ClerkUserProfile: withLoginAuth(ClerkUserProfile)
   };
 
   const stagingRoutes = [
@@ -122,7 +125,7 @@ function RouterSwitch(): JSX.Element {
     <ClerkProvider publishableKey={clerkPubKey} navigate={(to) => navigate(to)}>
       <Routes>
         <Route path="/login" element={<LoginScreen />} />
-        <Route path="/reset/:token" element={<LoginScreen />} />
+        <Route path="/reset/:token" element={<RecoverScreen />} />
         <Route path="/forms/public/:id" element={<PublicAnswerScreen />} />
         <Route path="/sso-login" element={<SsoLogin />} />
         <Route path="/sso-callback" element={<Callback />} />
@@ -145,6 +148,10 @@ function RouterSwitch(): JSX.Element {
         <Route
           path="/action-plan"
           element={<ProtectedRoutes.ActionPlanScreen />}
+        />
+        <Route
+          path="/user/profile"
+          element={<ProtectedRoutes.ClerkUserProfile />}
         />
         {renderMasterRoutes()}
         {renderAdminRoutes()}

@@ -6,8 +6,7 @@ import {
   resetInstructionsRequest,
   updatePasswordRequest,
 } from '../../redux/login/actions';
-// import LoginScreen from './LoginScreen';
-import ClerkLoginScreen from './ClerkLoginScreen';
+import ClerkLoginScreen from './Clerk/ClerkLoginScreen';
 
 const mapStateToProps = state => ({
   isLoading: state.login.isLoading || state.login.loginloading,
