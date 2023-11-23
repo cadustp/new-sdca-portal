@@ -19,6 +19,8 @@
   min-width: 480px;
   min-height: 400px;
   margin-top: 5rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 48px 96px;
+  border-radius: 15px;
 }
 
 .mfa-header {
@@ -125,6 +127,8 @@
 
 .mfa-btn:hover {
   cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.129) 0px 4px 8px;
+  transition: 300ms all ease-in-out;
 }
 
 .mfa-config-btn {

@@ -5,17 +5,21 @@ import "./styles.css"
 
 type Props = {
   handleMfaModal: Function;
+  user: { email: string }
 };
 
-const MfaModal: React.FC<Props> = ({ handleMfaModal }) => {
+const MfaModal: React.FC<Props> = ({ handleMfaModal, user }) => {
   const [checked, setChecked] = useState(false);
 
   const closeModal = (e: any) => {
     e.preventDefault();
 
-    if (checked) localStorage.setItem("hideMfaModal", "true");
-    else {
-      localStorage.setItem("hideMfaModal", "false");
+    if (checked) {
+      const prevHideModal = JSON.parse(localStorage.getItem("hideMfaModal") || "{}");
+      localStorage.setItem(
+        "hideMfaModal", 
+        JSON.stringify({ ...prevHideModal, [user.email]: true })
+      );
     }
 
     handleMfaModal(false);
@@ -33,8 +37,8 @@ const MfaModal: React.FC<Props> = ({ handleMfaModal }) => {
   }
 
   return (
-    <div className="mfa-container">
-      <div className="mfa-box">
+    <div className="mfa-container" onClick={(e) => closeModal(e)}>
+      <div className="mfa-box" onClick={(e) => e.stopPropagation()}>
         <div className="mfa-header">
           <CloseOutlined className="mfa-close-icon" onClick={(e) => closeModal(e)} />
           <VerifiedOutlined fontSize="large" className="mfa-verify-icon" />
@@ -78,7 +82,8 @@ const MfaModal: React.FC<Props> = ({ handleMfaModal }) => {
 }
 
 MfaModal.propTypes = {
-  handleMfaModal: PropTypes.func.isRequired
+  handleMfaModal: PropTypes.func.isRequired,
+  user: PropTypes.shape({ email: PropTypes.string.isRequired }).isRequired,
 };
 
 export default MfaModal;

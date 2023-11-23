@@ -83,12 +83,12 @@ function HomeDashboard({
   }, [selectedGroups, selectedForms, selectedEmployees]);
 
   useEffect(() => {
-    const hideModal = JSON.parse(localStorage.getItem("hideMfaModal")) || null;
+    const hideModal = JSON.parse(localStorage.getItem("hideMfaModal")) || {};
     if (
       isLoaded
       && isSignedIn
       && !clerkUser.twoFactorEnabled
-      && !hideModal
+      && !(user.email in hideModal)
     ) setShowModal(true);
   }, []);
 
@@ -103,7 +103,7 @@ function HomeDashboard({
 
   return (
     <div className="dashboard-content">
-      {showModal && <MfaModal handleMfaModal={handleMfaModal} />}
+      {showModal && <MfaModal handleMfaModal={handleMfaModal} user={user} />}
       <div className="header-title">
         <Grid container spacing={24}>
           <Grid item xs={12} sm={8}>
